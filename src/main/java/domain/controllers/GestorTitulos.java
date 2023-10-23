@@ -15,8 +15,8 @@ public class GestorTitulos {
 	 * @param isbn
 	 * @param autores
 	 */
-	public Titulo altaTítulo(String titulo, String isbn, String[] autores) {
-		// TODO - implement GestorTitulos.altaTítulo
+	public Titulo altaTitulo(String titulo, String isbn, String[] autores) {
+		// TODO - implement GestorTitulos.altaTitulo
 		throw new UnsupportedOperationException();
 	}
 

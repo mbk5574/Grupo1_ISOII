@@ -20,8 +20,8 @@ public class GestorPenalizaciones {
 	 * 
 	 * @param u
 	 */
-	public void comprobarPenalización(Usuario u) {
-		// TODO - implement GestorPenalizaciones.comprobarPenalización
+	public void comprobarPenalizacion(Usuario u) {
+		// TODO - implement GestorPenalizaciones.comprobarPenalizaciï¿½n
 		throw new UnsupportedOperationException();
 	}
 

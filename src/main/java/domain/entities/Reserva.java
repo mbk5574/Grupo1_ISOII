@@ -1,4 +1,5 @@
 package domain.entities;
+import java.util.*;
 
 public class Reserva {
 

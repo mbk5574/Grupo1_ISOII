@@ -1,5 +1,7 @@
 package domain.entities;
 
+import java.util.Date;
+
 public class Prestamo {
 
 	Usuario usuario;
