@@ -16,7 +16,7 @@ import es.uclm.GestiBiblioteca.business.entities.Titulo;
 
 @Repository
 public interface TituloDAO extends JpaRepository<Titulo, Long> {
-
 	
+	List<Titulo> findByIsbn(String isbn);
 	
 }

@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Thu Nov 02 01:38:15 CET 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018b-8d77-685a-000001316ea8 
-on database directory C:\Users\Usuario\Desktop\GestionBiblioteca\GestiBiblioteca\database with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
-Loaded from file:/C:/Users/Usuario/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
-java.vendor=Oracle Corporation
-java.runtime.version=17+35-LTS-2724
-user.dir=C:\Users\Usuario\Desktop\GestionBiblioteca\GestiBiblioteca
+Sat Nov 04 17:01:10 CET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018b-9b11-16ef-0000026f9ac0 
+on database directory C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\Escritorio\GestiBibliotecaB\GestiBiblioteca\database with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2f333739 
+Loaded from file:/C:/Users/mbk5574/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=17.0.6+10
+user.dir=C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\Escritorio\GestiBibliotecaB\GestiBiblioteca
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0

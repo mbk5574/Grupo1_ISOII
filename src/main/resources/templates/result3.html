@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<!-- Verifica si se ha realizado una accion de borrado -->
+<div th:if="${borrado}">
+    <p th:text="${result}"></p>
+</div>
+<div th:unless="${borrado}">
+    <!-- Muestra los detalles del titulo si no se realizo un borrado -->
+    <p th:text="'isbn: ' + ${altaTitulos.isbn}" />
+    <p th:text="'titulo_obra: ' + ${altaTitulos.titulo_obra}" />
+    <p th:text="${result}"></p>
+    <a href="/altaTitulos">Anadir otro titulo</a>
+</div>
+</body>
+</html>
