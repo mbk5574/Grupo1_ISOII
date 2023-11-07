@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.qos.logback.classic.Logger;
+import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
 import es.uclm.GestiBiblioteca.business.entities.Titulo;
 import es.uclm.GestiBiblioteca.persistence.AutorDAO;
 import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
@@ -49,13 +50,13 @@ public class GestorTitulos {
 		return "result";
 	}
 
-	@GetMapping("/seleccionarTituloParaActualizar")
-	public String mostrarFormularioSeleccion() {
-	    return "seleccionarTitulo"; // reemplaza esto con el nombre del archivo .html donde colocaste el formulario.
+	@GetMapping("/seleccionarIdTituloActualizar")
+	public String mostrarFormularioSeleccion1() {
+	    return "seleccionarIdTituloActualizar";
 	}
 	
-	@PostMapping("/seleccionarTituloParaActualizar")
-	public String seleccionarTituloParaActualizar(@RequestParam Long tituloId, RedirectAttributes redirectAttributes) {
+	@PostMapping("/seleccionarIdTituloActualizar")
+	public String seleccionarIdTituloParaActualizar(@RequestParam Long tituloId, RedirectAttributes redirectAttributes) {
 	    redirectAttributes.addAttribute("tituloId", tituloId);
 	    return "redirect:/actualizarTitulo";
 	}
@@ -66,20 +67,19 @@ public class GestorTitulos {
 	    Titulo existingTitulo = tituloDAO.findById(tituloId).orElse(null);
 	    
 	    if(existingTitulo == null) {
-	        // Aquí puedes manejar el error. Por ahora, solo redirige al usuario de vuelta al formulario de selección.
-	        return "redirect:/seleccionarTituloParaActualizar";
+	        return "redirect:/seleccionarIdTituloActualizar";
 	    }
 	    
 	    model.addAttribute("altaTitulos", existingTitulo);
 	    
-	    return "altaTitulos"; // Nombre de la vista que muestra el formulario de actualización
+	    return "altaTitulos"; //Nombre de la vista que muestra el formulario de actualización
 	}
 	
 	
 	@PostMapping("/actualizarTitulo")
 	public String actualizarTituloSubmit(@ModelAttribute Titulo titulo, Model model) {
 	    Titulo existingTitulo = tituloDAO.findById(titulo.getId()).orElse(null);
-	    String result2; // Variable para guardar mensajes resultantes
+	    String result2; //Variable para guardar mensajes resultantes
 	    
 	    if (existingTitulo != null) {
 	        existingTitulo.setTitulo_obra(titulo.getTitulo_obra());
@@ -97,7 +97,7 @@ public class GestorTitulos {
 	    }
 	    
 	    model.addAttribute("titulo", existingTitulo);
-	    model.addAttribute("result2", result2); // Agregar el mensaje resultante al modelo
+	    model.addAttribute("result2", result2); //agegamos el mensaje resultante al modelo
 	    
 	    return "result2"; 
 	}
@@ -106,7 +106,7 @@ public class GestorTitulos {
 	@GetMapping("/borrarTitulo")
 	public String mostrarFormularioBorrarTitulo(Model model) {
 	    model.addAttribute("altaTitulos", new Titulo());
-	    return "altaTitulos"; // Esto es el nombre de la vista (template) que contiene el formulario.
+	    return "altaTitulos"; //Esto es el nombre de la vista (template) que contiene el formulario.
 	}
 	
 	@PostMapping("/borrarTitulo")
@@ -119,7 +119,7 @@ public class GestorTitulos {
 	        tituloDAO.deleteAll(titulosABorrar);
 	        log.info("Titulos con ISBN " + isbn + " borrados exitosamente");
 	        result3 = "Titulos con ISBN " + isbn + " borrados exitosamente";
-	        // Establece la variable borradoExitoso en true si el borrado es exitoso
+	        //establecemos la variable borradoExitoso en true si el borrado es exitoso
 	    } else {
 	    	result3 = "No se encontro ningún titulo con ISBN " + isbn;
 	    	log.info(result3);
@@ -128,17 +128,41 @@ public class GestorTitulos {
 	    }
 
 	    model.addAttribute("result3", result3);
-	    // Agrega la variable borradoExitoso al modelo para que Thymeleaf la utilice
+	    //agregmos la variable borradoExitoso al modelo para que Thymeleaf la utilice
 	    model.addAttribute("borrado", borrado);
 
 	    return "result3";
 	}
 
 	
-	public void altaEjemplar(Titulo t) {
-		// TODO - implement GestorTitulos.altaEjemplar
-		throw new UnsupportedOperationException();
-	}
+	
+	@GetMapping("/altaEjemplar")
+    public String mostrarAltaEjemplarForm(Model model) {
+        List<Titulo> todosTitulos = tituloDAO.findAll(); //obtenemos todos los títulos disponibles
+        model.addAttribute("todosTitulos", todosTitulos); //pasamos la lista de títulos al modelo
+        model.addAttribute("altaEjemplar", new Ejemplar()); //pasamos un nuevo Ejemplar al modelo
+        return "altaEjemplar"; //como antes el nombre de la vista que muestra el formulario de alta ejemplar
+    }
+	
+    @PostMapping("/altaEjemplar")
+    public String altaEjemplar(@RequestParam("id") Long id, RedirectAttributes redirectAttributes) {
+        Titulo titulo = tituloDAO.findById(id).orElse(null); //encontrar el título por ID
+        if (titulo != null) {
+            Ejemplar nuevoEjemplar = new Ejemplar(titulo);
+            ejemplarDAO.save(nuevoEjemplar);
+            log.info("Nuevo ejemplar creado y asociado al título: " + titulo.getTitulo_obra());
+            redirectAttributes.addFlashAttribute("ejemplarAgregado", true);
+            redirectAttributes.addFlashAttribute("mensaje", "Nuevo ejemplar agregado exitosamente.");
+            return "redirect:/result4"; //redirigimos a la página de confirmación
+        } else {
+            log.error("El título no existe.");
+            redirectAttributes.addFlashAttribute("ejemplarAgregado", false);
+            redirectAttributes.addFlashAttribute("error", "El título no existe.");
+            return "redirect:/altaEjemplar";
+        }
+    }
+    
+  
 
 
 	public void bajaEjemplar(Titulo t) {

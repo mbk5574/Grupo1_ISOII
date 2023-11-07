@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultado de la operación</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Resultado</h1>
+
+<!-- Verifica si se ha agregado un ejemplar -->
+<div th:if="${ejemplarAgregado}">
+    <p th:text="${mensaje}">Mensaje de éxito</p>
+    <a href="/altaEjemplar">Agregar otro ejemplar</a>
+</div>
+
+<!-- En caso de no agregar un ejemplar, muestra mensaje de error -->
+<div th:unless="${ejemplarAgregado}">
+    <p th:text="${error}">Mensaje de error</p>
+    <a href="/altaEjemplar">Intentar nuevamente</a>
+</div>
+
+</body>
+</html>

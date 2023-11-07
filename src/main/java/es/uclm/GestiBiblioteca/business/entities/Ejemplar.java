@@ -9,8 +9,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Ejemplar {
 	
-	public Ejemplar() {
-		
+	public Ejemplar() {	
 	}
 	
 	public Ejemplar(Titulo titulo) {
