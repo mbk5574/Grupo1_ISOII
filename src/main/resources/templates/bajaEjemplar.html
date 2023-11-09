@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dar de baja a un ejemplar</title>
+</head>
+<body>
+
+<!-- Formulario para dar de alta 1 ejemplar -->
+<form action="#" th:action="@{/bajaEjemplar}" th:object="${bajaEjemplar}" method="post">
+<p>Seleccione el id del Título para el ejemplar a dar de baja:
+	<select name="idsEjemplares">
+    <option value="" disabled selected>seleccione un título</option>
+    <option th:each="ejemplar : ${todosEjemplares}" 
+            th:value="${ejemplar.id}" 
+            th:text="${ejemplar.id + ' - ' + ejemplar.titulo}">Título
+    </option>
+</select>
+</p>
+<p>
+	<input type="submit" value="Baja Ejemplar" />
+</p>
+</form>
+
+</body>
+</html>
