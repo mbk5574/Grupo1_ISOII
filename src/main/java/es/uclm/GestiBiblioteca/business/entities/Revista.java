@@ -14,7 +14,6 @@ public class Revista extends Titulo {
 		super();
 	}
 
-	// Constructor que inicializa atributos de Titulo
 	public Revista(String titulo, String isbn, Set<Autor> autores) {
 		super(autores, null, null, null, titulo, isbn);
 	}

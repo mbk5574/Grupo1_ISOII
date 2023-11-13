@@ -25,7 +25,7 @@ public class Ejemplar {
     private Long id;
 	
     
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "titulo_id", referencedColumnName = "id")
 	private Titulo titulo;
 	
@@ -33,7 +33,6 @@ public class Ejemplar {
 	public String toString() {
 	    return "Ejemplar{" +
 	           "id=" + id +
-	           // Solo imprimir el ID del Titulo, no todo el objeto Titulo
 	           ", tituloId=" + titulo.getId() +
 	           '}';
 	}

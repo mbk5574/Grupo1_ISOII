@@ -61,7 +61,6 @@ public class Titulo {
         return "Titulo{" +
                "id=" + id +
                ", isbn='" + isbn + '\'' +
-               // No imprimir toda la colección de Ejemplares
                ", numberOfEjemplares=" + ejemplares.size() +
                '}';
     }

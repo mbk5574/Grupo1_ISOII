@@ -1,14 +1,105 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Getting Started: Handling Form Submission</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Resultado de Actualización de Títulos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .mensaje {
+            padding: 10px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .exito {
+            background-color: #4CAF50;
+        }
+
+        .error {
+            background-color: #f44336;
+        }
+
+        .datos {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #005f73;
+        }
+        
+        .acciones {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .acciones a {
+            margin: 0 10px;
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .acciones a:hover {
+            background-color: #005f73;
+        }
+    </style>
 </head>
 <body>
-<h1>Result</h1>
-<p th:text="'isbn: ' + ${titulo.isbn}" />
-<p th:text="'titulo_obra: ' + ${titulo.titulo_obra}" />
-<a href="/seleccionarIdTituloActualizar">Actualizar otro titulo</a>
+<h1>Resultado de la Actualización</h1>
+
+<div class="mensaje" th:classappend="${result2 == 'Título actualizado exitosamente.'} ? 'exito' : 'error'">
+    <p th:text="${result2}"></p>
+</div>
+
+<div class="datos" th:if="${titulo}">
+    <p>Isbn: <span th:text="${titulo.isbn}"></span></p>
+    <p>Titulo de la obra: <span th:text="${titulo.titulo_obra}"></span></p>
+    <!-- Aquí puedes agregar más información si es necesario -->
+</div>
+
+<div class="acciones">
+        <a href="/seleccionarIdTituloActualizar">Actualizar otro título</a>
+        <a href="/admin">Volver a inicio</a>
+    </div>
+
+
 </body>
 </html>
+
 

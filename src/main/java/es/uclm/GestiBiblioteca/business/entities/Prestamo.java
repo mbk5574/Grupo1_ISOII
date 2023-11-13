@@ -29,7 +29,7 @@ public class Prestamo {
 	@ManyToOne
 	Usuario usuario;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "titulo_id", referencedColumnName = "id")
 	private Titulo titulo;
 	

@@ -26,7 +26,7 @@ public class Reserva {
     @ManyToOne
 	Usuario usuario;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "titulo_id")
 	private Titulo titulo;
     
