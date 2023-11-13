@@ -2,11 +2,13 @@ package es.uclm.GestiBiblioteca.business.entities;
 
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 @Entity
 public class Prestamo {
@@ -27,8 +29,10 @@ public class Prestamo {
 	@ManyToOne
 	Usuario usuario;
 	
-	@ManyToOne
-	Titulo titulo;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "titulo_id", referencedColumnName = "id")
+	private Titulo titulo;
+	
 	@Column
 	private Date fechaInicio;
 	@Column

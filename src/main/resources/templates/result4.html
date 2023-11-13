@@ -7,17 +7,8 @@
 <body>
 <h1>Resultado</h1>
 
-<!-- Verifica si se ha agregado un ejemplar -->
-<div th:if="${ejemplarAgregado}">
-    <p th:text="${mensaje}">Mensaje de éxito</p>
-    <a href="/altaEjemplar">Agregar otro ejemplar</a>
-</div>
-
-<!-- En caso de no agregar un ejemplar, muestra mensaje de error -->
-<div th:unless="${ejemplarAgregado}">
-    <p th:text="${error}">Mensaje de error</p>
-    <a href="/altaEjemplar">Intentar nuevamente</a>
-</div>
+<p th:text="'ID titulo del ejemplar agregado: ' + ${titulo.id}" />
+<p th:text="'Titulo ejemplar agregado: ' + ${titulo.titulo_obra}" />
 
 </body>
 </html>

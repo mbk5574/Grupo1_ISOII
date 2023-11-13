@@ -5,7 +5,6 @@ import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;

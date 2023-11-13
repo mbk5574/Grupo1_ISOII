@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo_titulo")
 public class Titulo {
 	
@@ -23,52 +23,48 @@ public class Titulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    private Collection<Autor> autores;
+    @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+    private Collection<Autor> autores = new HashSet<>();
 
-    @OneToMany
-    private Collection<Ejemplar> ejemplares;
 
-    @OneToMany
-    private Collection<Prestamo> prestamos;
+    @OneToMany(mappedBy = "titulo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Collection<Ejemplar> ejemplares = new ArrayList<>();
 
-    @OneToMany
-    private Collection<Reserva> reservas;
+    @OneToMany(mappedBy = "titulo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Collection<Prestamo> prestamos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "titulo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Collection<Reserva> reservas = new ArrayList<>();
 
     @Column
     private String titulo_obra;
-
-
+    
 	@Column
     private String isbn;
-
-    @Column
-    private String numReserva;
+  
 	
 	public Titulo() {
 		
 	}
-	public Titulo(Collection<Autor> autores,Collection<Ejemplar> ejemplares,Collection<Prestamo> prestamos,Collection<Reserva> reservas,String titulo_obra,String numReserva,String isbn) {
+	public Titulo(Collection<Autor> autores,Collection<Ejemplar> ejemplares,Collection<Prestamo> prestamos,Collection<Reserva> reservas,String titulo_obra,String isbn) {
 		this.autores=autores;
 		this.ejemplares=ejemplares;
 		this.prestamos=prestamos;
 		this.reservas=reservas;
 		this.titulo_obra=titulo_obra;
-		this.numReserva=numReserva;
 		this.isbn=isbn;
 	}
 	
-	
-	
-
-
     
     @Override
-	public String toString() {
-		return "Titulo [id=" + id + ", autores=" + autores + ", ejemplares=" + ejemplares + ", prestamos=" + prestamos
-				+ ", reservas=" + reservas + ", titulo=" + titulo_obra + ", isbn=" + isbn + ", numReserva=" + numReserva
-				+ "]";
-	}
+    public String toString() {
+        return "Titulo{" +
+               "id=" + id +
+               ", isbn='" + isbn + '\'' +
+               // No imprimir toda la colección de Ejemplares
+               ", numberOfEjemplares=" + ejemplares.size() +
+               '}';
+    }
 	public Long getId() {
 		return id;
 	}
@@ -111,15 +107,5 @@ public class Titulo {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public String getNumReserva() {
-		return numReserva;
-	}
-	public void setNumReserva(String numReserva) {
-		this.numReserva = numReserva;
-	}
-
-
-
-
 
 }

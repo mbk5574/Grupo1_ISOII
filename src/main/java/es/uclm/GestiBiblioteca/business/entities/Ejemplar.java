@@ -1,9 +1,11 @@
 package es.uclm.GestiBiblioteca.business.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -21,14 +23,19 @@ public class Ejemplar {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+	
     
-	@ManyToOne
-	Titulo titulo;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "titulo_id", referencedColumnName = "id")
+	private Titulo titulo;
 	
 	@Override
 	public String toString() {
-		return "Ejemplar [titulo=" + titulo + ", id=" + id + "]";
+	    return "Ejemplar{" +
+	           "id=" + id +
+	           // Solo imprimir el ID del Titulo, no todo el objeto Titulo
+	           ", tituloId=" + titulo.getId() +
+	           '}';
 	}
 
 	public Titulo getTitulo() {

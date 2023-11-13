@@ -1,6 +1,8 @@
 package es.uclm.GestiBiblioteca.business.entities;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,7 +19,7 @@ public class Autor {
 	public Autor(){
 	
 	}
-		public Autor(String nombre,String apellido,Collection<Titulo> titulos) {
+		public Autor(String nombre,String apellido,Set<Titulo> titulos) {
 			super();
 			this.nombre=nombre;
 			this.apellido=apellido;
@@ -30,7 +32,7 @@ public class Autor {
     private Long id;
 
     @ManyToMany
-    private Collection<Titulo> titulos;
+    private Collection<Titulo> titulos = new HashSet<>();
 
     @Column
     private String nombre;

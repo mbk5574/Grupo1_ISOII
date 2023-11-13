@@ -2,11 +2,13 @@ package es.uclm.GestiBiblioteca.business.entities;
 
 import java.util.*;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 @Entity
 public class Reserva {
@@ -23,8 +25,11 @@ public class Reserva {
 	
     @ManyToOne
 	Usuario usuario;
-    @ManyToOne
-	Titulo titulo;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "titulo_id")
+	private Titulo titulo;
+    
     @Column
 	private Date fecha;
     @Id
