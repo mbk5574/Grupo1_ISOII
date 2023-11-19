@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Borrar un Título</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Formulario de Borrado de Título</h1>
+    <form action="#" th:action="@{/borrarTitulo}" th:object="${borrarTitulo}" method="post">
+        <p>ISBN a borrar: <input type="text" name="isbn" /></p>
+        <input type="submit" value="Borrar Título" />
+    </form>
+</body>
+</html>
