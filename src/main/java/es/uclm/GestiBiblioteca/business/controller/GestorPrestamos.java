@@ -1,6 +1,7 @@
 package es.uclm.GestiBiblioteca.business.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import es.uclm.GestiBiblioteca.business.entities.Prestamo;
@@ -33,11 +35,40 @@ public class GestorPrestamos {
 	TituloDAO tituloDAO;
 	private static final Logger log = (Logger) LoggerFactory.getLogger(GestorPrestamos.class);
 
+	
+	@GetMapping("/registroUsuario")
+	public String mostrarFormularioRegistroUsuario(Model model) {
+	    model.addAttribute("nuevoUsuario", new Usuario());
+	    return "registroUsuario"; 
+	}
+
+	@PostMapping("/registroUsuario")
+	public String registrarUsuario(@ModelAttribute Usuario nuevoUsuario, RedirectAttributes redirectAttributes) {
+	    try {
+	        usuarioDAO.save(nuevoUsuario);
+	        log.info("Usuario registrado: " + nuevoUsuario);
+	        redirectAttributes.addFlashAttribute("mensajeExito", "Usuario registrado exitosamente.");
+	    } catch (Exception e) {
+	        log.error("Error al registrar el usuario: ", e);
+	        redirectAttributes.addFlashAttribute("mensajeError", "Error al registrar el usuario.");
+	    }
+	    return "redirect:/resultadoRegistroUsuario";
+	}
+	
+	@GetMapping("/resultadoRegistroUsuario")
+	public String mostrarResultadoRegistro() {
+	    return "resultadoRegistroUsuario";
+	}
+
+
+	
+	
 	@GetMapping("/altaPrestamos")
 	public String mostrarFormularioPrestamo(Model model) {
-		// Cargar la lista de usuarios y títulos disponibles desde la base de datos
 		List<Usuario> usuarios = usuarioDAO.findAll();
 		List<Titulo> titulos = tituloDAO.findAll();
+		
+	    log.info("Usuarios: " + usuarios);
 
 		model.addAttribute("usuarios", usuarios);
 		model.addAttribute("titulos", titulos);
@@ -46,9 +77,7 @@ public class GestorPrestamos {
 	}
 
 	@PostMapping("/realizar-prestamo")
-	public String realizarPrestamo(@ModelAttribute Prestamo prestamo, Model model,
-			RedirectAttributes redirectAttributes) {
-		// Realiza la lógica de realizar un préstamo y almacénalo en la base de datos
+	public String realizarPrestamo(@ModelAttribute Prestamo prestamo, Model model, RedirectAttributes redirectAttributes) {
 		prestamoDAO.save(prestamo);
 		log.info("Saved prestamo: " + prestamo);
 		model.addAttribute("prestamoRealizado", true);
@@ -57,15 +86,41 @@ public class GestorPrestamos {
 		return "/resultPrestamo";
 	}
 
-	/**
-	 * 
-	 * @param isbn
-	 * @param idEjemplar
-	 * @param idUsuario
-	 */
-	public void realizarDevolucion(String isbn, String idEjemplar, String idUsuario) {
-		// TODO - implement GestorPrestamos.realizarDevolucion
-		throw new UnsupportedOperationException();
+	@GetMapping("/devolucionEjemplar")
+	public String mostrarFormularioDevolucion(Model model) {
+	    List<Prestamo> prestamosActivos = prestamoDAO.findByActivoTrue();
+		model.addAttribute("prestamos", prestamosActivos);
+		return "devolucionEjemplar"; 
+	}
+
+	@PostMapping("/realizar-devolucion")
+	public String realizarDevolucion(@RequestParam Integer idPrestamo, RedirectAttributes redirectAttributes) {
+		try {
+			Optional<Prestamo> prestamoOpt = prestamoDAO.findById(idPrestamo);
+			if (prestamoOpt.isPresent()) {
+				Prestamo prestamo = prestamoOpt.get();
+				prestamo.setActivo(false);
+				prestamoDAO.save(prestamo);
+
+				log.info("Devolución realizada exitosamente para el préstamo con ID: " + idPrestamo);
+				redirectAttributes.addFlashAttribute("ejemplarDevuelto", true);
+				redirectAttributes.addFlashAttribute("mensaje", "Devolución realizada exitosamente.");
+			} else {
+				log.error("Préstamo no encontrado con ID: " + idPrestamo);
+				redirectAttributes.addFlashAttribute("ejemplarDevuelto", false);
+			    redirectAttributes.addFlashAttribute("mensaje", "Préstamo no encontrado.");
+			}
+		} catch (Exception e) {
+			log.error("Error al realizar la devolución: ", e);
+			redirectAttributes.addFlashAttribute("ejemplarDevuelto", false);
+			redirectAttributes.addFlashAttribute("mensaje", "Error al realizar la devolución.");
+		}
+		return "redirect:/resultadoDevolucion";
+	}
+
+	@GetMapping("/resultadoDevolucion")
+	public String mostrarResultadoDevolucion() {
+		return "resultadoDevolucion"; 
 	}
 
 	/**

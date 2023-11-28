@@ -1,5 +1,6 @@
 package es.uclm.GestiBiblioteca.business.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 import jakarta.persistence.CascadeType;
@@ -10,8 +11,35 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
 @Entity
 public class Prestamo {
+	
+
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	Usuario usuario;
+	
+	@ManyToOne()
+	@JoinColumn(name = "titulo_id", referencedColumnName = "id")
+	private Titulo titulo;
+	
+	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaInicio;
+	
+	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaFin;
+	
+	@Column
+	private Boolean activo;
+	
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	private int id_prestamo;
+	
+	
 	
 	public Prestamo() {
 		
@@ -26,24 +54,6 @@ public class Prestamo {
 		
 	}
 
-	@ManyToOne
-	Usuario usuario;
-	
-	@ManyToOne()
-	@JoinColumn(name = "titulo_id", referencedColumnName = "id")
-	private Titulo titulo;
-	
-	@Column
-	private Date fechaInicio;
-	@Column
-	private Date fechaFin;
-	
-	@Column
-	private Boolean activo;
-	
-	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
-	private int id_prestamo;
 	
 	public Usuario getUsuario() {
 		return usuario;

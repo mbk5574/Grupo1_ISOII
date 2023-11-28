@@ -24,6 +24,7 @@ public class Reserva {
 	}
 	
     @ManyToOne
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	Usuario usuario;
     
     @ManyToOne()

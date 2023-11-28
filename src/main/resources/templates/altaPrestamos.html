@@ -5,6 +5,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+	
+<!-- Mensaje si no hay usuarios disponibles -->
+<div th:if="${#lists.isEmpty(usuarios)}">
+    No hay usuarios disponibles.
+</div>
 
 <!-- Formulario para realizar un préstamo -->
 <form th:action="@{/realizar-prestamo}" th:object="${prestamo}" method="post"> 

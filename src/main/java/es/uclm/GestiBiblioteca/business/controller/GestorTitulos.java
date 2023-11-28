@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.slf4j.LoggerFactory;
@@ -22,19 +21,14 @@ import ch.qos.logback.classic.Logger;
 import es.uclm.GestiBiblioteca.business.entities.Autor;
 import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
 import es.uclm.GestiBiblioteca.business.entities.Libro;
-import es.uclm.GestiBiblioteca.business.entities.Prestamo;
-import es.uclm.GestiBiblioteca.business.entities.Reserva;
 import es.uclm.GestiBiblioteca.business.entities.Revista;
 import es.uclm.GestiBiblioteca.business.entities.Titulo;
 import es.uclm.GestiBiblioteca.persistence.AutorDAO;
 import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
 import es.uclm.GestiBiblioteca.persistence.LibroDAO;
-import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
-import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
 import es.uclm.GestiBiblioteca.persistence.RevistaDAO;
 import es.uclm.GestiBiblioteca.persistence.TituloDAO;
 import es.uclm.GestiBiblioteca.services.TituloService;
-import jakarta.transaction.Transactional;
 
 @Controller
 public class GestorTitulos {
