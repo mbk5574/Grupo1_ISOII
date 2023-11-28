@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultado del Registro</title>
+    <!-- Meta tags, CSS, etc. -->
+</head>
+<body>
+    <div th:if="${mensajeExito}">
+        <p th:text="${mensajeExito}"></p>
+    </div>
+    <div th:if="${mensajeError}">
+        <p th:text="${mensajeError}"></p>
+    </div>
+    <a href="/registroUsuario">Volver al registro</a>
+</body>
+</html>

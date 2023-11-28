@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Realizar Devolución</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <!-- Formulario para realizar una devolución -->
+    <form th:action="@{/realizar-devolucion}" method="post"> 
+        <p>Seleccione el préstamo a devolver:
+            <select name="idPrestamo" required>
+                <option value="" disabled selected>Seleccione un préstamo</option>
+                <option th:each="prestamo : ${prestamos}" 
+                        th:value="${prestamo.id_prestamo}" 
+                        th:text="${prestamo.titulo.titulo_obra + ' - ' + prestamo.usuario.nombre}">
+                </option>
+            </select>
+        </p>
+        <input type="submit" value="Realizar Devolución" />
+    </form>
+
+</body>
+</html>
