@@ -128,9 +128,33 @@ public class GestorPrestamos {
 	 * @param idUsuario
 	 * @param isbn
 	 */
-	public void realizarReserva(String idUsuario, String isbn) {
-		// TODO - implement GestorPrestamos.realizarReserva
-		throw new UnsupportedOperationException();
-	}
+public void realizarReserva(String idUsuario, String isbn) {
+        // Obtener el usuario y el título de la base de datos
+        //Usuario usuario = obtenerUsuarioPorId(idUsuario);
+        //Titulo titulo = obtenerTituloPorISBN(isbn);
 
+        // Verificar si el usuario y el título existen
+        //if (usuario == null || titulo == null) {
+            // Manejar la situación en la que el usuario o el título no existen
+            throw new IllegalArgumentException("Usuario o título no encontrados");
+        //}
+
+        // Verificar si ya hay una reserva para este usuario y título
+        //if (existeReserva(usuario, titulo)) {
+            // Manejar la situación en la que ya hay una reserva
+        //    throw new IllegalStateException("Ya existe una reserva para este usuario y título");
+      //  }
+
+        // Crear la reserva
+        //Reserva reserva = new Reserva(usuario, titulo, new Date());
+
+        // Guardar la reserva en la base de datos o realizar otras operaciones necesarias
+        //guardarReservaEnBaseDeDatos(reserva);
+
+        // Otra lógica que desees realizar después de realizar la reserva
+
+        // Puedes lanzar excepciones específicas o devolver información adicional si es necesario
+    //}
+
+}
 }
