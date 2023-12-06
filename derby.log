@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Tue Nov 28 01:00:59 CET 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018c-133a-a181-0000023f6e00 
-on database directory C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIERIASOFTWAREII\Grupo1_ISOII-dev\Grupo1_ISOII-dev\database with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2f333739 
-Loaded from file:/C:/Users/mbk5574/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
+Wed Dec 06 12:42:50 CET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018c-3ef0-13d4-0000029fb2c0 
+on database directory C:\Users\Andrea Vicario\Downloads\Grupo1_ISOII-funcionalidad_DevolucionEjemplar\Grupo1_ISOII-funcionalidad_DevolucionEjemplar\database with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@51521cc1 
+Loaded from file:/C:/Users/Andrea%20Vicario/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Eclipse Adoptium
-java.runtime.version=17.0.6+10
-user.dir=C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIERIASOFTWAREII\Grupo1_ISOII-dev\Grupo1_ISOII-dev
+java.runtime.version=21.0.1+12-LTS
+user.dir=C:\Users\Andrea Vicario\Downloads\Grupo1_ISOII-funcionalidad_DevolucionEjemplar\Grupo1_ISOII-funcionalidad_DevolucionEjemplar
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
