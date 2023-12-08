@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Comprobar Penalización</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Formulario de Comprobación de Penalización</h1>
+    <form action="#" th:action="@{/comprobarPenalizacion}" th:object="${comprobarPenalizacion}" method="post">
+        <p>ID de Usuario: <input type="text" th:field="*{id}" /></p>
+        <p>
+            <input type="submit" value="Comprobar Penalización" /> <input type="reset" value="Reset" />
+        </p>
+    </form>
+
+    <div th:if="${resultado != null}">
+        <h2>Resultado de la Comprobación de Penalización</h2>
+        <p th:text="${resultado}" class="resultado"></p>
+    </div>
+</body>
+</html>
