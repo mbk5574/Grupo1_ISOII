@@ -98,16 +98,14 @@ public class GestorPrestamos {
 	        Optional<Prestamo> prestamoOpt = prestamoDAO.findById(idPrestamo);
 	        if (prestamoOpt.isPresent()) {
 	            Prestamo prestamo = prestamoOpt.get();
-	            prestamo.setActivo(false); // Marca el préstamo como inactivo
+	            prestamo.setActivo(false); 
 
-	            // Verifica si la devolución es tardía y aplica penalizaciones
 	            if (new Date().after(prestamo.getFechaFin())) {
 	                penalizacionService.aplicarPenalizacion(prestamo.getUsuario());
 	                redirectAttributes.addFlashAttribute("mensajePenalizacion", "Se ha aplicado una penalización por devolución tardía.");
 	            }
 
-	            // Marcar el ejemplar como disponible nuevamente
-	            Ejemplar ejemplar = prestamo.getEjemplar(); // Asumiendo que puedes obtener el ejemplar desde el préstamo
+	            Ejemplar ejemplar = prestamo.getEjemplar(); 
 	            ejemplar.setDisponible(true);
 	            ejemplarDAO.save(ejemplar);
 
@@ -150,15 +148,12 @@ public class GestorPrestamos {
 	    Optional<Ejemplar> ejemplarOpt = ejemplarDAO.findById(idEjemplar);
 	    Optional<Usuario> usuarioOpt = usuarioDAO.findById(idUsuario);
 
-	    // Comprueba si el ejemplar y el usuario existen y si el ejemplar no está disponible
 	    if (ejemplarOpt.isPresent() && usuarioOpt.isPresent() && !ejemplarOpt.get().isDisponible()) {
 	        Ejemplar ejemplar = ejemplarOpt.get();
 	        Usuario usuario = usuarioOpt.get();
 	        
-	        // Aquí ya no necesitas buscar el título, pues puedes obtenerlo directamente del ejemplar
 	        Titulo titulo = ejemplar.getTitulo();
 
-	        // Solo procede si el título no es null
 	        if (titulo != null) {
 	            Reserva reserva = new Reserva(usuario, ejemplar, titulo, new Date());
 	            reservaDAO.save(reserva);
@@ -181,7 +176,7 @@ public class GestorPrestamos {
 
 	@GetMapping("/rutaResultadoReserva")
 	public String mostrarResultadoReserva(Model model) {
-	    return "resultadoReserva"; // Nombre del archivo HTML del resultado
+	    return "resultadoReserva";
 	}
 
 }
