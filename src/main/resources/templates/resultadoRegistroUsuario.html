@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Resultado del Registro de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .mensaje {
+            padding: 10px;
+            color: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .exito {
+            background-color: #4CAF50;
+        }
+
+        .error {
+            background-color: #f44336;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+
+<div th:if="${mensajeExito}" class="mensaje exito">
+    <h1>Registro Exitoso</h1>
+    <p th:text="${mensajeExito}"></p>
+</div>
+
+<div th:if="${mensajeError}" class="mensaje error">
+    <h1>Error en el Registro</h1>
+    <p th:text="${mensajeError}"></p>
+</div>
+
+<a href="/admin">Volver al Inicio</a>
+<a href="/registroUsuario">Registrar Otro Usuario</a>
+
+</body>
+</html>

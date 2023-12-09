@@ -6,8 +6,15 @@
 </head>
 <body>
 
+	
+<!-- Mensaje si no hay usuarios disponibles -->
+<div th:if="${#lists.isEmpty(usuarios)}">
+    No hay usuarios disponibles.
+</div>
+
 <!-- Formulario para realizar un préstamo -->
-<form th:action="@{/realizar-prestamo}" th:object="${prestamo}" method="post"> 
+<form th:action="@{/realizarPrestamo}" th:object="${prestamo}" method="post"> 
+
     <p>Seleccione el usuario para el préstamo:
         <select name="usuario.id" required>
             <option value="" disabled selected>Seleccione un usuario</option>
@@ -18,12 +25,13 @@
         </select>
     </p>
     
-    <p>Seleccione el título para el préstamo:
-        <select name="titulo.id" required>
-            <option value="" disabled selected>Seleccione un título</option>
-            <option th:each="titulo : ${titulos}" 
-                    th:value="${titulo.id}" 
-                    th:text="${titulo.id + ' - ' + titulo.titulo_obra}">Título
+
+    <p>Seleccione el titulo del ejemplar para el préstamo:
+        <select name="ejemplar.id" required>
+            <option value="" disabled selected>Seleccione un ejemplar</option>
+            <option th:each="ejemplar : ${ejemplares}" 
+                    th:value="${ejemplar.id}" 
+                    th:text="${ejemplar.id + ' - ' + ejemplar.titulo.titulo_obra}">Título
             </option>
         </select>
     </p>
@@ -34,11 +42,6 @@
     
     <p>Fecha de fin:
         <input type="date" name="fechaFin"/>
-    </p>
-    
-    
-    <p>Activo:
-        <input type="checkbox" name="activo" />
     </p>
     
     <p>

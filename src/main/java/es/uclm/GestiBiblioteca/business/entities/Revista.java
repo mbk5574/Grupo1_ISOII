@@ -1,6 +1,6 @@
 package es.uclm.GestiBiblioteca.business.entities;
 
-import java.util.Collection;
+
 import java.util.Set;
 
 import jakarta.persistence.DiscriminatorValue;

@@ -11,12 +11,16 @@
     <p th:text="${mensaje}"></p>
 </div>
 
-<div th:unless="${prestamoRealizado}">
+
+<div th:if="${!prestamoRealizado}">
     <h1>Error en el préstamo</h1>
-    <p>Ocurrió un error al realizar el préstamo.</p>
+    <p th:text="${mensajeError} ?: 'Ocurrió un error al realizar el préstamo.'"></p>
 </div>
 
 <p><a href="/altaPrestamos">Volver al formulario de préstamo</a></p>
+<p><a href="/admin">Volver a inicio</a></p>
 
 </body>
 </html>
+
+
