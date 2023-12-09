@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Resultado de la Reserva</title>
+</head>
+<body>
+    <div th:if="${mensajeExito}">
+        <h2 th:text="${mensajeExito}"></h2>
+    </div>
+    <div th:if="${mensajeError}">
+        <h2 th:text="${mensajeError}"></h2>
+    </div>
+
+    <a href="/formularioReserva">Volver al formulario de reserva</a><br>
+    <a href="/admin">Volver a inicio</a>
+
+</body>
+</html>

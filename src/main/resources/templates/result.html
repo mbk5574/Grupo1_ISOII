@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultado de Alta de Títulos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .mensaje {
+            padding: 10px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .exito {
+            background-color: #4CAF50;
+        }
+
+        .error {
+            background-color: #f44336;
+        }
+
+        .datos {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #005f73;
+        }
+        
+        .acciones {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .acciones a {
+            margin: 0 10px;
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .acciones a:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+<h1>Resultado de la Alta</h1>
+
+<div class="mensaje exito" th:if="${mensajeExito}" th:text="${mensajeExito}"></div>
+<div class="mensaje error" th:if="${mensajeError}" th:text="${mensajeError}"></div>
+
+<div class="datos" th:if="${altaTitulos}">
+    <p>Isbn: <span th:text="${altaTitulos.isbn}"></span></p>
+    <p>Titulo de la obra: <span th:text="${altaTitulos.titulo_obra}"></span></p>
+    <p>Tipo de obra: <span th:text="${tipoTitulo}"></span></p>
+    <div>
+        <h4>Autores</h4>
+        <ul>
+            <li th:each="autor : ${autores}" th:text="${autor}"></li>
+        </ul>
+    </div>
+</div>
+
+ <div class="acciones">
+        <a href="/altaTitulos">Añadir otro título</a>
+        <a href="/borrarTitulo">Borrar 1 título</a>
+        <a href="/admin">Volver a inicio</a>
+
+ </div>
+
+
+</body>
+</html>
