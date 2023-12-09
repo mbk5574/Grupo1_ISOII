@@ -31,8 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-# Excluir archivos de bloqueo y temporales de la base de datos
-database/*.lck
-database/seg*/       
-database/log/        
