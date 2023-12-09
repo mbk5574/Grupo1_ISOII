@@ -122,6 +122,7 @@ public class GestorTitulos {
 			}
 
 			Ejemplar nuevoEjemplar = new Ejemplar(savedTitulo, true);
+
 			ejemplarDAO.save(nuevoEjemplar);
 			log.info("Ejemplar creado y asociado al título: " + savedTitulo.getTitulo_obra());
 
@@ -249,6 +250,7 @@ public class GestorTitulos {
 	    try {
 	        Titulo titulo = tituloDAO.findById(id).orElseThrow(() -> new RuntimeException("Titulo no encontrado"));
 	        Ejemplar nuevoEjemplar = new Ejemplar(titulo, true);
+
 	        ejemplarDAO.save(nuevoEjemplar);
 	        log.info("Nuevo ejemplar creado y asociado al título: " + titulo.getTitulo_obra());
 	        redirectAttributes.addFlashAttribute("ejemplarAgregado", true);

@@ -13,5 +13,5 @@ import es.uclm.GestiBiblioteca.business.entities.Reserva;
 public interface ReservaDAO extends JpaRepository<Reserva, Integer> {
 
     List<Reserva> findByEjemplar(Ejemplar ejemplar);
-	
+
 }

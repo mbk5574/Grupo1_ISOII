@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicar Penalización</title>
+</head>
+<body>
+
+<!-- Formulario para aplicar penalización -->
+<form action="#" th:action="@{/aplicarPenalizacion}" th:object="${usuario}" method="post">
+    <p>Seleccione el usuario para aplicar penalización:
+        <select name="id">
+            <option value="" disabled selected>Seleccione un usuario</option>
+            <option th:each="user : ${usuarios}" 
+                    th:value="${user.id}" 
+                    th:text="${user.nombre + ' ' + user.apellidos}">Usuario
+            </option>
+        </select>
+    </p>
+    <p>Fecha de Penalización: <input type="date" name="fechaFinPenalizacion" required /></p>
+    <p><input type="submit" value="Aplicar Penalización" /></p>
+</form>
+
+</body>
+</html>

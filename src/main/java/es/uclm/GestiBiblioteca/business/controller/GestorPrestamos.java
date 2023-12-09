@@ -28,6 +28,7 @@ import es.uclm.GestiBiblioteca.persistence.UsuarioDAO;
 import es.uclm.GestiBiblioteca.services.PenalizacionService;
 import es.uclm.GestiBiblioteca.services.PrestamoService;
 
+
 @Controller
 public class GestorPrestamos {
 
@@ -125,7 +126,6 @@ public class GestorPrestamos {
 	    }
 	    return "redirect:/resultadoDevolucion";
 	}
-
 
 
 	@GetMapping("/resultadoDevolucion")
