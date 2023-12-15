@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Formulario de Alta de Título</h1>
-    <form action="#" th:action="@{/altaTitulos}" th:object="${altaTitulos}" method="post">
+    <form action="#" th:action="@{/altaTitulo}" th:object="${titulo}" method="post">
         <!-- Asegúrate de que el nombre de los campos coincida con los de tu clase 'Titulo' -->
         <p>ISBN: <input type="text" th:field="*{isbn}" /></p>
         <p>Titulo: <input type="text" th:field="*{titulo_obra}" /></p>

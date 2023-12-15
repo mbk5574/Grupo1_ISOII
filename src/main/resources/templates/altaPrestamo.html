@@ -13,7 +13,6 @@
 
 <!-- Formulario para realizar un préstamo -->
 <form th:action="@{/realizarPrestamo}" th:object="${prestamo}" method="post"> 
-
     <p>Seleccione el usuario para el préstamo:
         <select name="usuario.id" required>
             <option value="" disabled selected>Seleccione un usuario</option>
@@ -41,6 +40,7 @@
     <p>Fecha de fin:
         <input type="date" name="fechaFin"/>
     </p>
+    
     
     <p>
         <input type="submit" value="Realizar Préstamo" />

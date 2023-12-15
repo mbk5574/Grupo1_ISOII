@@ -86,9 +86,9 @@
 <div class="mensaje exito" th:if="${mensajeExito}" th:text="${mensajeExito}"></div>
 <div class="mensaje error" th:if="${mensajeError}" th:text="${mensajeError}"></div>
 
-<div class="datos" th:if="${altaTitulos}">
-    <p>Isbn: <span th:text="${altaTitulos.isbn}"></span></p>
-    <p>Titulo de la obra: <span th:text="${altaTitulos.titulo_obra}"></span></p>
+<div class="datos" th:if="${titulo}">
+    <p>Isbn: <span th:text="${titulo.isbn}"></span></p>
+    <p>Titulo de la obra: <span th:text="${titulo.titulo_obra}"></span></p>
     <p>Tipo de obra: <span th:text="${tipoTitulo}"></span></p>
     <div>
         <h4>Autores</h4>
@@ -99,7 +99,7 @@
 </div>
 
  <div class="acciones">
-        <a href="/altaTitulos">Añadir otro título</a>
+        <a href="/altaTitulo">Añadir otro título</a>
         <a href="/borrarTitulo">Borrar 1 título</a>
         <a href="/admin">Volver a inicio</a>
 
