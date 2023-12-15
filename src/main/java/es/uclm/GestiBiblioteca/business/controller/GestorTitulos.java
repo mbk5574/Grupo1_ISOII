@@ -226,11 +226,13 @@ public class GestorTitulos {
 
 	    if (!titulosABorrar.isEmpty()) {
 	        for (Titulo titulo : titulosABorrar) {
-	            boolean eliminado = tituloService.eliminarTituloYAutores(titulo);
+	            // Utiliza el método modificado para verificar y eliminar el título
+	            boolean eliminado = tituloService.eliminarTituloConVerificaciones(titulo.getId());
 	            if (eliminado) {
 	                redirectAttributes.addFlashAttribute("mensajeExito", "Título con ISBN " + isbn + " borrado exitosamente");
 	            } else {
-	                redirectAttributes.addFlashAttribute("mensajeError", "No se pudo borrar el título con ISBN " + isbn);
+	                // Este mensaje se muestra si el título no pudo ser eliminado debido a ejemplares activos
+	                redirectAttributes.addFlashAttribute("mensajeError", "El título con ISBN " + isbn + " no puede ser borrado debido a ejemplares activos o reservados");
 	                break; 
 	            }
 	        }
@@ -240,6 +242,7 @@ public class GestorTitulos {
 
 	    return "redirect:/mostrarResultadoBorrado";
 	}
+
 
 
 	@GetMapping("/mostrarResultadoBorrado")

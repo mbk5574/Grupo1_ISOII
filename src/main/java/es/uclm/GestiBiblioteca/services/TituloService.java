@@ -39,7 +39,53 @@ public class TituloService {
 	private ReservaDAO reservaDAO;
 
 	
-	
+	@Transactional
+	public boolean eliminarTituloConVerificaciones(Long tituloId) {
+	    Optional<Titulo> tituloOpt = tituloDAO.findById(tituloId);
+	    if (tituloOpt.isPresent()) {
+	        Titulo titulo = tituloOpt.get();
+
+	        // Verificar si todos los ejemplares están disponibles para eliminación
+	        for (Ejemplar ejemplar : titulo.getEjemplares()) {
+	            boolean asociadoConPrestamoActivo = prestamoDAO.existsByEjemplarAndActivo(ejemplar, true);
+	            boolean asociadoConReserva = reservaDAO.existsByEjemplar(ejemplar);
+	            if (asociadoConPrestamoActivo || asociadoConReserva) {
+	                return false; // No eliminar si hay ejemplares activos
+	            }
+	        }
+
+	        // Eliminar todos los ejemplares asociados al título
+	        for (Ejemplar ejemplar : titulo.getEjemplares()) {
+	            reservaDAO.deleteByEjemplar(ejemplar); // Eliminar reservas asociadas
+	            prestamoDAO.deleteByEjemplarAndActivo(ejemplar, false); // Eliminar préstamos inactivos
+	            ejemplarDAO.delete(ejemplar); // Eliminar el ejemplar
+	        }
+
+	        // Eliminar referencias cruzadas en la relación many-to-many con autores
+	        for (Autor autor : titulo.getAutores()) {
+	            autor.getTitulos().remove(titulo);
+	            if (autor.getTitulos().isEmpty()) {
+	                autorDAO.delete(autor); // Eliminar el autor si ya no tiene títulos asociados
+	            } else {
+	                autorDAO.save(autor); // Actualizar el autor en la base de datos
+	            }
+	        }
+	        titulo.setAutores(null); // Limpiar la lista de autores del título
+
+	        // Eliminar el título
+	        if (titulo instanceof Libro) {
+	            libroDAO.delete((Libro) titulo);
+	        } else if (titulo instanceof Revista) {
+	            revistaDAO.delete((Revista) titulo);
+	        } else {
+	            tituloDAO.delete(titulo);
+	        }
+
+	        return true;
+	    }
+	    return false;
+	}
+
 	
 	@Transactional
 	public boolean eliminarTituloYAutores(Titulo titulo) {
