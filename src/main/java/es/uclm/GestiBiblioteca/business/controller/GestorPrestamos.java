@@ -28,7 +28,6 @@ import es.uclm.GestiBiblioteca.persistence.UsuarioDAO;
 import es.uclm.GestiBiblioteca.services.PenalizacionService;
 import es.uclm.GestiBiblioteca.services.PrestamoService;
 
-
 @Controller
 public class GestorPrestamos {
 
@@ -48,7 +47,7 @@ public class GestorPrestamos {
 	private PrestamoService prestamoService;
 	private static final Logger log = (Logger) LoggerFactory.getLogger(GestorPrestamos.class);
 
-	@GetMapping("/altaPrestamos")
+	@GetMapping("/altaPrestamo")
 	public String mostrarFormularioPrestamo(Model model) {
 		List<Usuario> usuarios = usuarioDAO.findAll();
 		List<Ejemplar> ejemplaresDisponibles = ejemplarDAO.findByDisponibleTrue();
@@ -58,7 +57,7 @@ public class GestorPrestamos {
 		model.addAttribute("usuarios", usuarios);
 		model.addAttribute("ejemplares", ejemplaresDisponibles);
 
-		return "altaPrestamos";
+		return "altaPrestamo";
 	}
 
 	@PostMapping("/realizarPrestamo")
@@ -68,7 +67,7 @@ public class GestorPrestamos {
             model.addAttribute("prestamoRealizado", true);
             model.addAttribute("mensaje", "Préstamo realizado exitosamente.");
             log.info("Prestamo realizado exitosamente.");
-            return "/resultPrestamo";
+            return "/resultadoAltaPrestamo";
         } catch (Exception e) {
             log.error("Error al realizar el préstamo: {}", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
@@ -98,14 +97,16 @@ public class GestorPrestamos {
 	        Optional<Prestamo> prestamoOpt = prestamoDAO.findById(idPrestamo);
 	        if (prestamoOpt.isPresent()) {
 	            Prestamo prestamo = prestamoOpt.get();
-	            prestamo.setActivo(false); 
+	            prestamo.setActivo(false); // Marca el préstamo como inactivo
 
+	            // Verifica si la devolución es tardía y aplica penalizaciones
 	            if (new Date().after(prestamo.getFechaFin())) {
 	                penalizacionService.aplicarPenalizacion(prestamo.getUsuario());
 	                redirectAttributes.addFlashAttribute("mensajePenalizacion", "Se ha aplicado una penalización por devolución tardía.");
 	            }
 
-	            Ejemplar ejemplar = prestamo.getEjemplar(); 
+	            // Marcar el ejemplar como disponible nuevamente
+	            Ejemplar ejemplar = prestamo.getEjemplar(); // Asumiendo que puedes obtener el ejemplar desde el préstamo
 	            ejemplar.setDisponible(true);
 	            ejemplarDAO.save(ejemplar);
 
@@ -126,9 +127,10 @@ public class GestorPrestamos {
 	}
 
 
+
 	@GetMapping("/resultadoDevolucion")
 	public String mostrarResultadoDevolucion() {
-		return "resultadoDevolucion"; 
+		return "resultadoDevolucionEjemplar"; 
 	}
 
 	
@@ -140,7 +142,7 @@ public class GestorPrestamos {
 	    model.addAttribute("ejemplares", ejemplaresNoDisponibles);
 	    model.addAttribute("usuarios", usuarios);
 
-	    return "formularioReserva";
+	    return "formularioReservaEjemplar";
 	}
 
 	@PostMapping("/reservarEjemplar")
@@ -148,12 +150,15 @@ public class GestorPrestamos {
 	    Optional<Ejemplar> ejemplarOpt = ejemplarDAO.findById(idEjemplar);
 	    Optional<Usuario> usuarioOpt = usuarioDAO.findById(idUsuario);
 
+	    // Comprueba si el ejemplar y el usuario existen y si el ejemplar no está disponible
 	    if (ejemplarOpt.isPresent() && usuarioOpt.isPresent() && !ejemplarOpt.get().isDisponible()) {
 	        Ejemplar ejemplar = ejemplarOpt.get();
 	        Usuario usuario = usuarioOpt.get();
 	        
+	        // Aquí ya no necesitas buscar el título, pues puedes obtenerlo directamente del ejemplar
 	        Titulo titulo = ejemplar.getTitulo();
 
+	        // Solo procede si el título no es null
 	        if (titulo != null) {
 	            Reserva reserva = new Reserva(usuario, ejemplar, titulo, new Date());
 	            reservaDAO.save(reserva);
@@ -176,7 +181,7 @@ public class GestorPrestamos {
 
 	@GetMapping("/rutaResultadoReserva")
 	public String mostrarResultadoReserva(Model model) {
-	    return "resultadoReserva";
+	    return "resultadoReservaEjemplar"; // Nombre del archivo HTML del resultado
 	}
 
 }

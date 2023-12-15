@@ -53,7 +53,7 @@ public class PrestamoService {
             return "El usuario tiene penalizaciones activas.";
         }
 
-        return null; 
+        return null; // El usuario puede pedir prestado
     }
     
     @Transactional
@@ -78,8 +78,9 @@ public class PrestamoService {
         
         prestamo.setTitulo(titulo);
 
-        ejemplarActualizado.setDisponible(false); 
+        ejemplarActualizado.setDisponible(false); // Marca el ejemplar como no disponible
         
+     // Aquí es donde se elimina todas las reservas para ese ejemplar.
         List<Reserva> reservas = reservaDAO.findByEjemplar(ejemplarActualizado);
         for (Reserva reserva : reservas) {
             reservaDAO.delete(reserva);
@@ -87,7 +88,7 @@ public class PrestamoService {
         
         ejemplarDAO.save(ejemplarActualizado);
 
-        prestamo.setActivo(true); 
+        prestamo.setActivo(true); // Marca el préstamo como activo
         prestamoDAO.save(prestamo);
     }
 }

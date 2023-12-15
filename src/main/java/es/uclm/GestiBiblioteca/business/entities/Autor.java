@@ -13,7 +13,6 @@ import jakarta.persistence.ManyToMany;
 
 
 @Entity
-
 public class Autor {
 	public Autor(){
 	
@@ -61,7 +60,7 @@ public class Autor {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Autor [id=" + id + ", titulos=" + titulos + ", nombre=" + nombre + ", apellido=" + apellido + "]";

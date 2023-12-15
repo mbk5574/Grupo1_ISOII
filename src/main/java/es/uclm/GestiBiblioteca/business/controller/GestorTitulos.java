@@ -26,6 +26,8 @@ import es.uclm.GestiBiblioteca.business.entities.Titulo;
 import es.uclm.GestiBiblioteca.persistence.AutorDAO;
 import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
 import es.uclm.GestiBiblioteca.persistence.LibroDAO;
+import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
+import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
 import es.uclm.GestiBiblioteca.persistence.RevistaDAO;
 import es.uclm.GestiBiblioteca.persistence.TituloDAO;
 import es.uclm.GestiBiblioteca.services.TituloService;
@@ -48,20 +50,21 @@ public class GestorTitulos {
 	@Autowired
 	private TituloService tituloService;
 
+	
 	@GetMapping("/admin")
 	public String adminPanel() {
 		return "adminPanel";
 	}
 
-	@GetMapping("/altaTitulos")
+	@GetMapping("/altaTitulo")
 	public String altaTituloForm(Model model) {
-		model.addAttribute("altaTitulos", new Titulo());
+		model.addAttribute("titulo", new Titulo());
 		log.info(tituloDAO.findAll().toString());
-		return "altaTitulos";
+		return "altaTitulo";
 	}
 
-	@PostMapping("/altaTitulos")
-	public String altaTituloSubmit(@ModelAttribute Titulo altaTitulos,
+	@PostMapping("/altaTitulo")
+	public String altaTituloSubmit(@ModelAttribute Titulo titulo,
 			@RequestParam("autoresString") String autoresString, @RequestParam("tipoTitulo") String tipoTitulo,
 			RedirectAttributes redirectAttributes) {
 
@@ -73,7 +76,7 @@ public class GestorTitulos {
 			log.info("Autores ingresados: " + Arrays.toString(autoresNombres));
 			log.info("Tipo de título seleccionado: " + tipoTitulo);
 			log.info(
-					"Datos del título: ISBN - " + altaTitulos.getIsbn() + ", Título - " + altaTitulos.getTitulo_obra());
+					"Datos del título: ISBN - " + titulo.getIsbn() + ", Título - " + titulo.getTitulo_obra());
 
 			Collection<Autor> autores = new HashSet<>();
 
@@ -101,16 +104,16 @@ public class GestorTitulos {
 			if ("libro".equalsIgnoreCase(tipoTitulo)) {
 
 				Libro nuevoLibro = new Libro();
-				nuevoLibro.setTitulo_obra(altaTitulos.getTitulo_obra());
-				nuevoLibro.setIsbn(altaTitulos.getIsbn());
+				nuevoLibro.setTitulo_obra(titulo.getTitulo_obra());
+				nuevoLibro.setIsbn(titulo.getIsbn());
 				nuevoLibro.setAutores(autores);
 				savedTitulo = libroDAO.save(nuevoLibro);
 
 			} else if ("revista".equalsIgnoreCase(tipoTitulo)) {
 
 				Revista nuevaRevista = new Revista();
-				nuevaRevista.setTitulo_obra(altaTitulos.getTitulo_obra());
-				nuevaRevista.setIsbn(altaTitulos.getIsbn());
+				nuevaRevista.setTitulo_obra(titulo.getTitulo_obra());
+				nuevaRevista.setIsbn(titulo.getIsbn());
 				nuevaRevista.setAutores(autores);
 				savedTitulo = revistaDAO.save(nuevaRevista);
 
@@ -122,13 +125,12 @@ public class GestorTitulos {
 			}
 
 			Ejemplar nuevoEjemplar = new Ejemplar(savedTitulo, true);
-
 			ejemplarDAO.save(nuevoEjemplar);
 			log.info("Ejemplar creado y asociado al título: " + savedTitulo.getTitulo_obra());
 
 			log.info("Saved titulo: " + savedTitulo);
 			redirectAttributes.addFlashAttribute("mensajeExito", "Título agregado exitosamente.");
-			redirectAttributes.addFlashAttribute("altaTitulos", savedTitulo);
+			redirectAttributes.addFlashAttribute("titulo", savedTitulo);
 			redirectAttributes.addFlashAttribute("tipoTitulo", tipoTitulo.equalsIgnoreCase("libro") ? "Libro" : "Revista");
 			redirectAttributes.addFlashAttribute("autores",
 					autores.stream().map(Autor::getNombre).collect(Collectors.toList()));
@@ -142,7 +144,7 @@ public class GestorTitulos {
 
 	@GetMapping("/resultAlta")
 	public String showResult(Model model) {
-		return "result";
+		return "resultadoAltaTitulo";
 	}
 
 	@GetMapping("/seleccionarIdTituloActualizar")
@@ -200,7 +202,7 @@ public class GestorTitulos {
 
 	@GetMapping("/resultadoActualizacion")
 	public String mostrarResultadoActualizacion() {
-		return "result2";
+		return "resultadoActualizacionTitulo";
 	}
 
 	@GetMapping("/borrarTitulo")
@@ -233,7 +235,7 @@ public class GestorTitulos {
 
 	@GetMapping("/mostrarResultadoBorrado")
 	public String mostrarResultadoBorrado(Model model) {
-		return "result3"; 
+		return "resultadoBorrarTitulo"; 
 	}
 
 	@GetMapping("/altaEjemplar")
@@ -250,7 +252,6 @@ public class GestorTitulos {
 	    try {
 	        Titulo titulo = tituloDAO.findById(id).orElseThrow(() -> new RuntimeException("Titulo no encontrado"));
 	        Ejemplar nuevoEjemplar = new Ejemplar(titulo, true);
-
 	        ejemplarDAO.save(nuevoEjemplar);
 	        log.info("Nuevo ejemplar creado y asociado al título: " + titulo.getTitulo_obra());
 	        redirectAttributes.addFlashAttribute("ejemplarAgregado", true);
@@ -267,7 +268,7 @@ public class GestorTitulos {
 	
 	@GetMapping("/mostrarResultadoAltaEjemplar")
 	public String mostrarAltaEjemplar(Model model) {
-		return "result4"; 
+		return "resultadoAltaEjemplar"; 
 	}
 
 	@GetMapping("/bajaEjemplar")
@@ -279,37 +280,30 @@ public class GestorTitulos {
 
 
 	@PostMapping("/bajaEjemplar")
-	public String bajaEjemplar(@RequestParam("idsEjemplares") List<Long> idsEjemplares,
-	                           RedirectAttributes redirectAttributes) {
+	public String bajaEjemplar(@RequestParam("idsEjemplares") List<Long> idsEjemplares, RedirectAttributes redirectAttributes) {
+	    boolean exito = true;
 	    for (Long id : idsEjemplares) {
-	        Optional<Ejemplar> ejemplarOpt = ejemplarDAO.findById(id);
-	        if (ejemplarOpt.isPresent()) {
-	            Ejemplar ejemplar = ejemplarOpt.get();
-	            ejemplarDAO.delete(ejemplar);
-	            log.info("Ejemplar dado de baja con éxito.");
-
-	            Titulo titulo = tituloDAO.findById(ejemplar.getTitulo().getId()).orElse(null);
-	            if (titulo != null && titulo.getEjemplares().isEmpty()) {
-	                try {
-	                    tituloService.eliminarTituloYAutores(titulo);
-	                    log.info("Título y autores asociados eliminados correctamente.");
-	                } catch (Exception e) {
-	                    log.error("Error al eliminar título y autores: " + e.getMessage());
-	                    redirectAttributes.addFlashAttribute("error", "Error al eliminar el título y autores asociados.");
-	                }
-	            }
-	        } else {
-	            log.info("Ejemplar no encontrado con ID: " + id);
-	            redirectAttributes.addFlashAttribute("error", "Ejemplar no encontrado con ID: " + id);
+	        boolean resultado = tituloService.eliminarEjemplarConVerificaciones(id);
+	        if (!resultado) {
+	            String mensajeError = "El ejemplar con id: " + id + " no puede ser eliminado.";
+	            log.info(mensajeError);
+	            redirectAttributes.addFlashAttribute("error", mensajeError);
+	            exito = false;
 	        }
 	    }
-	    redirectAttributes.addFlashAttribute("mensaje", "Ejemplar dado de baja exitosamente.");
+
+	    if (exito) {
+	        redirectAttributes.addFlashAttribute("mensaje", "Ejemplares dados de baja exitosamente.");
+	    }
+
 	    return "redirect:/resultadoBajaEjemplar";
 	}
 
+
+
 	@GetMapping("/resultadoBajaEjemplar")
 	public String mostrarResultadoBaja() {
-		return "result5";
+		return "resultadoBajaEjemplar";
 	}
 
 }

@@ -3,7 +3,6 @@ package es.uclm.GestiBiblioteca.business.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Prestamo {
-
 
 	@ManyToOne
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
@@ -56,7 +54,6 @@ public class Prestamo {
 		this.ejemplar = ejemplar;
 	}
 
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -72,7 +69,6 @@ public class Prestamo {
     public void setEjemplar(Ejemplar ejemplar) {
         this.ejemplar = ejemplar;
     }
-
 
 	public Titulo getTitulo() {
 		return titulo;
@@ -119,6 +115,5 @@ public class Prestamo {
 		return "Prestamo [usuario=" + usuario + ", titulo=" + titulo + ", fechaInicio=" + fechaInicio + ", fechaFin="
 				+ fechaFin + ", activo=" + activo + ", id_prestamo=" + id_prestamo + ", ejemplar=" + ejemplar + "]";
 	}
-
 
 }
