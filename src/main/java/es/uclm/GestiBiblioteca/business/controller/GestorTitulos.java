@@ -60,18 +60,27 @@ public class GestorTitulos {
 	public String altaTituloForm(Model model) {
 		model.addAttribute("titulo", new Titulo());
 		log.info(tituloDAO.findAll().toString());
+		List<Autor> autores = autorDAO.findAll();
+		model.addAttribute("autores", autores);
 		return "altaTitulo";
 	}
-
+	
+	/**
+	 * @param titulo
+	 * @return
+	 */
 	@PostMapping("/altaTitulo")
 	public String altaTituloSubmit(@ModelAttribute Titulo titulo,
-			@RequestParam("autoresString") String autoresString, @RequestParam("tipoTitulo") String tipoTitulo,
+			@RequestParam("tipoTitulo") String tipoTitulo,
+			@RequestParam("autoresSeleccionados") List<String> autoresSeleccionados,
 			RedirectAttributes redirectAttributes) {
+
+
 
 		try {
 			log.info("Iniciando altaTituloSubmit");
 
-			String[] autoresNombres = autoresString.split(",");
+			String[] autoresNombres = autoresSeleccionados.toArray(new String[autoresSeleccionados.size()]);
 
 			log.info("Autores ingresados: " + Arrays.toString(autoresNombres));
 			log.info("Tipo de título seleccionado: " + tipoTitulo);

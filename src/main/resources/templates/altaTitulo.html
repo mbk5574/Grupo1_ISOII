@@ -3,6 +3,69 @@
 <head>
     <title>Dar de Alta un Título</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        /* Estilo adicional para ajustar el tamaño de las listboxes */
+        #autoresDisponibles, #autoresSeleccionados {
+            width: 200px; /* Puedes ajustar este valor según tus necesidades */
+            height: 150px; /* Puedes ajustar este valor según tus necesidades */
+        }
+        /* Alinea las listboxes una al lado de la otra */
+        p[name="listboxes"] {
+            display: inline-block;
+            margin-right: 20px; /* Ajusta el margen entre las listboxes según tus necesidades */
+            label-align: top; /* Alinea el texto a la izquierda */
+            vertical-align: top; /* Alinea los elementos superiormente */
+        }
+        /* Estilo para alinear los botones en línea */
+        p[name="botones"] {
+            display: inline-block;
+            margin-right: 20px; /* Ajusta el margen entre los botones según tus necesidades */
+            label-align: top; /* Alinea el texto a la izquierda */
+            vertical-align: top; /* Alinea los elementos superiormente */
+        }
+    </style>
+    <script>
+        function actualizarCampoOculto() {
+            var autoresSeleccionados = document.getElementById('autoresSeleccionados');
+            var campoOculto = document.getElementById('autoresSeleccionadosHidden');
+            
+            var nombresAutores = Array.from(autoresSeleccionados.options)
+                .map(option => option.value);
+        
+            campoOculto.value = nombresAutores.join(',');
+        }
+        
+        function agregarAutor() {
+            var autoresSeleccionados = document.getElementById('autoresSeleccionados');
+            var autoresDisponibles = document.getElementById('autoresDisponibles');
+        
+            var selectedOptions = Array.from(autoresDisponibles.options)
+                .filter(option => option.selected);
+        
+            selectedOptions.forEach(option => {
+                autoresSeleccionados.add(new Option(option.text, option.value));
+                option.remove();
+            });
+        
+            actualizarCampoOculto();
+        }
+        
+        function quitarAutor() {
+            var autoresSeleccionados = document.getElementById('autoresSeleccionados');
+            var autoresDisponibles = document.getElementById('autoresDisponibles');
+        
+            var selectedOptions = Array.from(autoresSeleccionados.options)
+                .filter(option => option.selected);
+        
+            selectedOptions.forEach(option => {
+                autoresDisponibles.add(new Option(option.text, option.value));
+                option.remove();
+            });
+        
+            actualizarCampoOculto();
+        }
+        
+    </script>
 </head>
 <body>
     <h1>Formulario de Alta de Título</h1>
@@ -10,15 +73,38 @@
         <!-- Asegúrate de que el nombre de los campos coincida con los de tu clase 'Titulo' -->
         <p>ISBN: <input type="text" th:field="*{isbn}" /></p>
         <p>Titulo: <input type="text" th:field="*{titulo_obra}" /></p>
-        <p>Autor o autores (separados por comas): <input type="text" name="autoresString" placeholder="Autor1, Autor2, Autor3..." /></p>
-        <p>Tipo de Título:
+        <label for="autoresDisponibles">Autores Disponibles:</label>
+        <p name="listboxes">
+            <select id="autoresDisponibles"  Disponibles name="autoresDisponibles" multiple size="10">
+                <option th:each="autor : ${autores}" th:value="${autor.nombre}" th:text="${autor.nombre}"></option>
+            </select>
+            <br/>
+            
+        </p>
+        <p name="botones">
+            <button type="button" onclick="agregarAutor()">Agregar &rarr;</button>
+            <button type="button" onclick="quitarAutor()">&larr; Quitar</button>
+        </p>  
+       
+        <label for="autoresSeleccionados">Autores Seleccionados:</label>
+        <p name="listboxes" >
+           
+            <select id="autoresSeleccionados" name="autoresSeleccionados" multiple size="10">
+                <!-- Opciones generadas dinámicamente -->
+            </select>
+            <input type="hidden" id="autoresSeleccionadosHidden" name="autoresSeleccionados" />
+        </p>
+
+        <p>
+            <label>Tipo de Título:</label>
             <select name="tipoTitulo">
                 <option value="LIBRO">Libro</option>
                 <option value="REVISTA">Revista</option>
             </select>
         </p>
         <p>
-            <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+            <button type="submit" onclick="actualizarCampoOculto()">Submit</button>
+            <input type="reset" value="Reset" />
         </p>
     </form>
 </body>
