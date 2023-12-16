@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
+
 import java.util.stream.Collectors;
 
 import org.slf4j.LoggerFactory;
@@ -20,14 +20,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.qos.logback.classic.Logger;
 import es.uclm.GestiBiblioteca.business.entities.Autor;
 import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
-import es.uclm.GestiBiblioteca.business.entities.Libro;
-import es.uclm.GestiBiblioteca.business.entities.Revista;
+
 import es.uclm.GestiBiblioteca.business.entities.Titulo;
 import es.uclm.GestiBiblioteca.persistence.AutorDAO;
 import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
 import es.uclm.GestiBiblioteca.persistence.LibroDAO;
-import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
-import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
 import es.uclm.GestiBiblioteca.persistence.RevistaDAO;
 import es.uclm.GestiBiblioteca.persistence.TituloDAO;
 import es.uclm.GestiBiblioteca.services.TituloService;
@@ -75,8 +72,6 @@ public class GestorTitulos {
 			@RequestParam("autoresSeleccionados") List<String> autoresSeleccionados,
 			RedirectAttributes redirectAttributes) {
 
-
-
 		try {
 			log.info("Iniciando altaTituloSubmit");
 
@@ -88,51 +83,13 @@ public class GestorTitulos {
 					"Datos del título: ISBN - " + titulo.getIsbn() + ", Título - " + titulo.getTitulo_obra());
 
 			Collection<Autor> autores = new HashSet<>();
-
-
-			for (String nombreAutor : autoresNombres) {
-				String nombre = nombreAutor.trim();
-
-				Optional<Autor> autorOpt = autorDAO.findByNombre(nombre);
-				Autor autor;
-
-
-				if (autorOpt.isPresent()) {
-
-					autor = autorOpt.get();
-				} else {
-
-					autor = new Autor(nombre, "Apellido", null);
-					autor = autorDAO.save(autor);
-				}
-
-				autores.add(autor);
-			}
-
-			Titulo savedTitulo;
-			if ("libro".equalsIgnoreCase(tipoTitulo)) {
-
-				Libro nuevoLibro = new Libro();
-				nuevoLibro.setTitulo_obra(titulo.getTitulo_obra());
-				nuevoLibro.setIsbn(titulo.getIsbn());
-				nuevoLibro.setAutores(autores);
-				savedTitulo = libroDAO.save(nuevoLibro);
-
-			} else if ("revista".equalsIgnoreCase(tipoTitulo)) {
-
-				Revista nuevaRevista = new Revista();
-				nuevaRevista.setTitulo_obra(titulo.getTitulo_obra());
-				nuevaRevista.setIsbn(titulo.getIsbn());
-				nuevaRevista.setAutores(autores);
-				savedTitulo = revistaDAO.save(nuevaRevista);
-
-			} else {
-
+			tituloService.obtenerAutores(autoresNombres,autores);
+			
+			Titulo savedTitulo=tituloService.guardarTitulo(autores,tipoTitulo,titulo);
+			if (savedTitulo == null) {
 				log.error("Tipo de título no reconocido");
-				return "error";
-
+				return "Error";	
 			}
-
 			Ejemplar nuevoEjemplar = new Ejemplar(savedTitulo, true);
 			ejemplarDAO.save(nuevoEjemplar);
 			log.info("Ejemplar creado y asociado al título: " + savedTitulo.getTitulo_obra());
@@ -150,7 +107,7 @@ public class GestorTitulos {
 
 		return "redirect:/resultAlta";
 	}
-
+	
 	@GetMapping("/resultAlta")
 	public String showResult(Model model) {
 		return "resultadoAltaTitulo";
@@ -232,7 +189,7 @@ public class GestorTitulos {
 	                redirectAttributes.addFlashAttribute("mensajeExito", "Título con ISBN " + isbn + " borrado exitosamente");
 	            } else {
 	                // Este mensaje se muestra si el título no pudo ser eliminado debido a ejemplares activos
-	                redirectAttributes.addFlashAttribute("mensajeError", "El título con ISBN " + isbn + " no puede ser borrado debido a ejemplares activos o reservados");
+					redirectAttributes.addFlashAttribute("mensajeError", "El título con ISBN " + isbn + " no puede ser borrado debido a ejemplares activos o reservados");
 	                break; 
 	            }
 	        }
@@ -310,8 +267,6 @@ public class GestorTitulos {
 
 	    return "redirect:/resultadoBajaEjemplar";
 	}
-
-
 
 	@GetMapping("/resultadoBajaEjemplar")
 	public String mostrarResultadoBaja() {

@@ -1,6 +1,8 @@
 package es.uclm.GestiBiblioteca.business.entities;
+import java.util.Collection;
 
-import java.util.Set;
+
+
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -13,8 +15,9 @@ public class Revista extends Titulo {
 		super();
 	}
 
-	public Revista(String titulo, String isbn, Set<Autor> autores) {
-		super(autores, null, null, null, titulo, isbn);
+	public Revista(String titulo, String isbn, Collection<Autor> autores, Collection<Ejemplar> ejemplares,
+	Collection<Prestamo> prestamos, Collection<Reserva> reservas) {
+		super(autores,ejemplares,prestamos, reservas, titulo, isbn);
 	}
 
 }

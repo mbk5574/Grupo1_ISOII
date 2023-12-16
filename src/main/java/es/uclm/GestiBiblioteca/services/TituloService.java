@@ -39,6 +39,7 @@ public class TituloService {
 	private ReservaDAO reservaDAO;
 
 	
+	
 	@Transactional
 	public boolean eliminarTituloConVerificaciones(Long tituloId) {
 	    Optional<Titulo> tituloOpt = tituloDAO.findById(tituloId);
@@ -85,6 +86,7 @@ public class TituloService {
 	    }
 	    return false;
 	}
+
 
 	
 	@Transactional
@@ -134,5 +136,40 @@ public class TituloService {
 		}
 		return false;
 	}
+	@Transactional
+	public  void obtenerAutores(String[]autoresNombres,Collection<Autor>autores){
+		for (String nombreAutor : autoresNombres) {
+			String nombre = nombreAutor.trim();
 
+			Optional<Autor> autorOpt = autorDAO.findByNombre(nombre);
+			Autor autor;
+
+			if (autorOpt.isPresent()) {
+
+				autor = autorOpt.get();
+			} else {
+
+				autor = new Autor(nombre, "Apellido", null);
+				autor = autorDAO.save(autor);
+			}
+			autores.add(autor);
+		}
+	}
+	@Transactional
+	public  Titulo guardarTitulo(Collection<Autor> autores,String tipoTitulo, Titulo titulo) {
+		Titulo savedTitulo;
+		if ("libro".equalsIgnoreCase(tipoTitulo)) {
+				Libro nuevoLibro = new Libro(titulo.getTitulo_obra(),titulo.getIsbn(),autores,titulo.getEjemplares(),titulo.getPrestamos(),titulo.getReservas());
+				savedTitulo = libroDAO.save(nuevoLibro);
+
+			} else if ("revista".equalsIgnoreCase(tipoTitulo)) {
+				Revista nuevaRevista = new Revista(titulo.getTitulo_obra(),titulo.getIsbn(),autores,titulo.getEjemplares(),titulo.getPrestamos(),titulo.getReservas());
+				savedTitulo = revistaDAO.save(nuevaRevista);
+			} else {
+				
+				return null;
+
+			}
+		return savedTitulo;
+	}
 }
