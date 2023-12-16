@@ -65,6 +65,24 @@
             actualizarCampoOculto();
         }
         
+        function agregarAutorPersonalizado() {
+            var autorPersonalizado = document.getElementById('autorPersonalizado').value;
+            var autoresSeleccionados = document.getElementById('autoresSeleccionados');
+            var autoresDisponibles = document.getElementById('autoresDisponibles');
+
+            // Agregar el autor personalizado a los seleccionados
+            autoresSeleccionados.add(new Option(autorPersonalizado, autorPersonalizado));
+
+            // Remover el autor personalizado de los disponibles (si existe)
+            Array.from(autoresDisponibles.options).forEach(option => {
+                if (option.value === autorPersonalizado) {
+                    option.remove();
+                }
+            });
+
+            // Actualizar el campo oculto
+            actualizarCampoOculto();
+        }
     </script>
 </head>
 <body>
@@ -75,11 +93,10 @@
         <p>Titulo: <input type="text" th:field="*{titulo_obra}" /></p>
         <label for="autoresDisponibles">Autores Disponibles:</label>
         <p name="listboxes">
-            <select id="autoresDisponibles"  Disponibles name="autoresDisponibles" multiple size="10">
+            <select id="autoresDisponibles" name="autoresDisponibles" multiple size="10">
                 <option th:each="autor : ${autores}" th:value="${autor.nombre}" th:text="${autor.nombre}"></option>
             </select>
             <br/>
-            
         </p>
         <p name="botones">
             <button type="button" onclick="agregarAutor()">Agregar &rarr;</button>
@@ -88,11 +105,15 @@
        
         <label for="autoresSeleccionados">Autores Seleccionados:</label>
         <p name="listboxes" >
-           
             <select id="autoresSeleccionados" name="autoresSeleccionados" multiple size="10">
                 <!-- Opciones generadas dinámicamente -->
             </select>
             <input type="hidden" id="autoresSeleccionadosHidden" name="autoresSeleccionados" />
+        </p>
+        <p>
+            <label for="autorPersonalizado">Agregar Nuevo Autor:</label>
+            <input type="text" id="autorPersonalizado" name="autorPersonalizado" />
+            <button type="button" onclick="agregarAutorPersonalizado()">Agregar</button>
         </p>
 
         <p>
