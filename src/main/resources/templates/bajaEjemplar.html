@@ -13,7 +13,7 @@
     <option value="" disabled selected>seleccione un título</option>
     <option th:each="ejemplar : ${todosEjemplares}" 
             th:value="${ejemplar.id}" 
-            th:text="${ejemplar.id + ' - ' + ejemplar.titulo}">Título
+            th:text="${ejemplar.id + ' - ' + ejemplar.titulo.titulo_obra}">Título
     </option>
 </select>
 </p>
