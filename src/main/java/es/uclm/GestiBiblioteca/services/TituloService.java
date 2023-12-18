@@ -136,6 +136,7 @@ public class TituloService {
 		}
 		return false;
 	}
+	
 	@Transactional
 	public  void obtenerAutores(String[]autoresNombres,Collection<Autor>autores){
 		for (String nombreAutor : autoresNombres) {
