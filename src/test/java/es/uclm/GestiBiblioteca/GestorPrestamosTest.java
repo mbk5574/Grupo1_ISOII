@@ -29,6 +29,7 @@ import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
 import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
 import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
 import es.uclm.GestiBiblioteca.persistence.UsuarioDAO;
+import es.uclm.GestiBiblioteca.services.PrestamoService;
 
 
 
@@ -55,13 +56,80 @@ public class GestorPrestamosTest {
 
     @Mock
     private ReservaDAO reservaDAO;
-  
+    
+     @Mock
+    private PrestamoService prestamoService;
+
+    @Mock
+    private Prestamo prestamo;
     
     @BeforeEach
     void setUp() {
         
     }
-    
+    @Test
+    void realizarPrestamoTest() throws Exception {
+        // Configuración de datos de prueba
+        Prestamo prestamo = new Prestamo();
+        prestamo.setEjemplar(new Ejemplar());
+        prestamo.setUsuario(new Usuario()); 
+        prestamo.setFechaFin(Date.from(new Date().toInstant().plusSeconds(86400)));
+        prestamo.setActivo(true);
+        prestamo.setFechaInicio(new Date());
+
+        // Llamada al método bajo prueba
+        String result = gestorPrestamos.realizarPrestamo(prestamo, model, redirectAttributes);
+
+        // Verificaciones
+        assertEquals("/resultadoAltaPrestamo", result);
+
+        // Verificar las interacciones
+        verify(prestamoService).realizarPrestamo(prestamo);
+        verify(model).addAttribute("prestamoRealizado", true);
+        verify(model).addAttribute("mensaje", "Préstamo realizado exitosamente.");
+        verifyNoInteractions(redirectAttributes);
+    }
+    //Comprobando las diferntes formas de realizar un prestamo se ha notado que la fecha 
+    //inicio no devria ser superior a la fecha final sin embargo no se ha controlando en el codigo permitiendo su creacion.
+    @Test
+    void realizarPrestamoTestFechainiciosuperiorAFechafinal() throws Exception {
+        // Configuración de datos de prueba
+        Prestamo prestamo = new Prestamo();
+        prestamo.setEjemplar(new Ejemplar());
+        prestamo.setUsuario(new Usuario()); 
+        prestamo.setFechaFin(Date.from(new Date().toInstant().plusSeconds(86400)));
+        prestamo.setActivo(true);
+        prestamo.setFechaInicio(Date.from(new Date().toInstant().plusSeconds(96400)));
+       
+        // Llamada al método bajo prueba
+        String result = gestorPrestamos.realizarPrestamo(prestamo, model, redirectAttributes);
+
+        // Verificaciones
+        assertEquals("/resultadoAltaPrestamo", result);
+
+        // Verificar las interacciones
+        verify(prestamoService).realizarPrestamo(prestamo);
+        verify(redirectAttributes).addFlashAttribute("error", "Error al realizar el préstamo");
+        verifyNoInteractions(model);;
+    }
+    @Test
+    void realizarPrestamoConErrorTest() throws Exception {
+        // Configuración de datos de prueba
+        Prestamo prestamo = new Prestamo();
+        String mensajeError = "Error al realizar el préstamo";
+        doThrow(new RuntimeException(mensajeError)).when(prestamoService).realizarPrestamo(prestamo);
+
+        // Llamada al método bajo prueba
+        String result = gestorPrestamos.realizarPrestamo(prestamo, model, redirectAttributes);
+
+        // Verificaciones
+        assertEquals("redirect:/rutaErrorPrestamo", result);
+
+        // Verificar las interacciones
+        verify(prestamoService).realizarPrestamo(prestamo);
+        verify(redirectAttributes).addFlashAttribute("error", mensajeError);
+        verifyNoInteractions(model);
+    }
     @Test
     void realizarDevolucionTestEnTiempo() {
         // Configurar el comportamiento del mock para el findById de prestamoDAO
@@ -84,7 +152,7 @@ public class GestorPrestamosTest {
         
         verify(redirectAttributes).addFlashAttribute("mensaje", "Devolución realizada exitosamente.");
     }
-   
+    
     @Test
     void realizarDevolucionTestAfterEndDate() {
         // Configurar el comportamiento del mock para el findById de prestamoDAO
@@ -109,7 +177,7 @@ public class GestorPrestamosTest {
         // Verificar que no haya más interacciones después de las necesarias
         verifyNoMoreInteractions(prestamoDAO, redirectAttributes);
     }
-
+   
 
     @Test
     void realizarDevolucionPrestamoNoEncontradoTest() {
@@ -127,6 +195,7 @@ public class GestorPrestamosTest {
         verify(redirectAttributes).addFlashAttribute("ejemplarDevuelto", false);
         verify(redirectAttributes).addFlashAttribute("mensaje", "Préstamo no encontrado.");
     }
+    
 
     @Test
     void reservarEjemplarTestDisponibleNoReserva() {
