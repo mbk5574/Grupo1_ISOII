@@ -1,0 +1,165 @@
+package es.uclm.GestiBiblioteca;
+import static org.mockito.ArgumentMatchers.any;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import static org.mockito.ArgumentMatchers.eq;
+
+import es.uclm.GestiBiblioteca.business.entities.Autor;
+import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
+import es.uclm.GestiBiblioteca.business.entities.Libro;
+import es.uclm.GestiBiblioteca.business.entities.Prestamo;
+import es.uclm.GestiBiblioteca.business.entities.Revista;
+import es.uclm.GestiBiblioteca.business.entities.Titulo;
+import es.uclm.GestiBiblioteca.business.entities.Usuario;
+import es.uclm.GestiBiblioteca.persistence.AutorDAO;
+import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
+import es.uclm.GestiBiblioteca.persistence.LibroDAO;
+import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
+import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
+import es.uclm.GestiBiblioteca.persistence.RevistaDAO;
+import es.uclm.GestiBiblioteca.persistence.TituloDAO;
+import es.uclm.GestiBiblioteca.persistence.UsuarioDAO;
+import es.uclm.GestiBiblioteca.services.PenalizacionService;
+import es.uclm.GestiBiblioteca.services.TituloService;
+
+@ExtendWith(MockitoExtension.class)
+public class PenalizacionServiceTest {
+
+	@Mock
+    private PrestamoDAO prestamoDAO;
+
+    @Mock
+    private EjemplarDAO ejemplarDAO;
+
+    @Mock
+    private UsuarioDAO usuarioDAO; // Agrega el mock para UsuarioDAO
+
+    @InjectMocks
+    private PenalizacionService penalizacionService;
+    
+
+    @Test
+    /*Función de prueba que verifica que el método 'comprobarPenalización' de 'PenalizacionService'
+     * funciona correctamente cuando se le proporciona un usuario con una fecha de penalización futura*/
+    void comprobarPenalizacionTest() {
+        // Configuración de datos de prueba
+        Usuario usuario = new Usuario();
+        usuario.setFechaFinPenalizacion(new Date(System.currentTimeMillis() + 100000)); // Fecha futura
+
+        // Llamada al método que se está probando y verificación del resultado
+        assertTrue(penalizacionService.comprobarPenalizacion(usuario));
+    }
+    
+    @Test
+    /* Función de prueba que verifica que el método 'comprobarPenalizacion' de 'PenalizacionService'
+     * funciona correctamente cuando se le proporciona un usuario sin penalización */
+    void comprobarPenalizacionCuandoNoHayPenalizacionTest() {
+        // Configuración de datos de prueba
+        Usuario usuario = new Usuario();
+
+        // Llamada al método que se está probando y verificación del resultado
+        assertFalse(penalizacionService.comprobarPenalizacion(usuario));
+    }
+    
+    @Test
+    /* Función de prueba que verifica que el método 'comprobarPenalizacion' de 'PenalizacionService'
+     * funciona correctamente cuando se le proporciona un usuario con una fecha de penalización ya expirada */
+    void comprobarPenalizacionDespuesDeExpirarTest() {
+        // Configuración de datos de prueba
+        Usuario usuario = new Usuario();
+        usuario.setFechaFinPenalizacion(new Date(System.currentTimeMillis() - 100000)); // Fecha pasada
+
+        // Llamada al método que se está probando y verificación del resultado
+        assertFalse(penalizacionService.comprobarPenalizacion(usuario));
+    }
+    
+    @Test
+    /* Función de prueba que verifica que el método 'aplicarPenalizacion' de 'PenalizacionService'
+     * actualiza correctamente la fecha de penalización cuando ya existe una fecha de penalización */
+    void aplicarPenalizacionConFechaFinExistenteTest() {
+        // Configuración de datos de prueba
+        Usuario usuario = new Usuario();
+        usuario.setFechaFinPenalizacion(new java.util.Date(System.currentTimeMillis() + 100000)); // Fecha futura
+
+        // Llamada al método que se está probando
+        penalizacionService.aplicarPenalizacion(usuario);
+
+        // Verificación del resultado
+        java.util.Date nuevaFechaFin = usuario.getFechaFinPenalizacion();
+        assertNotNull(nuevaFechaFin);
+        assertTrue(nuevaFechaFin.after(new java.util.Date()));
+        // Puedes agregar más verificaciones según sea necesario
+    }
+    
+    @Test
+    /* Función de prueba que verifica que el método 'aplicarPenalizacion' de 'PenalizacionService'
+     * establece correctamente la fecha de penalización cuando no existe una fecha de penalización previa */
+    void aplicarPenalizacionSinFechaExistenteTest() {
+        // Configuración de datos de prueba
+        Usuario usuario = new Usuario();
+
+        // Llamada al método que se está probando
+        penalizacionService.aplicarPenalizacion(usuario);
+
+        // Verificación del resultado
+        java.util.Date nuevaFechaFin = usuario.getFechaFinPenalizacion();
+        assertNotNull(nuevaFechaFin);
+        assertTrue(nuevaFechaFin.after(new java.util.Date()));
+    }
+    
+    @Test
+    /* Función de prueba que verifica que el método 'aplicarPenalizacion' de 'PenalizacionService'
+     * no afecta la fecha de penalización cuando se le proporciona un usuario con fecha expirada */
+    void aplicarPenalizacionConFechaExpiradaTest() {
+        // Configuración de datos de prueba
+        Usuario usuario = new Usuario();
+        usuario.setFechaFinPenalizacion(new java.util.Date(System.currentTimeMillis() - 100000)); // Fecha pasada
+
+        // Llamada al método que se está probando
+        penalizacionService.aplicarPenalizacion(usuario);
+
+        // Verificación del resultado
+        java.util.Date fechaOriginal = usuario.getFechaFinPenalizacion();
+        java.util.Date nuevaFechaFin = usuario.getFechaFinPenalizacion();
+        assertEquals(fechaOriginal, nuevaFechaFin);
+    }
+
+    @Test
+    /* Función de prueba que verifica que el método 'comprobarPenalizacion' de 'PenalizacionService'
+     * devuelve falso cuando se le proporciona un usuario nulo */
+    void comprobarPenalizacionConUsuarioNuloTest() {
+        // Configuración de datos de prueba
+        Usuario usuario = new Usuario();
+
+        // Llamada al método que se está probando y verificación del resultado
+        assertFalse(penalizacionService.comprobarPenalizacion(usuario));
+    }
+
+
+    }
