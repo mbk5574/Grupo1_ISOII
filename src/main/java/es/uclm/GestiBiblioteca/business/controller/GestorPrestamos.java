@@ -63,6 +63,11 @@ public class GestorPrestamos {
 	@PostMapping("/realizarPrestamo")
     public String realizarPrestamo(@ModelAttribute Prestamo prestamo, Model model, RedirectAttributes redirectAttributes) {
         try {
+			if (prestamo.getFechaFin().before(prestamo.getFechaInicio())) {
+				log.error("La fecha de fin no puede ser anterior a la fecha de inicio.");
+				redirectAttributes.addFlashAttribute("error", "La fecha de fin no puede ser anterior a la fecha de inicio.");
+				return "redirect:/rutaErrorPrestamo";
+			}	
             prestamoService.realizarPrestamo(prestamo);
             model.addAttribute("prestamoRealizado", true);
             model.addAttribute("mensaje", "Préstamo realizado exitosamente.");

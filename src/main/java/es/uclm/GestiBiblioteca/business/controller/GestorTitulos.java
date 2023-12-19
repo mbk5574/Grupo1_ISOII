@@ -180,7 +180,7 @@ public class GestorTitulos {
 	@PostMapping("/borrarTitulo")
 	public String borrarTitulo(@RequestParam("isbn") String isbn, RedirectAttributes redirectAttributes) {
 	    List<Titulo> titulosABorrar = tituloDAO.findByIsbn(isbn);
-
+		
 	    if (!titulosABorrar.isEmpty()) {
 	        for (Titulo titulo : titulosABorrar) {
 	            // Utiliza el método modificado para verificar y eliminar el título
@@ -251,6 +251,11 @@ public class GestorTitulos {
 	@PostMapping("/bajaEjemplar")
 	public String bajaEjemplar(@RequestParam("idsEjemplares") List<Long> idsEjemplares, RedirectAttributes redirectAttributes) {
 	    boolean exito = true;
+		if(idsEjemplares.isEmpty())
+		{
+			redirectAttributes.addFlashAttribute("error", "No se seleccionó ningún ejemplar.");
+			return "redirect:/resultadoBajaEjemplar";
+		}	
 	    for (Long id : idsEjemplares) {
 	        boolean resultado = tituloService.eliminarEjemplarConVerificaciones(id);
 	        if (!resultado) {
