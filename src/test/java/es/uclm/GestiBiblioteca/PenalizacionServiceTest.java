@@ -1,52 +1,19 @@
 package es.uclm.GestiBiblioteca;
-import static org.mockito.ArgumentMatchers.any;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.mockito.ArgumentMatchers.eq;
-
-import es.uclm.GestiBiblioteca.business.entities.Autor;
-import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
-import es.uclm.GestiBiblioteca.business.entities.Libro;
-import es.uclm.GestiBiblioteca.business.entities.Prestamo;
-import es.uclm.GestiBiblioteca.business.entities.Revista;
-import es.uclm.GestiBiblioteca.business.entities.Titulo;
 import es.uclm.GestiBiblioteca.business.entities.Usuario;
-import es.uclm.GestiBiblioteca.persistence.AutorDAO;
 import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
-import es.uclm.GestiBiblioteca.persistence.LibroDAO;
 import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
-import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
-import es.uclm.GestiBiblioteca.persistence.RevistaDAO;
-import es.uclm.GestiBiblioteca.persistence.TituloDAO;
 import es.uclm.GestiBiblioteca.persistence.UsuarioDAO;
 import es.uclm.GestiBiblioteca.services.PenalizacionService;
-import es.uclm.GestiBiblioteca.services.TituloService;
 
 @ExtendWith(MockitoExtension.class)
 public class PenalizacionServiceTest {

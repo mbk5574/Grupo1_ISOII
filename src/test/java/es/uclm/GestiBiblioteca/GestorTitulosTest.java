@@ -19,7 +19,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ch.qos.logback.core.model.Model;
+
 import es.uclm.GestiBiblioteca.business.controller.GestorTitulos;
 import es.uclm.GestiBiblioteca.business.entities.Autor;
 import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
@@ -110,7 +110,7 @@ public class GestorTitulosTest {
         titulo.setIsbn("123456789");
         titulo.setTitulo_obra("Título de prueba");
 
-        String tipoTitulo = "libro";
+        String tipoTitulo = "comic";
 
         List<String> autoresSeleccionados = Arrays.asList("Autor1", "Autor2");
 
@@ -239,8 +239,10 @@ public class GestorTitulosTest {
         verify(redirectAttributes).addFlashAttribute("mensajeExito", "Título con ISBN " + isbn + " borrado exitosamente");
         verify(redirectAttributes).addFlashAttribute("mensajeError", "El título con ISBN " + isbn + " no puede ser borrado debido a ejemplares activos o reservados");
     }
+  
+    
     @Test
-    void borrarTituloTestEmptyList() {
+    void borrarTituloTestError() {
        
         List<Titulo> titulosABorrar = new ArrayList<>();
         String isbn ="1";
@@ -257,7 +259,7 @@ public class GestorTitulosTest {
         verify(redirectAttributes).addFlashAttribute("mensajeError", "No se encontró ningún título con ISBN " + isbn);
     }
     @Test
-    void altaEjemplarTest() {
+    void altaEjemplarTestExito() {
         // Configuración de datos de prueba
         Long idTitulo = 1L;
         Titulo titulo = new Titulo();
