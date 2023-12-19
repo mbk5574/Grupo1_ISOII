@@ -29,6 +29,7 @@ import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
 import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
 import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
 import es.uclm.GestiBiblioteca.persistence.UsuarioDAO;
+import es.uclm.GestiBiblioteca.services.PenalizacionService;
 import es.uclm.GestiBiblioteca.services.PrestamoService;
 
 
@@ -36,6 +37,7 @@ import es.uclm.GestiBiblioteca.services.PrestamoService;
 @ExtendWith(MockitoExtension.class)
 public class GestorPrestamosTest {
 
+    
     @Mock
     private PrestamoDAO prestamoDAO;
 
@@ -62,6 +64,9 @@ public class GestorPrestamosTest {
 
     @Mock
     private Prestamo prestamo;
+
+    @Mock
+    private  PenalizacionService penalizacion;
     
     @BeforeEach
     void setUp() {
@@ -146,6 +151,7 @@ public class GestorPrestamosTest {
         // Verificar las interacciones
         verify(prestamoDAO).findById(1);
         verify(prestamoDAO).save(prestamo);
+        
         verify(redirectAttributes).addFlashAttribute("ejemplarDevuelto", true);
         
         verify(redirectAttributes).addFlashAttribute("mensaje", "Devolución realizada exitosamente.");
@@ -153,14 +159,13 @@ public class GestorPrestamosTest {
     
     @Test
     void realizarDevolucionTestAfterEndDate() {
-        // Configurar el comportamiento del mock para el findById de prestamoDAO
+        // Configuración del mock para findById de prestamoDAO
         Prestamo prestamo = new Prestamo();
         prestamo.setActivo(true);
         prestamo.setEjemplar(new Ejemplar());
-        prestamo.setFechaFin(new Date());
+        prestamo.setFechaFin(Date.from(new Date().toInstant().minusSeconds(86400)));
         prestamo.setUsuario(new Usuario());
         when(prestamoDAO.findById(anyInt())).thenReturn(Optional.of(prestamo));
-
         // Realizar la devolución
         String result = gestorPrestamos.realizarDevolucion(1, redirectAttributes);
 
@@ -169,12 +174,11 @@ public class GestorPrestamosTest {
 
         // Verificar las interacciones
         verify(prestamoDAO).findById(1);
-        verify(redirectAttributes).addFlashAttribute("ejemplarDevuelto", false);
-        verify(redirectAttributes).addFlashAttribute("mensaje", "Error al realizar la devolución.");
-
-        // Verificar que no haya más interacciones después de las necesarias
-        verifyNoMoreInteractions(prestamoDAO, redirectAttributes);
+        verify(redirectAttributes).addFlashAttribute("mensajePenalizacion", "Se ha aplicado una penalización por devolución tardía.");
+        verify(redirectAttributes).addFlashAttribute("ejemplarDevuelto", true);
+        verify(redirectAttributes).addFlashAttribute("mensaje", "Devolución realizada exitosamente.");
     }
+
    
 
     @Test
