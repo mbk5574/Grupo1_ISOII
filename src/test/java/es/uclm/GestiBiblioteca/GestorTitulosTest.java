@@ -101,6 +101,7 @@ public class GestorTitulosTest {
         verify(redirectAttributes).addFlashAttribute("tipoTitulo", tipoTitulo.equalsIgnoreCase("libro") ? "Libro" : "Revista");
         verify(redirectAttributes).addFlashAttribute("autores", autores.stream().map(Autor::getNombre).collect(Collectors.toList()));
     }
+    
     @SuppressWarnings("unchecked")
     @Test
     void altaTituloSubmitTestError() {
@@ -351,13 +352,11 @@ public class GestorTitulosTest {
         // Verificar que se agregaron los atributos de redirección
         verify(redirectAttributes).addFlashAttribute("error", "El ejemplar con id: 1 no puede ser eliminado.");
     }
+    
     @Test
     void bajaEjemplarTestListaVacia() {
         // Configuración de datos de prueba
         List<Long> idsEjemplares = Arrays.asList();
-
-        // Configurar el comportamiento del mock
-        when(tituloService.eliminarEjemplarConVerificaciones(anyLong())).thenReturn(false);
 
         // Llamada al método bajo prueba
         String result = gestorTitulos.bajaEjemplar(idsEjemplares, redirectAttributes);
@@ -371,7 +370,7 @@ public class GestorTitulosTest {
         }
 
         // Verificar que se agregaron los atributos de redirección
-        verify(redirectAttributes).addFlashAttribute("error", "No se ha seleccionado ningun id");
+        verify(redirectAttributes).addFlashAttribute("error", "No se seleccionó ningún ejemplar.");
     }
 
 }

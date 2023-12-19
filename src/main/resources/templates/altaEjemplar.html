@@ -13,12 +13,12 @@
     <option value="" disabled selected>Seleccione un título</option>
     <option th:each="titulo : ${todosTitulos}" 
             th:value="${titulo.id}" 
-            th:text="${titulo.id + ' - ' + titulo.titulo_obra}">Título
+            th:text="${titulo.id + ' - ' + titulo.titulo_obra}"  required>Título
     </option>
 </select>
 </p>
 <p>
-	<input type="submit" value="Alta Ejemplar" />
+	<input type="submit" value="Alta Ejemplar"  />
 </p>
 </form>
 
