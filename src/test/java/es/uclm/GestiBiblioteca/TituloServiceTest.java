@@ -110,6 +110,7 @@ public class TituloServiceTest {
         boolean resultado = tituloService.eliminarTituloConVerificaciones(tituloId);
 
         assertTrue(resultado, "El título debería haberse eliminado exitosamente");
+
         verify(ejemplarDAO, times(1)).delete(ejemplar1);
         verify(ejemplarDAO, times(1)).delete(ejemplar2);
         verify(ejemplarDAO, times(1)).delete(ejemplar3);
@@ -148,6 +149,7 @@ public class TituloServiceTest {
 	    boolean resultado = tituloService.eliminarTituloConVerificaciones(tituloId);
 
 	    assertFalse(resultado, "El método debería devolver false ya que hay al menos un ejemplar no disponible");
+
 	    verify(tituloDAO, times(0)).delete(titulo);
 	}
 	
