@@ -22,7 +22,7 @@ import es.uclm.GestiBiblioteca.persistence.UsuarioDAO;
 @Service
 public class PrestamoService {
 	
-	private static final int LIMITE_DE_LIBROS = 5;
+	public static final int LIMITE_DE_LIBROS = 5;
     private static final Logger log = LoggerFactory.getLogger(PrestamoService.class);
     @Autowired
     private EjemplarDAO ejemplarDAO;

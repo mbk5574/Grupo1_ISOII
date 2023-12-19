@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Dar de baja a un ejemplar</title>
+    <meta charset="UTF-8">
+    <title>Dar de baja a un ejemplar</title>
 </head>
 <body>
 
-<!-- Formulario para dar de alta 1 ejemplar -->
+<!-- Formulario para dar de baja 1 ejemplar -->
 <form action="#" th:action="@{/bajaEjemplar}" th:object="${bajaEjemplar}" method="post">
-<p>Seleccione el id del Título para el ejemplar a dar de baja:
-	<select name="idsEjemplares">
-    <option value="" disabled selected>seleccione un título</option>
-    <option th:each="ejemplar : ${todosEjemplares}" 
-            th:value="${ejemplar.id}" 
-            th:text="${ejemplar.id + ' - ' + ejemplar.titulo.titulo_obra}">Título
-    </option>
-</select>
-</p>
-<p>
-	<input type="submit" value="Baja Ejemplar" />
-</p>
+    <p>Seleccione el id del Título para el ejemplar a dar de baja:
+        <select name="idsEjemplares" required>
+            <option value="" disabled selected>Seleccione un título</option>
+            <option th:each="ejemplar : ${todosEjemplares}" 
+                    th:value="${ejemplar.id}" 
+                    th:text="${ejemplar.id + ' - ' + ejemplar.titulo.titulo_obra}">Título
+            </option>
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="Baja Ejemplar" />
+    </p>
 </form>
 
 </body>
