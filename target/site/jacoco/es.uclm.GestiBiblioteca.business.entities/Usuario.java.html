@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Usuario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.business.entities</a> &gt; <span class="el_source">Usuario.java</span></div><h1>Usuario.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.business.entities;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Usuario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.business.entities</a> &gt; <span class="el_source">Usuario.java</span></div><h1>Usuario.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.business.entities;
 
 
 import jakarta.persistence.CascadeType;
@@ -25,11 +25,11 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-<span class="pc" id="L28">	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)</span>
-	private Collection&lt;Prestamo&gt; prestamos = new ArrayList&lt;&gt;();;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+<span class="pc" id="L29">	private Collection&lt;Prestamo&gt; prestamos = new ArrayList&lt;&gt;();;</span>
 
-<span class="pc" id="L31">	@OneToMany</span>
-	private Collection&lt;Reserva&gt; reservas = new ArrayList&lt;&gt;();;
+	@OneToMany
+<span class="pc" id="L32">	private Collection&lt;Reserva&gt; reservas = new ArrayList&lt;&gt;();;</span>
 
 	@Column
 	private String nombre;
@@ -103,7 +103,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 <span class="fc" id="L105">		return &quot;Usuario [id=&quot; + id + &quot;, prestamos=&quot; + prestamos + &quot;, reservas=&quot; + reservas + &quot;, nombre=&quot; + nombre</span>
-				+ &quot;, apellidos=&quot; + apellidos + &quot;, fechaFinPenalizacion=&quot; + fechaFinPenalizacion + &quot;, attribute=&quot; + &quot;]&quot;;
+<span class="fc" id="L106">				+ &quot;, apellidos=&quot; + apellidos + &quot;, fechaFinPenalizacion=&quot; + fechaFinPenalizacion + &quot;, attribute=&quot; + &quot;]&quot;;</span>
 	}
 
 }
