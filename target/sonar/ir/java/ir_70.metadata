@@ -1,0 +1,3 @@
+es.uclm.GestiBiblioteca.business.entities.Libro#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;)V
+==
+<init> es.uclm.GestiBiblioteca.business.entities.Titulo#<init>(Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/lang/String;Ljava/lang/String;)V

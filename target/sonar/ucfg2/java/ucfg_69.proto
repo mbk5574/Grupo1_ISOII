@@ -1,0 +1,24 @@
+
+J__sonar_lambda_0$es.uclm.GestiBiblioteca.business.controller.GestorTitulosÒ
+Å/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.javaÞ< Þ(n"1*Õ
+1
+ÞW Þ(mLJ
+
+ÞF Þ(V 
+%3java.lang.RuntimeException"java.lang.RuntimeExceptionÃ
+À
+
+ÞB Þ(n
+%4"6java.lang.RuntimeException#<init>(Ljava/lang/String;)V*>
+
+__unknown_file ("
+ 
+%3java.lang.RuntimeException*4
+
+__unknown_file (
+Titulo no encontrado"0
+
+ÞB Þ(n"
+ 
+%3java.lang.RuntimeExceptionB
+java.util.function.Supplier

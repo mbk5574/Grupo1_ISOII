@@ -1,0 +1,169 @@
+
+Oes.uclm.GestiBiblioteca.business.entities.Prestamo#toString()Ljava/lang/String;…
+æ/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Prestamo.javar r("1*ÿ
+1s	 s(≠
+™
+s  s('7
+%01es.uclm.GestiBiblioteca.business.entities.Usuario"__id*_
+
+__unknown_file (C*A4
+2es.uclm.GestiBiblioteca.business.entities.Prestamo"	
+usuarioö
+ó
+s	 s('
+%1java.lang.String"__concat*"
+s	 s(
+Prestamo [usuario=*E
+s  s('9
+7
+%01es.uclm.GestiBiblioteca.business.entities.Usuarioo
+m
+s	 s(5
+%2java.lang.String"__concat*$
+s	 s('
+
+%1java.lang.String*
+s* s(5
+	, titulo=´
+®
+s8 s(>6
+%30es.uclm.GestiBiblioteca.business.entities.Titulo"__id*^
+
+__unknown_file (B*@4
+2es.uclm.GestiBiblioteca.business.entities.Prestamo"
+tituloõ
+ò
+s	 s(>
+%4java.lang.String"__concat*$
+s	 s(5
+
+%2java.lang.String*D
+s8 s(>8
+6
+%30es.uclm.GestiBiblioteca.business.entities.Titulot
+r
+s	 s(Q
+%5java.lang.String"__concat*$
+s	 s(>
+
+%4java.lang.String*
+sA s(Q
+, fechaInicio=é
+ã
+sT s(_
+%6java.util.Date"__id*c
+
+__unknown_file (G*E4
+2es.uclm.GestiBiblioteca.business.entities.Prestamo"
+fechaIniciox
+v
+s	 s(_
+%7java.lang.String"__concat*$
+s	 s(Q
+
+%5java.lang.String*"
+sT s(_
+
+%6java.util.Dateq
+o
+s	 s(o
+%8java.lang.String"__concat*$
+s	 s(_
+
+%7java.lang.String*
+sb s(o
+, fechaFin=ã
+à
+t t(
+%9java.util.Date"__id*`
+
+__unknown_file (D*B4
+2es.uclm.GestiBiblioteca.business.entities.Prestamo"
+
+fechaFiny
+w
+s	 t(
+%10java.lang.String"__concat*$
+s	 s(o
+
+%8java.lang.String*"
+t t(
+
+%9java.util.Dateq
+o
+s	 t(
+%11java.lang.String"__concat*%
+s	 t(
+
+%10java.lang.String*
+t t(
+	, activo=ç
+ä
+t t(%
+%12java.lang.Boolean"__id*^
+
+__unknown_file (B*@4
+2es.uclm.GestiBiblioteca.business.entities.Prestamo"
+activo~
+|
+s	 t(%
+%13java.lang.String"__concat*%
+s	 t(
+
+%11java.lang.String*&
+t t(%
+
+%12java.lang.Booleanv
+t
+s	 t(8
+%14java.lang.String"__concat*%
+s	 t(%
+
+%13java.lang.String*
+t( t(8
+, id_prestamo=j
+h
+s	 t(F
+%15java.lang.String"__concat*%
+s	 t(8
+
+%14java.lang.String*
+t; t(F
+""s
+q
+s	 t(V
+%16java.lang.String"__concat*%
+s	 t(F
+
+%15java.lang.String*
+tI t(V
+, ejemplar=∞
+≠
+tY t(a9
+%172es.uclm.GestiBiblioteca.business.entities.Ejemplar"__id*`
+
+__unknown_file (D*B4
+2es.uclm.GestiBiblioteca.business.entities.Prestamo"
+
+ejemplar†
+ù
+s	 t(a
+%18java.lang.String"__concat*%
+s	 t(V
+
+%16java.lang.String*G
+tY t(a;
+9
+%172es.uclm.GestiBiblioteca.business.entities.Ejemplari
+g
+s	 t(g
+%19java.lang.String"__concat*%
+s	 t(a
+
+%18java.lang.String*
+td t(g
+]"%
+s t(h
+
+%19java.lang.StringB64
+2es.uclm.GestiBiblioteca.business.entities.PrestamoH

@@ -1,0 +1,16 @@
+
+Ues.uclm.GestiBiblioteca.business.entities.Usuario#getReservas()Ljava/util/Collection;»
+Ω/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Usuario.javaG G('"1* 
+1H	 H(ê
+ç
+H	 H(
+%0java.util.Collection"__id*_
+
+__unknown_file (C*A3
+1es.uclm.GestiBiblioteca.business.entities.Usuario"
+
+reservas"(
+H H(
+
+%0java.util.CollectionB53
+1es.uclm.GestiBiblioteca.business.entities.UsuarioH

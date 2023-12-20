@@ -1,0 +1,8 @@
+es.uclm.GestiBiblioteca.business.controller.GestorTitulos#altaTituloForm(Lorg/springframework/ui/Model;)Ljava/lang/String;
+ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V
+es.uclm.GestiBiblioteca.business.entities.Titulo#<init>()V
+es.uclm.GestiBiblioteca.business.entities.Titulo#instance-init#
+==
+addAttribute org.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;
+findAll org.springframework.data.repository.ListCrudRepository#findAll()Ljava/util/List;
+toString java.lang.Object#toString()Ljava/lang/String;

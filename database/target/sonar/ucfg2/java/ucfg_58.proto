@@ -1,0 +1,788 @@
+
+Úes.uclm.GestiBiblioteca.business.controller.GestorTitulos#altaTituloSubmit(Les/uclm/GestiBiblioteca/business/entities/Titulo;Ljava/lang/String;Ljava/util/List;Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;)Ljava/lang/String;–
+≈/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.javaF F("startingBlock*◊
+24U U(/k
+i
+U U(/
+autoresjava.util.Collection"__id*6
+
+__unknown_file (
+
+%19java.util.HashSet∏
+µ
+V V(5
+%21.es.uclm.GestiBiblioteca.services.TituloService"__id*l
+
+__unknown_file (P*N;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+tituloServiceòï
+V V(7
+%22void"ies.uclm.GestiBiblioteca.services.TituloService#obtenerAutores([Ljava/lang/String;Ljava/util/Collection;)V*S
+
+__unknown_file (7
+5
+%21.es.uclm.GestiBiblioteca.services.TituloService*B
+
+__unknown_file (&
+$
+autoresNombresjava.lang.String[]*=
+
+__unknown_file (!
+
+autoresjava.util.Collection29obtenerAutores([Ljava/lang/String;Ljava/util/Collection;)*
+23*π
+25U U(.97
+U# U(,
+%19java.util.HashSet"java.util.HashSeth
+f
+U U(.
+%20"java.util.HashSet#<init>()V*6
+
+__unknown_file (
+
+%19java.util.HashSet*
+24*˛
+26S S(]}
+{
+S S(]
+%17java.lang.String"__concat*%
+S S(C
+
+%15java.lang.String*%
+SF S(]
+
+%16java.lang.StringËÂ
+R S(^
+%18void"7ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V*B
+
+__unknown_file (&
+$
+%12ch.qos.logback.classic.Logger*5
+
+__unknown_file (
+
+%17java.lang.String2info(Ljava/lang/String;)*
+25*˙
+27S S(3É
+Ä
+S S(3
+%14java.lang.String"__concat**
+S S( 
+Datos del t√≠tulo: ISBN - *%
+S# S(3
+
+%13java.lang.Stringt
+r
+S S(C
+%15java.lang.String"__concat*%
+S S(3
+
+%14java.lang.String*
+S6 S(C
+, T√≠tulo - Á‰
+SF S(]
+%16java.lang.String"Ses.uclm.GestiBiblioteca.business.entities.Titulo#getTitulo_obra()Ljava/lang/String;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getTitulo_obra()*
+26*Œ
+28R R(\
+Z
+R R($
+%12ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""Ÿ÷
+S# S(3
+%13java.lang.String"Les.uclm.GestiBiblioteca.business.entities.Titulo#getIsbn()Ljava/lang/String;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2	getIsbn()*
+27*Ï
+29Q Q([
+Y
+Q Q(#
+%9ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""é
+ã
+Q Q(8
+%10java.lang.String"__concat*.
+Q Q(+" 
+Tipo de t√≠tulo seleccionado: *,
+Q. Q(8 
+
+
+tipoTitulojava.lang.StringÁ‰
+Q Q(9
+%11void"7ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V*A
+
+__unknown_file (%
+#
+%9ch.qos.logback.classic.Logger*5
+
+__unknown_file (
+
+%10java.lang.String2info(Ljava/lang/String;)*
+28*¯
+30P P(Dz
+x
+P P(D
+%7java.lang.String"__concat*$
+P P("
+Autores ingresados: *$
+P% P(D
+
+%6java.lang.StringÂ‚
+P P(E
+
+%8void"7ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V*A
+
+__unknown_file (%
+#
+%5ch.qos.logback.classic.Logger*4
+
+__unknown_file (
+
+%7java.lang.String2info(Ljava/lang/String;)*
+29*√
+31N N(cp
+n
+N N(c$
+autoresNombresjava.lang.String[]"__id*6
+
+__unknown_file (
+
+%4java.lang.String[][
+Y
+P P(#
+%5ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""›
+⁄
+P% P(D
+%6java.lang.String"@java.util.Arrays#toString([Ljava/lang/Object;)Ljava/lang/String;*0
+
+__unknown_file ("
+java.util.Arrays*B
+
+__unknown_file (&
+$
+autoresNombresjava.lang.String[]*
+30*÷
+32N: N(a:8
+N: N(a
+%3java.lang.String[]"java.lang.String[]ÉÄ
+N N(b
+%4java.lang.String[]">java.util.List#toArray([Ljava/lang/Object;)[Ljava/lang/Object;*D
+
+__unknown_file ((
+&
+autoresSeleccionadosjava.util.List*6
+
+__unknown_file (
+
+%3java.lang.String[]2toArray([Ljava/lang/Object;)*
+31*w
+10d] d(db
+`
+d] d(d
+%43java.lang.Object"__id*5
+
+__unknown_file (
+
+%44java.lang.String*
+8*ì
+33N N(1}{
+NE N(`	
+%2int"java.util.List#size()I*D
+
+__unknown_file ((
+&
+autoresSeleccionadosjava.util.List2size()*
+32*ﬂ
+34L L([
+Y
+L L(#
+%0ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""ÎË
+L L()
+
+%1void"7ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V*A
+
+__unknown_file (%
+#
+%0ch.qos.logback.classic.Logger*:
+
+__unknown_file (
+Iniciando altaTituloSubmit2info(Ljava/lang/String;)*
+33*˙
+12d d(‡›
+d6 d(Z
+%42boolean"6java.lang.String#equalsIgnoreCase(Ljava/lang/String;)Z*<
+
+__unknown_file ( 
+
+
+tipoTitulojava.lang.String*%
+
+__unknown_file (	
+libro2$equalsIgnoreCase(Ljava/lang/String;)*
+9
+10*ÿ
+13c c(¡æ
+c c(>E
+%41>org.springframework.web.servlet.mvc.support.RedirectAttributes"∂org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*&
+
+__unknown_file (
+
+titulo*]
+
+__unknown_file (A
+?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+12*ø
+14b b(®•
+b b(XE
+%40>org.springframework.web.servlet.mvc.support.RedirectAttributes"∂org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*,
+
+__unknown_file (
+mensajeExito*>
+
+__unknown_file (" 
+T√≠tulo agregado exitosamente.27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+13*ˇ
+15a a(\
+Z
+a a($
+%37ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""ü
+ú
+a a(*
+%38java.lang.String"__concat*
+a a(
+Saved titulo: *M
+a a(*A
+?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.TituloËÂ
+a a(+
+%39void"7ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V*B
+
+__unknown_file (&
+$
+%37ch.qos.logback.classic.Logger*5
+
+__unknown_file (
+
+%38java.lang.String2info(Ljava/lang/String;)*
+14*í
+16_ _(Sê
+ç
+_ _(S
+%35java.lang.String"__concat*7
+_ _(4+)
+'Ejemplar creado y asociado al t√≠tulo: *%
+_7 _(S
+
+%34java.lang.StringËÂ
+_ _(T
+%36void"7ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V*B
+
+__unknown_file (&
+$
+%33ch.qos.logback.classic.Logger*5
+
+__unknown_file (
+
+%35java.lang.String2info(Ljava/lang/String;)*
+15*·
+17_ _(\
+Z
+_ _($
+%33ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""ÏÈ
+_7 _(S
+%34java.lang.String"Ses.uclm.GestiBiblioteca.business.entities.Titulo#getTitulo_obra()Ljava/lang/String;*]
+
+__unknown_file (A
+?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getTitulo_obra()*
+16*ˇ
+18] ](<±
+Æ
+] ](<C
+nuevoEjemplar2es.uclm.GestiBiblioteca.business.entities.Ejemplar"__id*W
+
+__unknown_file (;
+9
+%292es.uclm.GestiBiblioteca.business.entities.Ejemplar∑
+¥
+^ ^(6
+%31/es.uclm.GestiBiblioteca.persistence.EjemplarDAO"__id*j
+
+__unknown_file (N*L;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+ejemplarDAO˙˜
+^ ^("9
+%322es.uclm.GestiBiblioteca.business.entities.Ejemplar"]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;*T
+
+__unknown_file (8
+6
+%31/es.uclm.GestiBiblioteca.persistence.EjemplarDAO*a
+
+__unknown_file (E
+C
+nuevoEjemplar2es.uclm.GestiBiblioteca.business.entities.Ejemplar2save(Ljava/lang/Object;)*
+17*Û
+19]) ](4{y
+]  ]((9
+%292es.uclm.GestiBiblioteca.business.entities.Ejemplar"2es.uclm.GestiBiblioteca.business.entities.Ejemplarﬂ
+‹
+] ](;
+%30"oes.uclm.GestiBiblioteca.business.entities.Ejemplar#<init>(Les/uclm/GestiBiblioteca/business/entities/Titulo;Z)V*W
+
+__unknown_file (;
+9
+%292es.uclm.GestiBiblioteca.business.entities.Ejemplar*]
+
+__unknown_file (A
+?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo* 
+
+__unknown_file (2*
+18*Ó
+1l	 l(∏
+µ
+l	 l(
+%53"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*4
+
+__unknown_file (
+redirect:/resultAlta"$
+l l( 
+redirect:/resultAlta*≠
+3e f(Iòï
+e f(IE
+%51>org.springframework.web.servlet.mvc.support.RedirectAttributes"∂org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*'
+
+__unknown_file (	
+autores*3
+
+__unknown_file (
+
+%50java.util.List27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+1*Ú
+startingBlockF I()ë
+é
+
+__unknown_file (
+%54"__id*e
+
+__unknown_file (I*G
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"	
+autoresî
+ë
+
+__unknown_file (
+%55"__id*h
+
+__unknown_file (L*J
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+
+ejemplaresé
+ã
+
+__unknown_file (
+%56"__id*b
+
+__unknown_file (F*D
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+isbnì
+ê
+
+__unknown_file (
+%57"__id*g
+
+__unknown_file (K*I
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+	prestamosí
+è
+
+__unknown_file (
+%58"__id*f
+
+__unknown_file (J*H
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+
+reservasï
+í
+
+__unknown_file (
+%59"__id*i
+
+__unknown_file (M*K
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+titulo_obraù
+ö
+F  F(/
+%60"
+__annotate*V
+
+__unknown_file (:8
+6org.springframework.web.bind.annotation.ModelAttribute*#
+
+__unknown_file (
+
+%58ä
+á
+F7 F(=H
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+
+reservas"__annotation*#
+
+__unknown_file (
+
+%60ù
+ö
+F  F(/
+%61"
+__annotate*V
+
+__unknown_file (:8
+6org.springframework.web.bind.annotation.ModelAttribute*#
+
+__unknown_file (
+
+%56Ü
+É
+F7 F(=D
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+isbn"__annotation*#
+
+__unknown_file (
+
+%61ù
+ö
+F  F(/
+%62"
+__annotate*V
+
+__unknown_file (:8
+6org.springframework.web.bind.annotation.ModelAttribute*#
+
+__unknown_file (
+
+%57ã
+à
+F7 F(=I
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+	prestamos"__annotation*#
+
+__unknown_file (
+
+%62ù
+ö
+F  F(/
+%63"
+__annotate*V
+
+__unknown_file (:8
+6org.springframework.web.bind.annotation.ModelAttribute*#
+
+__unknown_file (
+
+%59ç
+ä
+F7 F(=K
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+titulo_obra"__annotation*#
+
+__unknown_file (
+
+%63ù
+ö
+F  F(/
+%64"
+__annotate*V
+
+__unknown_file (:8
+6org.springframework.web.bind.annotation.ModelAttribute*#
+
+__unknown_file (
+
+%54â
+Ü
+F7 F(=G
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"	
+autores"__annotation*#
+
+__unknown_file (
+
+%64ù
+ö
+F  F(/
+%65"
+__annotate*V
+
+__unknown_file (:8
+6org.springframework.web.bind.annotation.ModelAttribute*#
+
+__unknown_file (
+
+%55å
+â
+F7 F(=J
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+
+ejemplares"__annotation*#
+
+__unknown_file (
+
+%65¥
+±
+G G(
+%66"
+__annotate*T
+
+__unknown_file (86
+4org.springframework.web.bind.annotation.RequestParam*<
+
+__unknown_file ( 
+
+
+tipoTitulojava.lang.String_
+]
+G& G(0
+
+tipoTitulojava.lang.String"__annotation*#
+
+__unknown_file (
+
+%66º
+π
+H H((
+%67"
+__annotate*T
+
+__unknown_file (86
+4org.springframework.web.bind.annotation.RequestParam*D
+
+__unknown_file ((
+&
+autoresSeleccionadosjava.util.Listg
+e
+H6 H(J&
+autoresSeleccionadosjava.util.List"__annotation*#
+
+__unknown_file (
+
+%67È
+Ê
+E E(
+%68"
+__annotate*S
+
+__unknown_file (75
+3org.springframework.web.bind.annotation.PostMapping*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributesñ
+ì
+I I((T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes"__annotation*#
+
+__unknown_file (
+
+%68*
+34*∞
+4f f(Hõò
+f f(H
+%50java.util.List"Ojava.util.stream.Stream#collect(Ljava/util/stream/Collector;)Ljava/lang/Object;*<
+
+__unknown_file ( 
+
+%48java.util.stream.Stream*?
+
+__unknown_file (#
+!
+%49java.util.stream.Collector2%collect(Ljava/util/stream/Collector;)*
+3*ƒ
+5f4 f(>Ø
+¨
+f4 f(G!
+%49java.util.stream.Collector"@java.util.stream.Collectors#toList()Ljava/util/stream/Collector;*;
+
+__unknown_file ("
+java.util.stream.Collectors*
+4*ù
+6f f(*àÖ
+f f(+
+%48java.util.stream.Stream"Sjava.util.stream.Stream#map(Ljava/util/function/Function;)Ljava/util/stream/Stream;*<
+
+__unknown_file ( 
+
+%47java.util.stream.Stream*"
+
+__unknown_file (
+""2"map(Ljava/util/function/Function;)*
+5*√
+7e e(Æ´
+f f(
+%47java.util.stream.Stream"6java.util.Collection#stream()Ljava/util/stream/Stream;*=
+
+__unknown_file (!
+
+autoresjava.util.Collection2stream()*
+6*≤
+8d d(qùö
+d d(qE
+%46>org.springframework.web.servlet.mvc.support.RedirectAttributes"∂org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes**
+
+__unknown_file (
+
+tipoTitulo*5
+
+__unknown_file (
+
+%43java.lang.Object27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+7*v
+9dg d(pb
+`
+dg d(p
+%43java.lang.Object"__id*5
+
+__unknown_file (
+
+%45java.lang.String*
+8*—
+20[ [(©
+¶
+[ [(
+%28"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*%
+
+__unknown_file (	
+Error"
+[ [(	
+Error*Á
+21Z Z(\
+Z
+Z Z($
+%26ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""ÚÔ
+Z Z(-
+%27void"8ch.qos.logback.classic.Logger#error(Ljava/lang/String;)V*B
+
+__unknown_file (&
+$
+%26ch.qos.logback.classic.Logger*=
+
+__unknown_file (!
+Tipo de t√≠tulo no reconocido2error(Ljava/lang/String;)*
+20*ò
+22X X(M´
+®
+X X(M?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo"__id*U
+
+__unknown_file (9
+7
+%240es.uclm.GestiBiblioteca.business.entities.Tituloœ
+Ã
+Y Y(
+%25boolean"	__compare*"
+
+__unknown_file (
+==*]
+
+__unknown_file (A
+?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo*"
+
+__unknown_file (
+""*
+19
+21*¸
+23X X(#∏
+µ
+X X(#5
+%23.es.uclm.GestiBiblioteca.services.TituloService"__id*l
+
+__unknown_file (P*N;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+tituloService™ß
+X X(L7
+%240es.uclm.GestiBiblioteca.business.entities.Titulo" es.uclm.GestiBiblioteca.services.TituloService#guardarTitulo(Ljava/util/Collection;Ljava/lang/String;Les/uclm/GestiBiblioteca/business/entities/Titulo;)Les/uclm/GestiBiblioteca/business/entities/Titulo;*S
+
+__unknown_file (7
+5
+%23.es.uclm.GestiBiblioteca.services.TituloService*=
+
+__unknown_file (!
+
+autoresjava.util.Collection*<
+
+__unknown_file ( 
+
+
+tipoTitulojava.lang.String*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2iguardarTitulo(Ljava/util/Collection;Ljava/lang/String;Les/uclm/GestiBiblioteca/business/entities/Titulo;)*
+22:F
+F  F(>:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo:*
+G G(1
+
+tipoTitulojava.lang.String:2
+H H(K&
+autoresSeleccionadosjava.util.List:`
+I I((T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributesB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

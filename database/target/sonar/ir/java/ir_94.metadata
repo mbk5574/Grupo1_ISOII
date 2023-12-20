@@ -1,0 +1,6 @@
+es.uclm.GestiBiblioteca.business.controller.GestorTitulos#bajaEjemplar(Ljava/util/List;Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;)Ljava/lang/String;
+ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V
+==
+eliminarEjemplarConVerificaciones es.uclm.GestiBiblioteca.services.TituloService#eliminarEjemplarConVerificaciones(Ljava/lang/Long;)Z
+isEmpty java.util.List#isEmpty()Z
+addFlashAttribute org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;

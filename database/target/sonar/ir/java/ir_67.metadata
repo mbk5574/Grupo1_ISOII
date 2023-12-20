@@ -1,0 +1,6 @@
+es.uclm.GestiBiblioteca.services.PenalizacionService#comprobarPenalizacion(Les/uclm/GestiBiblioteca/business/entities/Usuario;)Z
+java.util.Date#<init>()V
+java.util.Date#instance-init#
+==
+after java.util.Date#after(Ljava/util/Date;)Z
+getFechaFinPenalizacion es.uclm.GestiBiblioteca.business.entities.Usuario#getFechaFinPenalizacion()Ljava/util/Date;

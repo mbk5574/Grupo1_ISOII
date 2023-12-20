@@ -1,0 +1,19 @@
+es.uclm.GestiBiblioteca.services.PrestamoService#realizarPrestamo(Les/uclm/GestiBiblioteca/business/entities/Prestamo;)V
+java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;
+java.lang.Exception#<init>(Ljava/lang/String;)V
+java.lang.Exception#instance-init#
+==
+isDisponible es.uclm.GestiBiblioteca.business.entities.Ejemplar#isDisponible()Z
+getId es.uclm.GestiBiblioteca.business.entities.Usuario#getId()Ljava/lang/Long;
+getUsuario es.uclm.GestiBiblioteca.business.entities.Prestamo#getUsuario()Les/uclm/GestiBiblioteca/business/entities/Usuario;
+setTitulo es.uclm.GestiBiblioteca.business.entities.Prestamo#setTitulo(Les/uclm/GestiBiblioteca/business/entities/Titulo;)V
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+getId es.uclm.GestiBiblioteca.business.entities.Ejemplar#getId()Ljava/lang/Long;
+setDisponible es.uclm.GestiBiblioteca.business.entities.Ejemplar#setDisponible(Z)V
+delete org.springframework.data.repository.CrudRepository#delete(Ljava/lang/Object;)V
+getTitulo es.uclm.GestiBiblioteca.business.entities.Ejemplar#getTitulo()Les/uclm/GestiBiblioteca/business/entities/Titulo;
+getEjemplar es.uclm.GestiBiblioteca.business.entities.Prestamo#getEjemplar()Les/uclm/GestiBiblioteca/business/entities/Ejemplar;
+puedePrestar es.uclm.GestiBiblioteca.services.PrestamoService#puedePrestar(Ljava/lang/Long;)Ljava/lang/String;
+findById org.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;
+setActivo es.uclm.GestiBiblioteca.business.entities.Prestamo#setActivo(Ljava/lang/Boolean;)V
+findByEjemplar es.uclm.GestiBiblioteca.persistence.ReservaDAO#findByEjemplar(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;)Ljava/util/List;

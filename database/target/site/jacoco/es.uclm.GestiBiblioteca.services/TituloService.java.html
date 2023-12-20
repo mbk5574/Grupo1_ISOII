@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TituloService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.services</a> &gt; <span class="el_source">TituloService.java</span></div><h1>TituloService.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.services;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import es.uclm.GestiBiblioteca.business.entities.*;
+import es.uclm.GestiBiblioteca.persistence.AutorDAO;
+import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
+import es.uclm.GestiBiblioteca.persistence.LibroDAO;
+import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
+import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
+import es.uclm.GestiBiblioteca.persistence.RevistaDAO;
+import es.uclm.GestiBiblioteca.persistence.TituloDAO;
+import jakarta.transaction.Transactional;
+
+@Service
+<span class="fc" id="L21">public class TituloService {</span>
+
+	@Autowired
+	private TituloDAO tituloDAO;
+
+	@Autowired
+	private AutorDAO autorDAO;
+
+	@Autowired
+	private LibroDAO libroDAO;
+
+	@Autowired
+	private RevistaDAO revistaDAO;
+	@Autowired
+	private EjemplarDAO ejemplarDAO;
+	@Autowired
+	private PrestamoDAO prestamoDAO;
+	@Autowired
+	private ReservaDAO reservaDAO;
+
+	
+	
+	public boolean eliminarTituloConVerificaciones(Long tituloId) {
+<span class="fc" id="L44">	    Optional&lt;Titulo&gt; tituloOpt = tituloDAO.findById(tituloId);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">	    if (tituloOpt.isPresent()) {</span>
+<span class="fc" id="L46">	        Titulo titulo = tituloOpt.get();</span>
+
+	        // Verificar si todos los ejemplares están disponibles para eliminación
+<span class="fc bfc" id="L49" title="All 2 branches covered.">	        for (Ejemplar ejemplar : titulo.getEjemplares()) {</span>
+<span class="fc" id="L50">	            boolean asociadoConPrestamoActivo = prestamoDAO.existsByEjemplarAndActivo(ejemplar, true);</span>
+<span class="fc" id="L51">	            boolean asociadoConReserva = reservaDAO.existsByEjemplar(ejemplar);</span>
+<span class="pc bpc" id="L52" title="1 of 4 branches missed.">	            if (asociadoConPrestamoActivo || asociadoConReserva) {</span>
+<span class="fc" id="L53">	                return false; // No eliminar si hay ejemplares activos</span>
+	            }
+	        }
+
+	        // Eliminar todos los ejemplares asociados al título
+<span class="fc bfc" id="L58" title="All 2 branches covered.">	        for (Ejemplar ejemplar : titulo.getEjemplares()) {</span>
+<span class="fc" id="L59">	            reservaDAO.deleteByEjemplar(ejemplar); // Eliminar reservas asociadas</span>
+<span class="fc" id="L60">	            prestamoDAO.deleteByEjemplarAndActivo(ejemplar, false); // Eliminar préstamos inactivos</span>
+<span class="fc" id="L61">	            ejemplarDAO.delete(ejemplar); // Eliminar el ejemplar</span>
+	        }
+
+	        // Eliminar referencias cruzadas en la relación many-to-many con autores
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">	        for (Autor autor : titulo.getAutores()) {</span>
+<span class="nc" id="L66">	            autor.getTitulos().remove(titulo);</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">	            if (autor.getTitulos().isEmpty()) {</span>
+<span class="nc" id="L68">	                autorDAO.delete(autor); // Eliminar el autor si ya no tiene títulos asociados</span>
+<span class="nc" id="L69">	            } else {</span>
+<span class="nc" id="L70">	                autorDAO.save(autor); // Actualizar el autor en la base de datos</span>
+	            }
+	        }
+<span class="fc" id="L73">	        titulo.setAutores(null); // Limpiar la lista de autores del título</span>
+
+	        // Eliminar el título
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">	        if (titulo instanceof Libro) {</span>
+<span class="nc" id="L77">	            libroDAO.delete((Libro) titulo);</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">	        } else if (titulo instanceof Revista) {</span>
+<span class="nc" id="L79">	            revistaDAO.delete((Revista) titulo);</span>
+<span class="nc" id="L80">	        } else {</span>
+<span class="fc" id="L81">	            tituloDAO.delete(titulo);</span>
+	        }
+
+<span class="fc" id="L84">	        return true;</span>
+	    }
+<span class="fc" id="L86">	    return false;</span>
+	}
+
+
+
+	
+	@Transactional
+	public boolean eliminarTituloYAutores(Titulo titulo) {
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		if (titulo == null)</span>
+<span class="fc" id="L95">			return false;</span>
+
+<span class="fc" id="L97">		Collection&lt;Autor&gt; autores = new HashSet&lt;&gt;(titulo.getAutores());</span>
+
+<span class="fc bfc" id="L99" title="All 2 branches covered.">		for (Autor autor : autores) {</span>
+<span class="fc" id="L100">			autor.getTitulos().remove(titulo);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">			if (autor.getTitulos().isEmpty()) {</span>
+<span class="fc" id="L102">				autorDAO.delete(autor);</span>
+<span class="fc" id="L103">			} else {</span>
+<span class="fc" id="L104">				autorDAO.save(autor);</span>
+			}
+		}
+<span class="fc" id="L107">		titulo.setAutores(null);</span>
+
+<span class="fc bfc" id="L109" title="All 2 branches covered.">		if (titulo instanceof Libro) {</span>
+<span class="fc" id="L110">			libroDAO.delete((Libro) titulo);</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">		} else if (titulo instanceof Revista) {</span>
+<span class="fc" id="L112">			revistaDAO.delete((Revista) titulo);</span>
+<span class="fc" id="L113">		} else {</span>
+<span class="fc" id="L114">			tituloDAO.delete(titulo);</span>
+		}
+
+<span class="fc" id="L117">		return true;</span>
+	}
+
+	@Transactional
+	public boolean eliminarEjemplarConVerificaciones(Long ejemplarId) {
+		
+<span class="fc" id="L123">		Optional&lt;Ejemplar&gt; ejemplarOpt = ejemplarDAO.findById(ejemplarId);</span>
+<span class="fc bfc" id="L124" title="All 4 branches covered.">		if (ejemplarOpt.isPresent() &amp;&amp; ejemplarOpt.get().isDisponible()) {</span>
+<span class="fc" id="L125">			Ejemplar ejemplar = ejemplarOpt.get();</span>
+
+<span class="fc" id="L127">			boolean asociadoConPrestamoActivo = prestamoDAO.existsByEjemplarAndActivo(ejemplar, true);</span>
+<span class="fc" id="L128">			boolean asociadoConReserva = reservaDAO.existsByEjemplar(ejemplar);</span>
+
+<span class="fc bfc" id="L130" title="All 4 branches covered.">			if (!asociadoConPrestamoActivo &amp;&amp; !asociadoConReserva) {</span>
+<span class="fc" id="L131">				reservaDAO.deleteByEjemplar(ejemplar);</span>
+<span class="fc" id="L132">				prestamoDAO.deleteByEjemplarAndActivo(ejemplar, false);</span>
+<span class="fc" id="L133">				ejemplarDAO.delete(ejemplar);</span>
+<span class="fc" id="L134">				return true;</span>
+			}
+		}
+<span class="fc" id="L137">		return false;</span>
+	}
+	
+	@Transactional
+	public  void obtenerAutores(String[]autoresNombres,Collection&lt;Autor&gt;autores){
+<span class="fc bfc" id="L142" title="All 2 branches covered.">		for (String nombreAutor : autoresNombres) {</span>
+<span class="fc" id="L143">			String nombre = nombreAutor.trim();</span>
+
+<span class="fc" id="L145">			Optional&lt;Autor&gt; autorOpt = autorDAO.findByNombre(nombre);</span>
+			Autor autor;
+
+<span class="fc bfc" id="L148" title="All 2 branches covered.">			if (autorOpt.isPresent()) {</span>
+
+<span class="fc" id="L150">				autor = autorOpt.get();</span>
+<span class="fc" id="L151">			} else {</span>
+
+<span class="fc" id="L153">				autor = new Autor(nombre, &quot;Apellido&quot;, null);</span>
+<span class="fc" id="L154">				autor = autorDAO.save(autor);</span>
+			}
+<span class="fc" id="L156">			autores.add(autor);</span>
+		}
+<span class="fc" id="L158">	}</span>
+	@Transactional
+	public  Titulo guardarTitulo(Collection&lt;Autor&gt; autores,String tipoTitulo, Titulo titulo) {
+		Titulo savedTitulo;
+<span class="fc bfc" id="L162" title="All 2 branches covered.">		if (&quot;libro&quot;.equalsIgnoreCase(tipoTitulo)) {</span>
+<span class="fc" id="L163">				Libro nuevoLibro = new Libro(titulo.getTitulo_obra(),titulo.getIsbn(),autores,titulo.getEjemplares(),titulo.getPrestamos(),titulo.getReservas());</span>
+<span class="fc" id="L164">				savedTitulo = libroDAO.save(nuevoLibro);</span>
+
+<span class="fc bfc" id="L166" title="All 2 branches covered.">			} else if (&quot;revista&quot;.equalsIgnoreCase(tipoTitulo)) {</span>
+<span class="fc" id="L167">				Revista nuevaRevista = new Revista(titulo.getTitulo_obra(),titulo.getIsbn(),autores,titulo.getEjemplares(),titulo.getPrestamos(),titulo.getReservas());</span>
+<span class="fc" id="L168">				savedTitulo = revistaDAO.save(nuevaRevista);</span>
+<span class="fc" id="L169">			} else {</span>
+				
+<span class="fc" id="L171">				return null;</span>
+
+			}
+<span class="fc" id="L174">		return savedTitulo;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

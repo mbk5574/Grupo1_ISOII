@@ -1,0 +1,340 @@
+
+Êes.uclm.GestiBiblioteca.services.TituloService#guardarTitulo(Ljava/util/Collection;Ljava/lang/String;Les/uclm/GestiBiblioteca/business/entities/Titulo;)Les/uclm/GestiBiblioteca/business/entities/Titulo;Ç
+º/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/services/TituloService.java   ("startingBlock*%
+2
+« «("
+
+« «(
+""*Ç
+3
+§' §(-éæ
+
+§' §(>
+%11java.lang.String"Ses.uclm.GestiBiblioteca.business.entities.Titulo#getTitulo_obra()Ljava/lang/String;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getTitulo_obra()ÛØ
+
+§? §(O
+%12java.lang.String"Les.uclm.GestiBiblioteca.business.entities.Titulo#getIsbn()Ljava/lang/String;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2	getIsbn()ïì
+
+§X §(n
+%13java.util.Collection"Ves.uclm.GestiBiblioteca.business.entities.Titulo#getEjemplares()Ljava/util/Collection;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getEjemplares()îë
+§o §(„
+%14java.util.Collection"Ues.uclm.GestiBiblioteca.business.entities.Titulo#getPrestamos()Ljava/util/Collection;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getPrestamos()íê
+§… §(™
+%15java.util.Collection"Tes.uclm.GestiBiblioteca.business.entities.Titulo#getReservas()Ljava/util/Collection;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getReservas(){y
+
+§ §(&8
+%161es.uclm.GestiBiblioteca.business.entities.Revista"1es.uclm.GestiBiblioteca.business.entities.Revista‡
+„
+§ §(š
+%17"·es.uclm.GestiBiblioteca.business.entities.Revista#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;)V*V
+
+__unknown_file (:
+8
+%161es.uclm.GestiBiblioteca.business.entities.Revista*5
+
+__unknown_file (
+
+%11java.lang.String*5
+
+__unknown_file (
+
+%12java.lang.String*=
+
+__unknown_file (!
+
+autoresjava.util.Collection*9
+
+__unknown_file (
+
+%13java.util.Collection*9
+
+__unknown_file (
+
+%14java.util.Collection*9
+
+__unknown_file (
+
+%15java.util.Collection±
+®
+§ §(›A
+nuevaRevista1es.uclm.GestiBiblioteca.business.entities.Revista"__id*V
+
+__unknown_file (:
+8
+%161es.uclm.GestiBiblioteca.business.entities.Revista¬
+©
+
+¨ ¨(5
+%18.es.uclm.GestiBiblioteca.persistence.RevistaDAO"__id*^
+
+__unknown_file (B*@0
+.es.uclm.GestiBiblioteca.services.TituloService"
+
+revistaDAOøõ
+
+¨ ¨(/8
+%191es.uclm.GestiBiblioteca.business.entities.Revista"]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;*S
+
+__unknown_file (7
+5
+%18.es.uclm.GestiBiblioteca.persistence.RevistaDAO*_
+
+__unknown_file (C
+A
+nuevaRevista1es.uclm.GestiBiblioteca.business.entities.Revista2save(Ljava/lang/Object;)®
+«
+
+¨ ¨(/?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo"__id*V
+
+__unknown_file (:
+8
+%191es.uclm.GestiBiblioteca.business.entities.Revista*
+1*õ
+startingBlock
+   (Y¤
+¡
+
+Ÿ Ÿ(
+%20"
+__annotate*A
+
+__unknown_file (%#
+!jakarta.transaction.Transactional*=
+
+__unknown_file (!
+
+autoresjava.util.Collectionb
+`
+
+ 0  (7
+autoresjava.util.Collection"__annotation*#
+
+__unknown_file (
+
+%20£
+ 
+
+Ÿ Ÿ(
+%21"
+__annotate*A
+
+__unknown_file (%#
+!jakarta.transaction.Transactional*<
+
+__unknown_file ( 
+
+
+tipoTitulojava.lang.Stringa
+_
+
+ ?  (I
+
+tipoTitulojava.lang.String"__annotation*#
+
+__unknown_file (
+
+%21¿
+¼
+
+Ÿ Ÿ(
+%22"
+__annotate*A
+
+__unknown_file (%#
+!jakarta.transaction.Transactional*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo}
+{
+
+ R  (X:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"__annotation*#
+
+__unknown_file (
+
+%22*
+6*þ
+4
+¦ ¦(äá
+
+¦ ¦(4
+%10boolean"6java.lang.String#equalsIgnoreCase(Ljava/lang/String;)Z*'
+
+__unknown_file (	
+revista*<
+
+__unknown_file ( 
+
+
+tipoTitulojava.lang.String2$equalsIgnoreCase(Ljava/lang/String;)*
+2
+3*—
+5
+£! £('èå
+
+£! £(8
+%1java.lang.String"Ses.uclm.GestiBiblioteca.business.entities.Titulo#getTitulo_obra()Ljava/lang/String;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getTitulo_obra()Ú×
+
+£9 £(I
+%2java.lang.String"Les.uclm.GestiBiblioteca.business.entities.Titulo#getIsbn()Ljava/lang/String;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2	getIsbn()îë
+
+£R £(h
+%3java.util.Collection"Ves.uclm.GestiBiblioteca.business.entities.Titulo#getEjemplares()Ljava/util/Collection;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getEjemplares()ìé
+
+£i £(~
+%4java.util.Collection"Ues.uclm.GestiBiblioteca.business.entities.Titulo#getPrestamos()Ljava/util/Collection;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getPrestamos()ëè
+£ £(“
+%5java.util.Collection"Tes.uclm.GestiBiblioteca.business.entities.Titulo#getReservas()Ljava/util/Collection;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getReservas()vt
+
+£ £( 5
+%6/es.uclm.GestiBiblioteca.business.entities.Libro"/es.uclm.GestiBiblioteca.business.entities.Libroü
+ù
+£ £(”
+%7"µes.uclm.GestiBiblioteca.business.entities.Libro#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;)V*S
+
+__unknown_file (7
+5
+%6/es.uclm.GestiBiblioteca.business.entities.Libro*4
+
+__unknown_file (
+
+%1java.lang.String*4
+
+__unknown_file (
+
+%2java.lang.String*=
+
+__unknown_file (!
+
+autoresjava.util.Collection*8
+
+__unknown_file (
+
+%3java.util.Collection*8
+
+__unknown_file (
+
+%4java.util.Collection*8
+
+__unknown_file (
+
+%5java.util.Collectionª
+§
+£ £(•=
+
+nuevoLibro/es.uclm.GestiBiblioteca.business.entities.Libro"__id*S
+
+__unknown_file (7
+5
+%6/es.uclm.GestiBiblioteca.business.entities.Libro§
+¤
+
+¤ ¤(2
+%8,es.uclm.GestiBiblioteca.persistence.LibroDAO"__id*\
+
+__unknown_file (@*>0
+.es.uclm.GestiBiblioteca.services.TituloService"
+
+libroDAOîë
+
+¤ ¤(+5
+%9/es.uclm.GestiBiblioteca.business.entities.Libro"]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;*P
+
+__unknown_file (4
+2
+%8,es.uclm.GestiBiblioteca.persistence.LibroDAO*[
+
+__unknown_file (?
+=
+
+nuevoLibro/es.uclm.GestiBiblioteca.business.entities.Libro2save(Ljava/lang/Object;)«
+¨
+
+¤ ¤(+?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo"__id*S
+
+__unknown_file (7
+5
+%9/es.uclm.GestiBiblioteca.business.entities.Libro*
+1*ö
+6
+¡ ¡(y
+w
+
+¡ ¡(?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo"__id*"
+
+__unknown_file (
+""áÞ
+
+¢ ¢(*
+%0boolean"6java.lang.String#equalsIgnoreCase(Ljava/lang/String;)Z*%
+
+__unknown_file (	
+libro*<
+
+__unknown_file ( 
+
+
+tipoTitulojava.lang.String2$equalsIgnoreCase(Ljava/lang/String;)*
+4
+5*`
+1
+®	 ®("O
+
+® ®(A
+?
+savedTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo:-
+
+   (8
+autoresjava.util.Collection:,
+
+ 8  (J
+
+tipoTitulojava.lang.String:H
+
+ K  (X:
+titulo0es.uclm.GestiBiblioteca.business.entities.TituloB20
+.es.uclm.GestiBiblioteca.services.TituloServiceH

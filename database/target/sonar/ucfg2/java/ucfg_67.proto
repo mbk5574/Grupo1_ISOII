@@ -1,0 +1,39 @@
+
+ƒes.uclm.GestiBiblioteca.business.controller.GestorTitulos#mostrarResultadoBorrado(Lorg/springframework/ui/Model;)Ljava/lang/String;Ò
+Å/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.javaÎ Î(&"startingBlock*j
+startingBlock
+Î& Î(3HF
+
+Î' Î(2%
+modelorg.springframework.ui.Model"java.util.HashMap*
+1*Í
+1
+Ï	 Ï( º
+·
+
+Ï	 Ï( 
+%0"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*5
+
+__unknown_file (
+resultadoBorrarTituloÕ
+Ò
+
+Ï	 Ï( 
+%1"template!resultadoBorrarTitulo*Y
+
+__unknown_file (=";
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model"'
+
+Ï Ï(!
+resultadoBorrarTitulo:3
+
+Î' Î(2%
+modelorg.springframework.ui.ModelB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

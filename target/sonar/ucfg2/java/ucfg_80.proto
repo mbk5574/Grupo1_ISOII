@@ -1,0 +1,15 @@
+
+Res.uclm.GestiBiblioteca.business.entities.Autor#getTitulos()Ljava/util/Collection;Æ
+»/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Autor.java- -(%"1*Ç
+1.	 .(
+Š
+.	 .(
+%0java.util.Collection"__id*\
+
+__unknown_file (@*>1
+/es.uclm.GestiBiblioteca.business.entities.Autor"	
+titulos"(
+. .(
+
+%0java.util.CollectionB31
+/es.uclm.GestiBiblioteca.business.entities.AutorH

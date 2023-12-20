@@ -1,0 +1,77 @@
+
+ƒes.uclm.GestiBiblioteca.business.controller.GestorTitulos#mostrarBajaEjemplarForm(Lorg/springframework/ui/Model;)Ljava/lang/String;Ò
+Å/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.javaô ô(&"startingBlock*j
+startingBlock
+ô& ô(3HF
+
+ô' ô(2%
+modelorg.springframework.ui.Model"java.util.HashMap*
+1*«	
+1
+õ# õ(.¸
+µ
+
+õ# õ(.5
+%0/es.uclm.GestiBiblioteca.persistence.EjemplarDAO"__id*j
+
+__unknown_file (N*L;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+ejemplarDAO×Ô
+
+õ# õ(8
+%1java.util.List"Porg.springframework.data.repository.ListCrudRepository#findAll()Ljava/util/List;*S
+
+__unknown_file (7
+5
+%0/es.uclm.GestiBiblioteca.persistence.EjemplarDAO2	findAll()k
+i
+
+õ õ(9!
+todosEjemplaresjava.util.List"__id*2
+
+__unknown_file (
+
+%1java.util.Listô
+ñ
+
+ö ö(8"
+%2org.springframework.ui.Model"__mapSet*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model*/
+
+__unknown_file (
+todosEjemplares*?
+
+__unknown_file (#
+!
+todosEjemplaresjava.util.List±
+®
+
+÷	 ÷(
+%3"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*,
+
+__unknown_file (
+bajaEjemplarÌ
+É
+
+÷	 ÷(
+%4"template!bajaEjemplar*Y
+
+__unknown_file (=";
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model"
+
+÷ ÷(
+bajaEjemplar:3
+
+ô' ô(2%
+modelorg.springframework.ui.ModelB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

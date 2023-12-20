@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<title>Formulario de Reserva</title>
+</head>
+
+<body>
+	<h1>Formulario de Reserva</h1>
+	<form action="#" th:action="@{/reservarEjemplar}" method="post">
+		<label for="ejemplar">Ejemplar:</label>
+		<select id="ejemplar" name="idEjemplar">
+			<option th:each="ejemplar : ${ejemplares}" th:value="${ejemplar.id}"
+				th:text="${ejemplar.titulo.titulo_obra + ' - ' + ejemplar.id}">Ejemplar</option>
+		</select>
+
+		<label for="usuario">Usuario:</label>
+		<select id="usuario" name="idUsuario">
+			<option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}">Usuario
+			</option>
+		</select>
+
+		<button type="submit">Reservar</button>
+	</form>
+</body>
+
+</html>
+
+

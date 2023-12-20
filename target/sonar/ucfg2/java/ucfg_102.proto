@@ -1,0 +1,180 @@
+
+aes.uclm.GestiBiblioteca.services.PrestamoService#puedePrestar(Ljava/lang/Long;)Ljava/lang/String;Ç
+¼/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/services/PrestamoService.java) )("startingBlock*ü
+24 4(O
+M
+4 4(
+%13org.slf4j.Logger"__id*"
+
+__unknown_file (
+""áÞ
+4 4(@
+%14void"*org.slf4j.Logger#info(Ljava/lang/String;)V*5
+
+__unknown_file (
+
+%13org.slf4j.Logger*H
+
+__unknown_file (,*
+(El usuario tiene penalizaciones activas.2info(Ljava/lang/String;)"8
+5 5(>,*
+(El usuario tiene penalizaciones activas.*„
+33 3(»
+¸
+3 3(;
+%114es.uclm.GestiBiblioteca.services.PenalizacionService"__id*i
+
+__unknown_file (M*K2
+0es.uclm.GestiBiblioteca.services.PrestamoService"
+penalizacionService®«
+3 3(I
+%12boolean"€es.uclm.GestiBiblioteca.services.PenalizacionService#comprobarPenalizacion(Les/uclm/GestiBiblioteca/business/entities/Usuario;)Z*Y
+
+__unknown_file (=
+;
+%114es.uclm.GestiBiblioteca.services.PenalizacionService*e
+
+__unknown_file (I
+G
+usuarioActualizado1es.uclm.GestiBiblioteca.business.entities.Usuario2JcomprobarPenalizacion(Les/uclm/GestiBiblioteca/business/entities/Usuario;)*
+2
+1*´
+startingBlock) )(.µ
+²
+( ((#
+%15"
+__annotate*X
+
+__unknown_file (<:
+8org.springframework.transaction.annotation.Transactional*9
+
+__unknown_file (
+
+	usuarioIdjava.lang.Long\
+Z
+)$ )(-
+	usuarioIdjava.lang.Long"__annotation*#
+
+__unknown_file (
+
+%15*
+6*¢
+4/ /(N
+L
+/ /(
+%9org.slf4j.Logger"__id*"
+
+__unknown_file (
+""ôñ
+/ /(R
+%10void"*org.slf4j.Logger#info(Ljava/lang/String;)V*4
+
+__unknown_file (
+
+%9org.slf4j.Logger*\
+
+__unknown_file (@>
+<El usuario ha alcanzado el lÃ­mite de prÃ©stamos permitidos.2info(Ljava/lang/String;)"L
+0 0(P@>
+<El usuario ha alcanzado el lÃ­mite de prÃ©stamos permitidos.*ó
+5.9 .(OA
+?
+.S .(c	
+%7int"__id*"
+
+__unknown_file (
+""˜
+•
+.9 .(c
+%8boolean"	__compare*"
+
+__unknown_file (
+>=*"
+
+__unknown_file (
+""*'
+
+__unknown_file (
+	
+%7int*
+3
+4*Ì
+6+% +(/«
+¨
++% +(/4
+%0.es.uclm.GestiBiblioteca.persistence.UsuarioDAO"__id*`
+
+__unknown_file (D*B2
+0es.uclm.GestiBiblioteca.services.PrestamoService"
+
+usuarioDAO¹¶
++% +(C
+%1java.util.Optional"corg.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;*R
+
+__unknown_file (6
+4
+%0.es.uclm.GestiBiblioteca.persistence.UsuarioDAO*9
+
+__unknown_file (
+
+	usuarioIdjava.lang.Long2findById(Ljava/lang/Object;)ÿü
++% +(P7
+%21es.uclm.GestiBiblioteca.business.entities.Usuario"?java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;*6
+
+__unknown_file (
+
+%1java.util.Optional*"
+
+__unknown_file (
+""2orElse(Ljava/lang/Object;)³
+°
++ +(QG
+usuarioActualizado1es.uclm.GestiBiblioteca.business.entities.Usuario"__id*U
+
+__unknown_file (9
+7
+%21es.uclm.GestiBiblioteca.business.entities.Usuario­
+ª
+,% ,(05
+%3/es.uclm.GestiBiblioteca.persistence.PrestamoDAO"__id*a
+
+__unknown_file (E*C2
+0es.uclm.GestiBiblioteca.services.PrestamoService"
+prestamoDAO»¸
+,% ,(Y	
+%4int"`es.uclm.GestiBiblioteca.persistence.PrestamoDAO#countByUsuarioIdAndActivoTrue(Ljava/lang/Long;)I*S
+
+__unknown_file (7
+5
+%3/es.uclm.GestiBiblioteca.persistence.PrestamoDAO*9
+
+__unknown_file (
+
+	usuarioIdjava.lang.Long2/countByUsuarioIdAndActivoTrue(Ljava/lang/Long;)øõ
+. .(-
+%5java.util.Collection"Ves.uclm.GestiBiblioteca.business.entities.Usuario#getPrestamos()Ljava/util/Collection;*e
+
+__unknown_file (I
+G
+usuarioActualizado1es.uclm.GestiBiblioteca.business.entities.Usuario2getPrestamos()©
+¦
+. .(5
+%6boolean"	__compare*"
+
+__unknown_file (
+!=*8
+
+__unknown_file (
+
+%5java.util.Collection*"
+
+__unknown_file (
+""*
+3
+5*!
+18 8("
+8 8(
+"":'
+) )(-
+	usuarioIdjava.lang.LongB42
+0es.uclm.GestiBiblioteca.services.PrestamoServiceH

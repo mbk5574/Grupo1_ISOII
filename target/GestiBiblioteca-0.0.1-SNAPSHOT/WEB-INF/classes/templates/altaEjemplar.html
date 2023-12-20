@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- Formulario para dar de alta 1 ejemplar -->
+<form action="#" th:action="@{/altaEjemplar}" th:object="${altaEjemplar}" method="post">
+<p>Seleccione el id del Título para el ejemplar a dar de alta:
+	<select name="id">
+    <option value="" disabled selected>Seleccione un título</option>
+    <option th:each="titulo : ${todosTitulos}" 
+            th:value="${titulo.id}" 
+            th:text="${titulo.id + ' - ' + titulo.titulo_obra}"  >Título
+    </option>
+</select>
+</p>
+<p>
+	<input type="submit" value="Alta Ejemplar"  />
+</p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+
+Ses.uclm.GestiBiblioteca.business.entities.Prestamo#getFechaInicio()Ljava/util/Date;É
+¾/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Prestamo.javaQ Q("1*Â
+1R	 R(Ž
+‹
+R	 R(
+%0java.util.Date"__id*c
+
+__unknown_file (G*E4
+2es.uclm.GestiBiblioteca.business.entities.Prestamo"
+fechaInicio""
+R R(
+
+%0java.util.DateB64
+2es.uclm.GestiBiblioteca.business.entities.PrestamoH

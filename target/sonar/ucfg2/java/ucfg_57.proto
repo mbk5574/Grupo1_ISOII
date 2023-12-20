@@ -1,0 +1,130 @@
+
+zes.uclm.GestiBiblioteca.business.controller.GestorTitulos#altaTituloForm(Lorg/springframework/ui/Model;)Ljava/lang/String;Ð
+Å/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.java9 9("startingBlock*f
+startingBlock9 9(*FD
+9 9()%
+modelorg.springframework.ui.Model"java.util.HashMap*
+1*ÿ
+1: :(vt
+:# :()6
+%00es.uclm.GestiBiblioteca.business.entities.Titulo"0es.uclm.GestiBiblioteca.business.entities.Titulo¥
+¢
+: :(+
+%1":es.uclm.GestiBiblioteca.business.entities.Titulo#<init>()V*T
+
+__unknown_file (8
+6
+%00es.uclm.GestiBiblioteca.business.entities.Tituloþ
+û
+: :(,"
+%2org.springframework.ui.Model"__mapSet*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model*&
+
+__unknown_file (
+
+titulo*T
+
+__unknown_file (8
+6
+%00es.uclm.GestiBiblioteca.business.entities.Titulo[
+Y
+; ;(#
+%3ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""²
+¯
+; ;(3
+%4-es.uclm.GestiBiblioteca.persistence.TituloDAO"__id*h
+
+__unknown_file (L*J;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+	tituloDAOÓÐ
+; ;(
+%5java.util.List"Porg.springframework.data.repository.ListCrudRepository#findAll()Ljava/util/List;*Q
+
+__unknown_file (5
+3
+%4-es.uclm.GestiBiblioteca.persistence.TituloDAO2	findAll()”‘
+; ;()
+%6java.lang.String"-java.lang.Object#toString()Ljava/lang/String;*2
+
+__unknown_file (
+
+%5java.util.List2
+toString()åâ
+; ;(*
+
+%7void"7ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V*A
+
+__unknown_file (%
+#
+%3ch.qos.logback.classic.Logger*4
+
+__unknown_file (
+
+%6java.lang.String2info(Ljava/lang/String;)°
+­
+< <( 2
+%8,es.uclm.GestiBiblioteca.persistence.AutorDAO"__id*g
+
+__unknown_file (K*I;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+
+autorDAOÒÏ
+< <(*
+%9java.util.List"Porg.springframework.data.repository.ListCrudRepository#findAll()Ljava/util/List;*P
+
+__unknown_file (4
+2
+%8,es.uclm.GestiBiblioteca.persistence.AutorDAO2	findAll()a
+_
+< <(+
+autoresjava.util.List"__id*2
+
+__unknown_file (
+
+%9java.util.Listã
+à
+= =((#
+%10org.springframework.ui.Model"__mapSet*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model*'
+
+__unknown_file (	
+autores*7
+
+__unknown_file (
+
+autoresjava.util.List®
+«
+>	 >(
+%11"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""**
+
+__unknown_file (
+
+altaTituloÉ
+Æ
+>	 >(
+%12"template!altaTitulo*Y
+
+__unknown_file (=";
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model"
+> >(
+
+altaTitulo:1
+9 9()%
+modelorg.springframework.ui.ModelB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

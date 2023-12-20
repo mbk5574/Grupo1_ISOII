@@ -1,0 +1,97 @@
+
+Nes.uclm.GestiBiblioteca.business.entities.Reserva#toString()Ljava/lang/String;È
+½/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Reserva.javaZ Z("1*ø
+1[	 [(¬
+©
+[ [(&7
+%01es.uclm.GestiBiblioteca.business.entities.Usuario"__id*^
+
+__unknown_file (B*@3
+1es.uclm.GestiBiblioteca.business.entities.Reserva"	
+usuario™
+–
+[	 [(&
+%1java.lang.String"__concat*!
+[	 [(
+Reserva [usuario=*E
+[ [(&9
+7
+%01es.uclm.GestiBiblioteca.business.entities.Usuarioo
+m
+[	 [(4
+%2java.lang.String"__concat*$
+[	 [(&
+
+%1java.lang.String*
+[) [(4
+	, titulo=ª
+§
+[7 [(=6
+%30es.uclm.GestiBiblioteca.business.entities.Titulo"__id*]
+
+__unknown_file (A*?3
+1es.uclm.GestiBiblioteca.business.entities.Reserva"
+titulo›
+˜
+[	 [(=
+%4java.lang.String"__concat*$
+[	 [(4
+
+%2java.lang.String*D
+[7 [(=8
+6
+%30es.uclm.GestiBiblioteca.business.entities.Titulon
+l
+[	 [(J
+%5java.lang.String"__concat*$
+[	 [(=
+
+%4java.lang.String*
+[@ [(J
+
+, fecha=‡
+„
+[M [(R
+%6java.util.Date"__id*\
+
+__unknown_file (@*>3
+1es.uclm.GestiBiblioteca.business.entities.Reserva"
+fechax
+v
+[	 [(R
+%7java.lang.String"__concat*$
+[	 [(J
+
+%5java.lang.String*"
+[M [(R
+
+%6java.util.Dates
+q
+[	 [(d
+%8java.lang.String"__concat*$
+[	 [(R
+
+%7java.lang.String*
+[U [(d
+, id_reserva=h
+f
+[	 [(q
+%9java.lang.String"__concat*$
+[	 [(d
+
+%8java.lang.String*
+[g [(q
+""h
+f
+[	 \(	
+%10java.lang.String"__concat*$
+[	 [(q
+
+%9java.lang.String*
+\ \(	
+]"%
+[ \(
+
+
+%10java.lang.StringB53
+1es.uclm.GestiBiblioteca.business.entities.ReservaH

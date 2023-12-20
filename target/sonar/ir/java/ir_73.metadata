@@ -1,0 +1,5 @@
+es.uclm.GestiBiblioteca.business.controller.GestorUsuarios#mostrarFormularioRegistroUsuario(Lorg/springframework/ui/Model;)Ljava/lang/String;
+es.uclm.GestiBiblioteca.business.entities.Usuario#instance-init#
+es.uclm.GestiBiblioteca.business.entities.Usuario#<init>()V
+==
+addAttribute org.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;

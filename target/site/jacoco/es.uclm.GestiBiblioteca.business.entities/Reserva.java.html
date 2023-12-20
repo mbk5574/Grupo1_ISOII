@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reserva.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.business.entities</a> &gt; <span class="el_source">Reserva.java</span></div><h1>Reserva.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.business.entities;
+
+import java.util.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+
+
+@Entity
+public class Reserva {
+
+	@ManyToOne
+	@JoinColumn(name = &quot;usuario_id&quot;, referencedColumnName = &quot;id&quot;)
+	Usuario usuario;
+	
+	@ManyToOne
+    @JoinColumn(name = &quot;ejemplar_id&quot;)
+    private Ejemplar ejemplar;
+
+	@ManyToOne
+	@JoinColumn(name = &quot;titulo_id&quot;)
+	private Titulo titulo;
+
+	@Column
+	private Date fecha;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id_reserva;
+
+<span class="nc" id="L36">	public Reserva() {</span>
+
+<span class="nc" id="L38">	}</span>
+
+	public Reserva(Usuario usuario, Ejemplar ejemplar, Titulo titulo, Date fecha) {
+<span class="fc" id="L41">		super();</span>
+<span class="fc" id="L42">		this.fecha = fecha;</span>
+<span class="fc" id="L43">		this.usuario = usuario;</span>
+<span class="fc" id="L44">		this.ejemplar = ejemplar;</span>
+<span class="fc" id="L45">		this.titulo = titulo;</span>
+<span class="fc" id="L46">	}</span>
+
+	public Usuario getUsuario() {
+<span class="nc" id="L49">		return usuario;</span>
+	}
+
+	public void setUsuario(Usuario usuario) {
+<span class="nc" id="L53">		this.usuario = usuario;</span>
+<span class="nc" id="L54">	}</span>
+
+	public Titulo getTitulo() {
+<span class="nc" id="L57">		return titulo;</span>
+	}
+
+	public void setTitulo(Titulo titulo) {
+<span class="nc" id="L61">		this.titulo = titulo;</span>
+<span class="nc" id="L62">	}</span>
+
+	public Date getFecha() {
+<span class="nc" id="L65">		return fecha;</span>
+	}
+
+	public void setFecha(Date fecha) {
+<span class="nc" id="L69">		this.fecha = fecha;</span>
+<span class="nc" id="L70">	}</span>
+
+	public int getId_reserva() {
+<span class="nc" id="L73">		return id_reserva;</span>
+	}
+
+	public void setId_reserva(int id_reserva) {
+<span class="nc" id="L77">		this.id_reserva = id_reserva;</span>
+<span class="nc" id="L78">	}</span>
+	
+
+	public Ejemplar getEjemplar() {
+<span class="nc" id="L82">		return ejemplar;</span>
+	}
+
+	public void setEjemplar(Ejemplar ejemplar) {
+<span class="nc" id="L86">		this.ejemplar = ejemplar;</span>
+<span class="nc" id="L87">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L91">		return &quot;Reserva [usuario=&quot; + usuario + &quot;, titulo=&quot; + titulo + &quot;, fecha=&quot; + fecha + &quot;, id_reserva=&quot; + id_reserva</span>
+				+ &quot;]&quot;;
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,8 @@
+es.uclm.GestiBiblioteca.services.PrestamoService#puedePrestar(Ljava/lang/Long;)Ljava/lang/String;
+java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;
+==
+comprobarPenalizacion es.uclm.GestiBiblioteca.services.PenalizacionService#comprobarPenalizacion(Les/uclm/GestiBiblioteca/business/entities/Usuario;)Z
+info org.slf4j.Logger#info(Ljava/lang/String;)V
+findById org.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;
+countByUsuarioIdAndActivoTrue es.uclm.GestiBiblioteca.persistence.PrestamoDAO#countByUsuarioIdAndActivoTrue(Ljava/lang/Long;)I
+getPrestamos es.uclm.GestiBiblioteca.business.entities.Usuario#getPrestamos()Ljava/util/Collection;

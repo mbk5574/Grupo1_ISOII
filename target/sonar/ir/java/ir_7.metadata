@@ -1,0 +1,10 @@
+es.uclm.GestiBiblioteca.services.TituloService#obtenerAutores([Ljava/lang/String;Ljava/util/Collection;)V
+java.util.Optional#isPresent()Z
+es.uclm.GestiBiblioteca.business.entities.Autor#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;)V
+es.uclm.GestiBiblioteca.business.entities.Autor#instance-init#
+java.util.Optional#get()Ljava/lang/Object;
+java.lang.String#trim()Ljava/lang/String;
+==
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+add java.util.Collection#add(Ljava/lang/Object;)Z
+findByNombre es.uclm.GestiBiblioteca.persistence.AutorDAO#findByNombre(Ljava/lang/String;)Ljava/util/Optional;

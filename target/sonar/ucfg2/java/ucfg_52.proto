@@ -1,0 +1,55 @@
+
+çes.uclm.GestiBiblioteca.business.controller.GestorUsuarios#mostrarFormularioRegistroUsuario(Lorg/springframework/ui/Model;)Ljava/lang/String;—
+∆/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorUsuarios.java (/"startingBlock*f
+startingBlock/ (<FD
+0 (;%
+modelorg.springframework.ui.Model"java.util.HashMap*
+1*‡
+1 (xv
+) (07
+%01es.uclm.GestiBiblioteca.business.entities.Usuario"1es.uclm.GestiBiblioteca.business.entities.Usuarioß
+§
+% (2
+%1";es.uclm.GestiBiblioteca.business.entities.Usuario#<init>()V*U
+
+__unknown_file (9
+7
+%01es.uclm.GestiBiblioteca.business.entities.UsuarioÖ
+Ç
+ (3"
+%2org.springframework.ui.Model"__mapSet*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model*,
+
+__unknown_file (
+nuevoUsuario*U
+
+__unknown_file (9
+7
+%01es.uclm.GestiBiblioteca.business.entities.Usuario≤
+Ø
+	 (
+%3"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*/
+
+__unknown_file (
+registroUsuarioŒ
+À
+	 (
+%4"template!registroUsuario*Z
+
+__unknown_file (>"<
+:es.uclm.GestiBiblioteca.business.controller.GestorUsuarios*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model"
+ (
+registroUsuario:1
+0 (;%
+modelorg.springframework.ui.ModelB><
+:es.uclm.GestiBiblioteca.business.controller.GestorUsuariosH
