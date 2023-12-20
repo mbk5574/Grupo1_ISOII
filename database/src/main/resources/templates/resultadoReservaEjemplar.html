@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Resultado de la Reserva</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .success-message {
+            color: green;
+        }
+
+        .error-message {
+            color: red;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div th:if="${mensajeExito}" class="success-message">
+        <h2 th:text="${mensajeExito}"></h2>
+    </div>
+    <div th:if="${mensajeError}" class="error-message">
+        <h2 th:text="${mensajeError}"></h2>
+    </div>
+
+    <a href="/formularioReserva">Volver al formulario de reserva</a><br>
+    <a href="/admin">Volver a inicio</a>
+
+</body>
+</html>
