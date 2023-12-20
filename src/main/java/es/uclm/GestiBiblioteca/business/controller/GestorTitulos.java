@@ -180,7 +180,7 @@ public class GestorTitulos {
 	@PostMapping("/borrarTitulo")
 	public String borrarTitulo(@RequestParam("isbn") String isbn, RedirectAttributes redirectAttributes) {
 	    List<Titulo> titulosABorrar = tituloDAO.findByIsbn(isbn);
-
+		
 	    if (!titulosABorrar.isEmpty()) {
 	        for (Titulo titulo : titulosABorrar) {
 	            // Utiliza el método modificado para verificar y eliminar el título
