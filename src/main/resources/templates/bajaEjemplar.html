@@ -1,26 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Dar de baja a un ejemplar</title>
+    <meta charset="UTF-8">
+    <title>Dar de baja a un ejemplar</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #5D6D7E;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4A5A6E;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h2>Baja de Ejemplar</h2>
+        <form action="#" th:action="@{/bajaEjemplar}" th:object="${bajaEjemplar}" method="post">
+            <label for="idsEjemplares">Seleccione el ID del Título para el ejemplar a dar de baja:</label>
+            <select name="idsEjemplares" required>
+                <option value="" disabled selected>Seleccione un título</option>
+               <option th:each="ejemplar : ${todosEjemplares}" 
+                    th:value="${ejemplar.id}" 
+                    th:text="${ejemplar.id + ' - ' + ejemplar.titulo.titulo_obra}">Título
+            </option>
+            </select>
 
-<!-- Formulario para dar de alta 1 ejemplar -->
-<form action="#" th:action="@{/bajaEjemplar}" th:object="${bajaEjemplar}" method="post">
-<p>Seleccione el id del Título para el ejemplar a dar de baja:
-	<select name="idsEjemplares">
-    <option value="" disabled selected>seleccione un título</option>
-    <option th:each="ejemplar : ${todosEjemplares}" 
-            th:value="${ejemplar.id}" 
-            th:text="${ejemplar.id + ' - ' + ejemplar.titulo.titulo_obra}">Título
-    </option>
-</select>
-</p>
-<p>
-	<input type="submit" value="Baja Ejemplar" />
-</p>
-</form>
-
+            <div class="button-container">
+                <input type="submit" value="Baja Ejemplar" />
+                <a href="/admin" class="back-button">Volver a Admin</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
+

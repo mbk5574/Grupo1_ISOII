@@ -3,17 +3,94 @@
 <head>
     <title>Actualizar un Título</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+       
+    </style>
 </head>
 <body>
-    <h1>Formulario de Actualización de Título</h1>
-    <!-- Este formulario debería mostrarse solo después de haber seleccionado un título válido que lo hacemos en el de seleccionarID-->
     <form action="#" th:action="@{/actualizarTitulo}" th:object="${actualizarTitulo}" method="post">
+        <h1>Formulario de Actualización de Título</h1>
         <input type="hidden" th:field="*{id}" />  <!-- Campo oculto para el ID -->
         <p>ISBN: <input type="text" th:field="*{isbn}" /></p>
-        <p>Titulo: <input type="text" th:field="*{titulo_obra}" /></p>
+        <p>Título: <input type="text" th:field="*{titulo_obra}" /></p>
         <p>
-            <input type="submit" value="Actualizar" /> <input type="reset" value="Reset" />
+            <input type="submit" value="Actualizar" /> 
+            <a href="/admin" class="back-button">Volver a Admin</a>
+
         </p>
     </form>
 </body>
 </html>
+

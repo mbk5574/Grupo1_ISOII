@@ -3,12 +3,92 @@
 <head>
     <title>Borrar un Título</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="submit"] {
+            background-color: #5D6D7E;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4A5A6E;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Formulario de Borrado de Título</h1>
-    <form action="#" th:action="@{/borrarTitulo}" th:object="${borrarTitulo}" method="post">
-        <p>ISBN a borrar: <input type="text" name="isbn" /></p>
-        <input type="submit" value="Borrar Título" />
-    </form>
+    <div class="container">
+        <h2>Borrar Título</h2>
+        <form action="#" th:action="@{/borrarTitulo}" th:object="${borrarTitulo}" method="post">
+            <label for="isbn">ISBN a borrar:</label>
+            <input type="text" name="isbn" />
+
+            <div class="button-container">
+                <input type="submit" value="Borrar Título" />
+                <a href="/admin" class="back-button">Volver a Admin</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
+

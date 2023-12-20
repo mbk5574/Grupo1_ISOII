@@ -3,15 +3,55 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Resultado de Préstamo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            margin: 10px 0 20px;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        .success-message {
+            color: green;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
-<div th:if="${prestamoRealizado}">
+<div th:if="${prestamoRealizado}" class="success-message">
     <h1>Préstamo realizado con éxito</h1>
     <p th:text="${mensaje}"></p>
 </div>
 
-<div th:if="${!prestamoRealizado}">
+<div th:if="${!prestamoRealizado}" class="error-message">
     <h1>Error en el préstamo</h1>
     <p th:text="${mensajeError} ?: 'Ocurrió un error al realizar el préstamo.'"></p>
 </div>
@@ -21,4 +61,5 @@
 
 </body>
 </html>
+
 

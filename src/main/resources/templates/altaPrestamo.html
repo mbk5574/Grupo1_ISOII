@@ -3,11 +3,52 @@
 <head>
 <title>Getting Started: Handling Form Submission</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+
+    form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: auto;
+    }
+
+    select, input[type=date], input[type=submit] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    .no-users-message {
+        color: red;
+        text-align: center;
+    }
+</style>
 </head>
 <body>
 	
 <!-- Mensaje si no hay usuarios disponibles -->
-<div th:if="${#lists.isEmpty(usuarios)}">
+<div class="no-users-message" th:if="${#lists.isEmpty(usuarios)}">
     No hay usuarios disponibles.
 </div>
 
@@ -38,9 +79,8 @@
     </p>
     
     <p>Fecha de fin:
-        <input type="date" name="fechaFin"/>
+        <input type="date" name="fechaFin"  required/>
     </p>
-    
     
     <p>
         <input type="submit" value="Realizar Préstamo" />

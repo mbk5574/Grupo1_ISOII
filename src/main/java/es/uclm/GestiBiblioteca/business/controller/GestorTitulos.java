@@ -189,7 +189,7 @@ public class GestorTitulos {
 	                redirectAttributes.addFlashAttribute("mensajeExito", "Título con ISBN " + isbn + " borrado exitosamente");
 	            } else {
 	                // Este mensaje se muestra si el título no pudo ser eliminado debido a ejemplares activos
-					redirectAttributes.addFlashAttribute("mensajeError", "El título con ISBN " + isbn + " no puede ser borrado debido a ejemplares activos o reservados");
+	                redirectAttributes.addFlashAttribute("mensajeError", "El título con ISBN " + isbn + " no puede ser borrado debido a ejemplares activos o reservados");
 	                break; 
 	            }
 	        }
@@ -251,6 +251,11 @@ public class GestorTitulos {
 	@PostMapping("/bajaEjemplar")
 	public String bajaEjemplar(@RequestParam("idsEjemplares") List<Long> idsEjemplares, RedirectAttributes redirectAttributes) {
 	    boolean exito = true;
+		if(idsEjemplares.isEmpty())
+		{
+			redirectAttributes.addFlashAttribute("error", "No se seleccionó ningún ejemplar.");
+			return "redirect:/resultadoBajaEjemplar";
+		}	
 	    for (Long id : idsEjemplares) {
 	        boolean resultado = tituloService.eliminarEjemplarConVerificaciones(id);
 	        if (!resultado) {

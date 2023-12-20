@@ -1,115 +1,158 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Dar de Alta un Título</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style>
-        /* Estilo adicional para ajustar el tamaño de las listboxes */
-        #autoresDisponibles, #autoresSeleccionados {
-            width: 200px; /* Puedes ajustar este valor según tus necesidades */
-            height: 150px; /* Puedes ajustar este valor según tus necesidades */
+	<title>Dar de Alta un Título</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	 <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
         }
-        /* Alinea las listboxes una al lado de la otra */
-        p[name="listboxes"] {
-            display: inline-block;
-            margin-right: 20px; /* Ajusta el margen entre las listboxes según tus necesidades */
-            label-align: top; /* Alinea el texto a la izquierda */
-            vertical-align: top; /* Alinea los elementos superiormente */
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
         }
-        /* Estilo para alinear los botones en línea */
-        p[name="botones"] {
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input[type=text], select, button {
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=text], select {
+            width: calc(100% - 16px);
+        }
+
+        button, input[type=submit], input[type=reset] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover, input[type=submit]:hover, input[type=reset]:hover {
+            background-color: #45a049;
+        }
+
+        .listbox-container, .buttons-container {
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .listbox-container {
             display: inline-block;
-            margin-right: 20px; /* Ajusta el margen entre los botones según tus necesidades */
-            label-align: top; /* Alinea el texto a la izquierda */
-            vertical-align: top; /* Alinea los elementos superiormente */
+            vertical-align: top;
+            width: 200px;
+        }
+
+        .buttons-container {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 20px;
+        }
+
+        .listbox-container select {
+            width: 100%;
+            height: 160px;
         }
     </style>
-    <script>
-        function actualizarCampoOculto() {
-            var autoresSeleccionados = document.getElementById('autoresSeleccionados');
-            var campoOculto = document.getElementById('autoresSeleccionadosHidden');
-            
-            var nombresAutores = Array.from(autoresSeleccionados.options)
-                .map(option => option.value);
-        
-            campoOculto.value = nombresAutores.join(',');
-        }
-        
-        function agregarAutor() {
-            var autoresSeleccionados = document.getElementById('autoresSeleccionados');
-            var autoresDisponibles = document.getElementById('autoresDisponibles');
-        
-            var selectedOptions = Array.from(autoresDisponibles.options)
-                .filter(option => option.selected);
-        
-            selectedOptions.forEach(option => {
-                autoresSeleccionados.add(new Option(option.text, option.value));
-                option.remove();
-            });
-        
-            actualizarCampoOculto();
-        }
-        
-        function quitarAutor() {
-            var autoresSeleccionados = document.getElementById('autoresSeleccionados');
-            var autoresDisponibles = document.getElementById('autoresDisponibles');
-        
-            var selectedOptions = Array.from(autoresSeleccionados.options)
-                .filter(option => option.selected);
-        
-            selectedOptions.forEach(option => {
-                autoresDisponibles.add(new Option(option.text, option.value));
-                option.remove();
-            });
-        
-            actualizarCampoOculto();
-        }
-        
-        function agregarAutorPersonalizado() {
-            var autorPersonalizado = document.getElementById('autorPersonalizado').value;
-            var autoresSeleccionados = document.getElementById('autoresSeleccionados');
-            var autoresDisponibles = document.getElementById('autoresDisponibles');
+	<script>
+		function actualizarCampoOculto() {
+			var autoresSeleccionados = document.getElementById('autoresSeleccionados');
+			var campoOculto = document.getElementById('autoresSeleccionadosHidden');
 
-            // Agregar el autor personalizado a los seleccionados
-            autoresSeleccionados.add(new Option(autorPersonalizado, autorPersonalizado));
+			var nombresAutores = Array.from(autoresSeleccionados.options)
+				.map(option => option.value);
 
-            // Remover el autor personalizado de los disponibles (si existe)
-            Array.from(autoresDisponibles.options).forEach(option => {
-                if (option.value === autorPersonalizado) {
-                    option.remove();
-                }
-            });
+			campoOculto.value = nombresAutores.join(',');
+		}
 
-            // Actualizar el campo oculto
-            actualizarCampoOculto();
-        }
-    </script>
+		function agregarAutor() {
+			var autoresSeleccionados = document.getElementById('autoresSeleccionados');
+			var autoresDisponibles = document.getElementById('autoresDisponibles');
+
+			var selectedOptions = Array.from(autoresDisponibles.options)
+				.filter(option => option.selected);
+
+			selectedOptions.forEach(option => {
+				autoresSeleccionados.add(new Option(option.text, option.value));
+				option.remove();
+			});
+
+			actualizarCampoOculto();
+		}
+
+		function quitarAutor() {
+			var autoresSeleccionados = document.getElementById('autoresSeleccionados');
+			var autoresDisponibles = document.getElementById('autoresDisponibles');
+
+			var selectedOptions = Array.from(autoresSeleccionados.options)
+				.filter(option => option.selected);
+
+			selectedOptions.forEach(option => {
+				autoresDisponibles.add(new Option(option.text, option.value));
+				option.remove();
+			});
+
+			actualizarCampoOculto();
+		}
+
+		function agregarAutorPersonalizado() {
+			var autorPersonalizado = document.getElementById('autorPersonalizado').value;
+			var autoresSeleccionados = document.getElementById('autoresSeleccionados');
+			var autoresDisponibles = document.getElementById('autoresDisponibles');
+
+			autoresSeleccionados.add(new Option(autorPersonalizado, autorPersonalizado));
+
+			Array.from(autoresDisponibles.options).forEach(option => {
+				if (option.value === autorPersonalizado) {
+					option.remove();
+				}
+			});
+
+			actualizarCampoOculto();
+		}
+	</script>
 </head>
+
 <body>
     <h1>Formulario de Alta de Título</h1>
     <form action="#" th:action="@{/altaTitulo}" th:object="${titulo}" method="post">
-        <!-- Asegúrate de que el nombre de los campos coincida con los de tu clase 'Titulo' -->
         <p>ISBN: <input type="text" th:field="*{isbn}" /></p>
-        <p>Titulo: <input type="text" th:field="*{titulo_obra}" /></p>
-        <label for="autoresDisponibles">Autores Disponibles:</label>
-        <p name="listboxes">
-            <select id="autoresDisponibles" name="autoresDisponibles" multiple size="10">
+        <p>Título: <input type="text" th:field="*{titulo_obra}" /></p>
+
+        <div class="listbox-container">
+            <label for="autoresDisponibles">Autores Disponibles:</label>
+            <select id="autoresDisponibles" name="autoresDisponibles" multiple>
                 <option th:each="autor : ${autores}" th:value="${autor.nombre}" th:text="${autor.nombre}"></option>
             </select>
-            <br/>
-        </p>
-        <p name="botones">
-            <button type="button" onclick="agregarAutor()">Agregar &rarr;</button>
+        </div>
+
+        <div class="buttons-container">
+            <button type="button" onclick="agregarAutor()">Agregar &rarr;</button><br/>
             <button type="button" onclick="quitarAutor()">&larr; Quitar</button>
-        </p>  
-       
-        <label for="autoresSeleccionados">Autores Seleccionados:</label>
-        <p name="listboxes" >
-            <select id="autoresSeleccionados" name="autoresSeleccionados" multiple size="10">
-                <!-- Opciones generadas dinámicamente -->
-            </select>
+        </div>
+
+        <div class="listbox-container">
+            <label for="autoresSeleccionados">Autores Seleccionados:</label>
+            <select id="autoresSeleccionados" name="autoresSeleccionados" multiple></select>
             <input type="hidden" id="autoresSeleccionadosHidden" name="autoresSeleccionados" />
-        </p>
+        </div>
+
         <p>
             <label for="autorPersonalizado">Agregar Nuevo Autor:</label>
             <input type="text" id="autorPersonalizado" name="autorPersonalizado" />
@@ -124,9 +167,10 @@
             </select>
         </p>
         <p>
-            <button type="submit" onclick="actualizarCampoOculto()">Submit</button>
-            <input type="reset" value="Reset" />
+            <button type="submit" onclick="actualizarCampoOculto()">Enviar</button>
+            <input type="reset" value="Resetear" />
         </p>
     </form>
 </body>
+
 </html>
