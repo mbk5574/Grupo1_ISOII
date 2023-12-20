@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIERIASOFTWAREII\Grupo1_ISOII-dev-antiguo8\src\main\java\es\uclm\GestiBiblioteca\business\controller\GestorTitulos.java
 C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIERIASOFTWAREII\Grupo1_ISOII-dev-antiguo8\src\main\java\es\uclm\GestiBiblioteca\business\controller\GestorUsuarios.java
 C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIERIASOFTWAREII\Grupo1_ISOII-dev-antiguo8\src\main\java\es\uclm\GestiBiblioteca\persistence\LibroDAO.java
@@ -24,3 +25,31 @@ C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIE
 C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIERIASOFTWAREII\Grupo1_ISOII-dev-antiguo8\src\main\java\es\uclm\GestiBiblioteca\services\TituloService.java
 C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIERIASOFTWAREII\Grupo1_ISOII-dev-antiguo8\src\main\java\es\uclm\GestiBiblioteca\business\entities\Libro.java
 C:\Users\mbk5574\OneDrive - Universidad de Castilla-La Mancha\Documentos\INGENIERIASOFTWAREII\Grupo1_ISOII-dev-antiguo8\src\main\java\es\uclm\GestiBiblioteca\business\entities\Revista.java
+=======
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\ServletInitializer.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\entities\Ejemplar.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\entities\Autor.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\presentation\PrestamosForm.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\persistence\PrestamoDAO.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\controller\GestorUsuarios.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\entities\Titulo.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\services\PrestamoService.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\persistence\EjemplarDAO.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\entities\Revista.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\entities\Reserva.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\persistence\AutorDAO.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\persistence\ReservaDAO.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\services\TituloService.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\entities\Prestamo.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\controller\GestorTitulos.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\entities\Libro.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\GestiBibliotecaApplication.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\presentation\TitulosForm.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\services\PenalizacionService.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\persistence\TituloDAO.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\entities\Usuario.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\persistence\RevistaDAO.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\persistence\UsuarioDAO.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\business\controller\GestorPrestamos.java
+C:\uni\grado\Grupo1_ISOII-mantenimiento\src\main\java\es\uclm\GestiBiblioteca\persistence\LibroDAO.java
+>>>>>>> mantenimiento

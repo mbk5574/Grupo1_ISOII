@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TituloService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.services</a> &gt; <span class="el_source">TituloService.java</span></div><h1>TituloService.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.services;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TituloService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.services</a> &gt; <span class="el_source">TituloService.java</span></div><h1>TituloService.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.services;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -52,24 +52,24 @@ import jakarta.transaction.Transactional;
 <span class="pc bpc" id="L52" title="1 of 4 branches missed.">	            if (asociadoConPrestamoActivo || asociadoConReserva) {</span>
 <span class="fc" id="L53">	                return false; // No eliminar si hay ejemplares activos</span>
 	            }
-<span class="fc" id="L55">	        }</span>
+	        }
 
 	        // Eliminar todos los ejemplares asociados al título
 <span class="fc bfc" id="L58" title="All 2 branches covered.">	        for (Ejemplar ejemplar : titulo.getEjemplares()) {</span>
 <span class="fc" id="L59">	            reservaDAO.deleteByEjemplar(ejemplar); // Eliminar reservas asociadas</span>
 <span class="fc" id="L60">	            prestamoDAO.deleteByEjemplarAndActivo(ejemplar, false); // Eliminar préstamos inactivos</span>
 <span class="fc" id="L61">	            ejemplarDAO.delete(ejemplar); // Eliminar el ejemplar</span>
-<span class="fc" id="L62">	        }</span>
+	        }
 
 	        // Eliminar referencias cruzadas en la relación many-to-many con autores
 <span class="pc bpc" id="L65" title="1 of 2 branches missed.">	        for (Autor autor : titulo.getAutores()) {</span>
 <span class="nc" id="L66">	            autor.getTitulos().remove(titulo);</span>
 <span class="nc bnc" id="L67" title="All 2 branches missed.">	            if (autor.getTitulos().isEmpty()) {</span>
 <span class="nc" id="L68">	                autorDAO.delete(autor); // Eliminar el autor si ya no tiene títulos asociados</span>
-	            } else {
+<span class="nc" id="L69">	            } else {</span>
 <span class="nc" id="L70">	                autorDAO.save(autor); // Actualizar el autor en la base de datos</span>
 	            }
-<span class="nc" id="L72">	        }</span>
+	        }
 <span class="fc" id="L73">	        titulo.setAutores(null); // Limpiar la lista de autores del título</span>
 
 	        // Eliminar el título
@@ -77,7 +77,7 @@ import jakarta.transaction.Transactional;
 <span class="nc" id="L77">	            libroDAO.delete((Libro) titulo);</span>
 <span class="pc bpc" id="L78" title="1 of 2 branches missed.">	        } else if (titulo instanceof Revista) {</span>
 <span class="nc" id="L79">	            revistaDAO.delete((Revista) titulo);</span>
-	        } else {
+<span class="nc" id="L80">	        } else {</span>
 <span class="fc" id="L81">	            tituloDAO.delete(titulo);</span>
 	        }
 
@@ -100,17 +100,17 @@ import jakarta.transaction.Transactional;
 <span class="fc" id="L100">			autor.getTitulos().remove(titulo);</span>
 <span class="fc bfc" id="L101" title="All 2 branches covered.">			if (autor.getTitulos().isEmpty()) {</span>
 <span class="fc" id="L102">				autorDAO.delete(autor);</span>
-			} else {
+<span class="fc" id="L103">			} else {</span>
 <span class="fc" id="L104">				autorDAO.save(autor);</span>
 			}
-<span class="fc" id="L106">		}</span>
+		}
 <span class="fc" id="L107">		titulo.setAutores(null);</span>
 
 <span class="fc bfc" id="L109" title="All 2 branches covered.">		if (titulo instanceof Libro) {</span>
 <span class="fc" id="L110">			libroDAO.delete((Libro) titulo);</span>
 <span class="fc bfc" id="L111" title="All 2 branches covered.">		} else if (titulo instanceof Revista) {</span>
 <span class="fc" id="L112">			revistaDAO.delete((Revista) titulo);</span>
-		} else {
+<span class="fc" id="L113">		} else {</span>
 <span class="fc" id="L114">			tituloDAO.delete(titulo);</span>
 		}
 
@@ -148,7 +148,7 @@ import jakarta.transaction.Transactional;
 <span class="fc bfc" id="L148" title="All 2 branches covered.">			if (autorOpt.isPresent()) {</span>
 
 <span class="fc" id="L150">				autor = autorOpt.get();</span>
-			} else {
+<span class="fc" id="L151">			} else {</span>
 
 <span class="fc" id="L153">				autor = new Autor(nombre, &quot;Apellido&quot;, null);</span>
 <span class="fc" id="L154">				autor = autorDAO.save(autor);</span>
