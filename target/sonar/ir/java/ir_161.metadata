@@ -1,0 +1,6 @@
+es.uclm.GestiBiblioteca.business.controller.GestorPrestamos#mostrarFormularioDevolucion(Lorg/springframework/ui/Model;)Ljava/lang/String;
+==
+debug org.slf4j.Logger#debug(Ljava/lang/String;Ljava/lang/Object;)V
+addAttribute org.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;
+findByActivoTrue es.uclm.GestiBiblioteca.persistence.PrestamoDAO#findByActivoTrue()Ljava/util/List;
+size java.util.List#size()I

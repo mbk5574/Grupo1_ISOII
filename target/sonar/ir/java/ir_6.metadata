@@ -1,0 +1,11 @@
+es.uclm.GestiBiblioteca.services.TituloService#eliminarEjemplarConVerificaciones(Ljava/lang/Long;)Z
+java.util.Optional#isPresent()Z
+java.util.Optional#get()Ljava/lang/Object;
+==
+isDisponible es.uclm.GestiBiblioteca.business.entities.Ejemplar#isDisponible()Z
+findById org.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;
+delete org.springframework.data.repository.CrudRepository#delete(Ljava/lang/Object;)V
+deleteByEjemplar es.uclm.GestiBiblioteca.persistence.ReservaDAO#deleteByEjemplar(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;)V
+existsByEjemplarAndActivo es.uclm.GestiBiblioteca.persistence.PrestamoDAO#existsByEjemplarAndActivo(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;Z)Z
+deleteByEjemplarAndActivo es.uclm.GestiBiblioteca.persistence.PrestamoDAO#deleteByEjemplarAndActivo(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;Z)V
+existsByEjemplar es.uclm.GestiBiblioteca.persistence.ReservaDAO#existsByEjemplar(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;)Z

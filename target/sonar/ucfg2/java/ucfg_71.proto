@@ -1,0 +1,39 @@
+
+es.uclm.GestiBiblioteca.business.controller.GestorTitulos#mostrarAltaEjemplar(Lorg/springframework/ui/Model;)Ljava/lang/String;Ò
+Å/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.javaï ï(""startingBlock*j
+startingBlock
+ï" ï(/HF
+
+ï# ï(.%
+modelorg.springframework.ui.Model"java.util.HashMap*
+1*Í
+1
+ð	 ð( º
+·
+
+ð	 ð( 
+%0"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*5
+
+__unknown_file (
+resultadoAltaEjemplarÕ
+Ò
+
+ð	 ð( 
+%1"template!resultadoAltaEjemplar*Y
+
+__unknown_file (=";
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model"'
+
+ð ð(!
+resultadoAltaEjemplar:3
+
+ï# ï(.%
+modelorg.springframework.ui.ModelB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

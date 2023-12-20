@@ -1,0 +1,3 @@
+es.uclm.GestiBiblioteca.business.entities.Reserva#<init>(Les/uclm/GestiBiblioteca/business/entities/Usuario;Les/uclm/GestiBiblioteca/business/entities/Ejemplar;Les/uclm/GestiBiblioteca/business/entities/Titulo;Ljava/util/Date;)V
+==
+<init> java.lang.Object#<init>()V

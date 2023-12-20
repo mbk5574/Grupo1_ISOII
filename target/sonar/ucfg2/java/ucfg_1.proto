@@ -1,0 +1,241 @@
+
+zes.uclm.GestiBiblioteca.services.TituloService#eliminarTituloYAutores(Les/uclm/GestiBiblioteca/business/entities/Titulo;)ZÅ
+º/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/services/TituloService.java] ](&"startingBlock*"
+13_
+ _("
+_ _(
+""*ä
+14^ ^(É
+Æ
+^ ^(
+%0boolean"	__compare*"
+
+__unknown_file (
+==*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo*"
+
+__unknown_file (
+""*
+13
+12*!
+1u	 u("
+u u(
+""*ô
+2r r(¨
+¥
+r r(4
+%17-es.uclm.GestiBiblioteca.persistence.TituloDAO"__id*]
+
+__unknown_file (A*?0
+.es.uclm.GestiBiblioteca.services.TituloService"
+	tituloDAO´±
+r r(
+%18void"Norg.springframework.data.repository.CrudRepository#delete(Ljava/lang/Object;)V*R
+
+__unknown_file (6
+4
+%17-es.uclm.GestiBiblioteca.persistence.TituloDAO*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2delete(Ljava/lang/Object;)*
+1*÷
+3p p(ª
+§
+p p(5
+%15.es.uclm.GestiBiblioteca.persistence.RevistaDAO"__id*^
+
+__unknown_file (B*@0
+.es.uclm.GestiBiblioteca.services.TituloService"
+
+revistaDAOµ²
+p p(&
+%16void"Norg.springframework.data.repository.CrudRepository#delete(Ljava/lang/Object;)V*S
+
+__unknown_file (7
+5
+%15.es.uclm.GestiBiblioteca.persistence.RevistaDAO*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2delete(Ljava/lang/Object;)*
+1*Ü
+startingBlock]& ](5½
+º
+\ \(
+%19"
+__annotate*A
+
+__unknown_file (%#
+!jakarta.transaction.Transactional*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo{
+y
+]. ](4:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"__annotation*#
+
+__unknown_file (
+
+%19*
+14*ñ
+5n n(¦
+£
+n n(3
+%13,es.uclm.GestiBiblioteca.persistence.LibroDAO"__id*\
+
+__unknown_file (@*>0
+.es.uclm.GestiBiblioteca.services.TituloService"
+
+libroDAO³°
+n n("
+%14void"Norg.springframework.data.repository.CrudRepository#delete(Ljava/lang/Object;)V*Q
+
+__unknown_file (5
+3
+%13,es.uclm.GestiBiblioteca.persistence.LibroDAO*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2delete(Ljava/lang/Object;)*
+1*­
+6k k(’
+k k(
+%12void"Tes.uclm.GestiBiblioteca.business.entities.Titulo#setAutores(Ljava/util/Collection;)V*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo*"
+
+__unknown_file (
+""2"setAutores(Ljava/util/Collection;)*	
+2
+3
+5*Á
+7c c(p
+n
+c c(8
+autor/es.uclm.GestiBiblioteca.business.entities.Autor"__id*"
+
+__unknown_file (
+""¶
+³
+c c(8
+autor/es.uclm.GestiBiblioteca.business.entities.Autor"
+__arrayGet*=
+
+__unknown_file (!
+
+autoresjava.util.Collection*"
+
+__unknown_file (
+""*
+6
+10*§
+8h h(¦
+£
+h h(3
+%10,es.uclm.GestiBiblioteca.persistence.AutorDAO"__id*\
+
+__unknown_file (@*>0
+.es.uclm.GestiBiblioteca.services.TituloService"
+
+autorDAOéæ
+h h(6
+%11/es.uclm.GestiBiblioteca.business.entities.Autor"]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;*Q
+
+__unknown_file (5
+3
+%10,es.uclm.GestiBiblioteca.persistence.AutorDAO*V
+
+__unknown_file (:
+8
+autor/es.uclm.GestiBiblioteca.business.entities.Autor2save(Ljava/lang/Object;)*
+7*ì
+9f f(¥
+¢
+f f(2
+%8,es.uclm.GestiBiblioteca.persistence.AutorDAO"__id*\
+
+__unknown_file (@*>0
+.es.uclm.GestiBiblioteca.services.TituloService"
+
+autorDAO¯¬
+f f(
+
+%9void"Norg.springframework.data.repository.CrudRepository#delete(Ljava/lang/Object;)V*P
+
+__unknown_file (4
+2
+%8,es.uclm.GestiBiblioteca.persistence.AutorDAO*V
+
+__unknown_file (:
+8
+autor/es.uclm.GestiBiblioteca.business.entities.Autor2delete(Ljava/lang/Object;)*
+7*ç
+10d d(ãà
+d d(
+%4java.util.Collection"Res.uclm.GestiBiblioteca.business.entities.Autor#getTitulos()Ljava/util/Collection;*V
+
+__unknown_file (:
+8
+autor/es.uclm.GestiBiblioteca.business.entities.Autor2getTitulos()þû
+d d($
+%5boolean"0java.util.Collection#remove(Ljava/lang/Object;)Z*8
+
+__unknown_file (
+
+%4java.util.Collection*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2remove(Ljava/lang/Object;)ãà
+e e(
+%6java.util.Collection"Res.uclm.GestiBiblioteca.business.entities.Autor#getTitulos()Ljava/util/Collection;*V
+
+__unknown_file (:
+8
+autor/es.uclm.GestiBiblioteca.business.entities.Autor2getTitulos()
+e e(#
+%7boolean"java.util.Collection#isEmpty()Z*8
+
+__unknown_file (
+
+%6java.util.Collection2	isEmpty()*
+8
+9*Ü
+12a, a(2æã
+a, a(?
+%1java.util.Collection"Ses.uclm.GestiBiblioteca.business.entities.Titulo#getAutores()Ljava/util/Collection;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getAutores()86
+a" a(+
+%2java.util.HashSet"java.util.HashSet·
+´
+a a(@
+%3"1java.util.HashSet#<init>(Ljava/util/Collection;)V*5
+
+__unknown_file (
+
+%2java.util.HashSet*8
+
+__unknown_file (
+
+%1java.util.Collectionj
+h
+a a(A
+autoresjava.util.Collection"__id*5
+
+__unknown_file (
+
+%2java.util.HashSet*
+7:F
+]' ](4:
+titulo0es.uclm.GestiBiblioteca.business.entities.TituloB20
+.es.uclm.GestiBiblioteca.services.TituloServiceHX

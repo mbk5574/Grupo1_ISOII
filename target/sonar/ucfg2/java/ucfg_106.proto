@@ -1,0 +1,103 @@
+
+Mes.uclm.GestiBiblioteca.business.entities.Titulo#toString()Ljava/lang/String;Ç
+¼/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Titulo.java< <("1*×
+1= =(\
+Z
+= >(
+%0java.lang.String"__concat*
+= =(	
+Titulo{*
+> >(
+id=ƒ
+€
+> >(
+%1java.lang.Long"__id*X
+
+__unknown_file (<*:2
+0es.uclm.GestiBiblioteca.business.entities.Titulo"
+idx
+v
+= >(
+%2java.lang.String"__concat*$
+= >(
+
+%0java.lang.String*"
+> >(
+
+%1java.lang.Longn
+l
+= ?(
+%3java.lang.String"__concat*$
+= >(
+
+%2java.lang.String*
+? ?(
+
+, isbn='‡
+„
+? ?( 
+%4java.lang.String"__id*Z
+
+__unknown_file (>*<2
+0es.uclm.GestiBiblioteca.business.entities.Titulo"
+isbnz
+x
+= ?( 
+%5java.lang.String"__concat*$
+= ?(
+
+%3java.lang.String*$
+? ?( 
+
+%4java.lang.Stringh
+f
+= ?('
+%6java.lang.String"__concat*$
+= ?( 
+
+%5java.lang.String*
+?# ?('
+\'{
+y
+= @(&
+%7java.lang.String"__concat*$
+= ?('
+
+%6java.lang.String*%
+@ @(&
+, numberOfEjemplares=‘
+Ž
+@) @(3
+%8java.util.Collection"__id*`
+
+__unknown_file (D*B2
+0es.uclm.GestiBiblioteca.business.entities.Titulo"
+
+ejemplareswu
+@) @(:	
+%9int"java.util.Collection#size()I*8
+
+__unknown_file (
+
+%8java.util.Collection2size()n
+l
+= @(:
+%10java.lang.String"__concat*$
+= @(&
+
+%7java.lang.String*
+@) @(:
+	
+%9inti
+g
+= A(
+%11java.lang.String"__concat*%
+= @(:
+
+%10java.lang.String*
+A A(
+}"%
+= A(
+
+%11java.lang.StringB42
+0es.uclm.GestiBiblioteca.business.entities.TituloH

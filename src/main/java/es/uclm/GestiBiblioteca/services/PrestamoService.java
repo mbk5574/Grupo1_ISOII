@@ -41,6 +41,11 @@ public class PrestamoService {
     public String puedePrestar(Long usuarioId) {
     	
         Usuario usuarioActualizado = usuarioDAO.findById(usuarioId).orElse(null);
+        
+        if (usuarioActualizado == null) {
+            return "Usuario no encontrado";
+        }
+        
         int numeroPrestamosActivos = prestamoDAO.countByUsuarioIdAndActivoTrue(usuarioId);
 
         if (usuarioActualizado.getPrestamos() != null && numeroPrestamosActivos >= LIMITE_DE_LIBROS) {

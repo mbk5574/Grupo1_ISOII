@@ -1,0 +1,65 @@
+
+€es.uclm.GestiBiblioteca.services.PenalizacionService#comprobarPenalizacion(Les/uclm/GestiBiblioteca/business/entities/Usuario;)ZË
+À/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/services/PenalizacionService.java (%"3*Ö
+2!< !(C÷ô
+!< !(]
+%4java.util.Date"[es.uclm.GestiBiblioteca.business.entities.Usuario#getFechaFinPenalizacion()Ljava/util/Date;*Z
+
+__unknown_file (>
+<
+usuario1es.uclm.GestiBiblioteca.business.entities.Usuario2getFechaFinPenalizacion()ÇÄ
+!< !(h
+%5boolean"'java.util.Date#after(Ljava/util/Date;)Z*2
+
+__unknown_file (
+
+%4java.util.Date*3
+
+__unknown_file (
+
+hoyjava.util.Date2after(Ljava/util/Date;)*
+1*ª
+3   (20
+   (
+%0java.util.Date"java.util.Date`
+^
+   (
+%1"java.util.Date#<init>()V*2
+
+__unknown_file (
+
+%0java.util.Date]
+[
+   (
+hoyjava.util.Date"__id*2
+
+__unknown_file (
+
+%0java.util.Date÷ô
+! !(0
+%2java.util.Date"[es.uclm.GestiBiblioteca.business.entities.Usuario#getFechaFinPenalizacion()Ljava/util/Date;*Z
+
+__unknown_file (>
+<
+usuario1es.uclm.GestiBiblioteca.business.entities.Usuario2getFechaFinPenalizacion()£
+ 
+! !(8
+%3boolean"	__compare*"
+
+__unknown_file (
+!=*2
+
+__unknown_file (
+
+%2java.util.Date*"
+
+__unknown_file (
+""*
+2
+1*!
+1! !(i"
+! !(i
+"":H
+& (5<
+usuario1es.uclm.GestiBiblioteca.business.entities.UsuarioB86
+4es.uclm.GestiBiblioteca.services.PenalizacionServiceHX

@@ -1,0 +1,5 @@
+es.uclm.GestiBiblioteca.business.controller.GestorPrestamos#mostrarFormularioReserva(Lorg/springframework/ui/Model;)Ljava/lang/String;
+==
+findByDisponibleFalse es.uclm.GestiBiblioteca.persistence.EjemplarDAO#findByDisponibleFalse()Ljava/util/List;
+addAttribute org.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;
+findAll org.springframework.data.repository.ListCrudRepository#findAll()Ljava/util/List;

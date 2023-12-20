@@ -1,0 +1,12 @@
+es.uclm.GestiBiblioteca.services.PenalizacionService#aplicarPenalizacion(Les/uclm/GestiBiblioteca/business/entities/Usuario;)V
+java.util.Calendar#getInstance()Ljava/util/Calendar;
+java.util.Date#<init>()V
+java.util.Calendar#setTime(Ljava/util/Date;)V
+java.util.Date#instance-init#
+java.util.Calendar#getTime()Ljava/util/Date;
+==
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+after java.util.Date#after(Ljava/util/Date;)Z
+getFechaFinPenalizacion es.uclm.GestiBiblioteca.business.entities.Usuario#getFechaFinPenalizacion()Ljava/util/Date;
+add java.util.Calendar#add(II)V
+setFechaFinPenalizacion es.uclm.GestiBiblioteca.business.entities.Usuario#setFechaFinPenalizacion(Ljava/util/Date;)V

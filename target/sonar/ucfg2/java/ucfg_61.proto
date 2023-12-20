@@ -1,0 +1,55 @@
+
+¿es.uclm.GestiBiblioteca.business.controller.GestorTitulos#seleccionarIdTituloParaActualizar(Ljava/lang/Long;Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;)Ljava/lang/String;Ð
+Å/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.javaz z(0"startingBlock*¡
+startingBlockz0 {()è
+å
+y y(/
+%2"
+__annotate*S
+
+__unknown_file (75
+3org.springframework.web.bind.annotation.PostMapping*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes•
+’
+{ {((T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes"__annotation*"
+
+__unknown_file (
+
+%2*
+1*±
+1| |(µ
+²
+| |(7D
+%0>org.springframework.web.servlet.mvc.support.RedirectAttributes"__mapSet*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*(
+
+__unknown_file (
+
+tituloId*8
+
+__unknown_file (
+
+tituloIdjava.lang.Long½
+º
+}	 }(%
+%1"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*:
+
+__unknown_file (
+redirect:/actualizarTitulo"*
+} }(&
+redirect:/actualizarTitulo:&
+z1 z(M
+tituloIdjava.lang.Long:`
+{ {((T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributesB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH
