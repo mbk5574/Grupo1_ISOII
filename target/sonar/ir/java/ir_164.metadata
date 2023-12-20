@@ -1,0 +1,13 @@
+es.uclm.GestiBiblioteca.business.controller.GestorPrestamos#reservarEjemplar(Ljava/lang/Long;Ljava/lang/Long;Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;)Ljava/lang/String;
+java.util.Optional#isPresent()Z
+java.util.Date#<init>()V
+es.uclm.GestiBiblioteca.business.entities.Reserva#instance-init#
+es.uclm.GestiBiblioteca.business.entities.Reserva#<init>(Les/uclm/GestiBiblioteca/business/entities/Usuario;Les/uclm/GestiBiblioteca/business/entities/Ejemplar;Les/uclm/GestiBiblioteca/business/entities/Titulo;Ljava/util/Date;)V
+java.util.Optional#get()Ljava/lang/Object;
+java.util.Date#instance-init#
+==
+isDisponible es.uclm.GestiBiblioteca.business.entities.Ejemplar#isDisponible()Z
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+findById org.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;
+addFlashAttribute org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;
+getTitulo es.uclm.GestiBiblioteca.business.entities.Ejemplar#getTitulo()Les/uclm/GestiBiblioteca/business/entities/Titulo;

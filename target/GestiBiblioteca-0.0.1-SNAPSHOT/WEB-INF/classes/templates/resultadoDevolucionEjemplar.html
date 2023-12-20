@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Resultado de Devolución de Ejemplar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .mensaje {
+            padding: 10px;
+            color: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .exito {
+            background-color: #4CAF50;
+        }
+
+        .error {
+            background-color: #f44336;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+
+<div class="mensaje" th:classappend="${ejemplarDevuelto} ? 'exito' : 'error'">
+    <h1 th:if="${ejemplarDevuelto}">La devolución del ejemplar se ha realizado con éxito</h1>
+    <h1 th:unless="${ejemplarDevuelto}">Se ha producido un error en la devolución del ejemplar</h1>
+    <p th:text="${mensaje}"></p>
+</div>
+
+<div th:if="${mensajePenalizacion}">
+    <p th:text="${mensajePenalizacion}"></p>
+</div>
+
+
+<a href="/devolucionEjemplar">Volver al formulario de devolución</a>
+<a href="/admin">Volver a inicio</a>
+
+</body>
+</html>

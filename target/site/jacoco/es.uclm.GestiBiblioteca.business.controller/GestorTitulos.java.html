@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestorTitulos.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.business.controller</a> &gt; <span class="el_source">GestorTitulos.java</span></div><h1>GestorTitulos.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.business.controller;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+
+import java.util.stream.Collectors;
+
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import ch.qos.logback.classic.Logger;
+import es.uclm.GestiBiblioteca.business.entities.Autor;
+import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
+
+import es.uclm.GestiBiblioteca.business.entities.Titulo;
+import es.uclm.GestiBiblioteca.persistence.AutorDAO;
+import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
+import es.uclm.GestiBiblioteca.persistence.LibroDAO;
+import es.uclm.GestiBiblioteca.persistence.RevistaDAO;
+import es.uclm.GestiBiblioteca.persistence.TituloDAO;
+import es.uclm.GestiBiblioteca.services.TituloService;
+
+@Controller
+<span class="fc" id="L33">public class GestorTitulos {</span>
+
+<span class="fc" id="L35">	private static final Logger log = (Logger) LoggerFactory.getLogger(GestorTitulos.class);</span>
+
+	@Autowired
+	private EjemplarDAO ejemplarDAO;
+	@Autowired
+	private AutorDAO autorDAO;
+	@Autowired
+	private TituloDAO tituloDAO;
+	@Autowired
+	private RevistaDAO revistaDAO;
+	@Autowired
+	private LibroDAO libroDAO;
+	@Autowired
+	private TituloService tituloService;
+
+	
+	@GetMapping(&quot;/admin&quot;)
+	public String adminPanel() {
+<span class="nc" id="L53">		return &quot;adminPanel&quot;;</span>
+	}
+
+	@GetMapping(&quot;/altaTitulo&quot;)
+	public String altaTituloForm(Model model) {
+<span class="nc" id="L58">		model.addAttribute(&quot;titulo&quot;, new Titulo());</span>
+<span class="nc" id="L59">		log.info(tituloDAO.findAll().toString());</span>
+<span class="nc" id="L60">		List&lt;Autor&gt; autores = autorDAO.findAll();</span>
+<span class="nc" id="L61">		model.addAttribute(&quot;autores&quot;, autores);</span>
+<span class="nc" id="L62">		return &quot;altaTitulo&quot;;</span>
+	}
+	
+	/**
+	 * @param titulo
+	 * @return
+	 */
+	@PostMapping(&quot;/altaTitulo&quot;)
+	public String altaTituloSubmit(@ModelAttribute Titulo titulo,
+			@RequestParam(&quot;tipoTitulo&quot;) String tipoTitulo,
+			@RequestParam(&quot;autoresSeleccionados&quot;) List&lt;String&gt; autoresSeleccionados,
+			RedirectAttributes redirectAttributes) {
+
+		try {
+<span class="fc" id="L76">			log.info(&quot;Iniciando altaTituloSubmit&quot;);</span>
+
+<span class="fc" id="L78">			String[] autoresNombres = autoresSeleccionados.toArray(new String[autoresSeleccionados.size()]);</span>
+
+<span class="fc" id="L80">			log.info(&quot;Autores ingresados: &quot; + Arrays.toString(autoresNombres));</span>
+<span class="fc" id="L81">			log.info(&quot;Tipo de título seleccionado: &quot; + tipoTitulo);</span>
+<span class="fc" id="L82">			log.info(</span>
+<span class="fc" id="L83">					&quot;Datos del título: ISBN - &quot; + titulo.getIsbn() + &quot;, Título - &quot; + titulo.getTitulo_obra());</span>
+
+<span class="fc" id="L85">			Collection&lt;Autor&gt; autores = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L86">			tituloService.obtenerAutores(autoresNombres,autores);</span>
+			
+<span class="fc" id="L88">			Titulo savedTitulo=tituloService.guardarTitulo(autores,tipoTitulo,titulo);</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">			if (savedTitulo == null) {</span>
+<span class="fc" id="L90">				log.error(&quot;Tipo de título no reconocido&quot;);</span>
+<span class="fc" id="L91">				return &quot;Error&quot;;	</span>
+			}
+<span class="fc" id="L93">			Ejemplar nuevoEjemplar = new Ejemplar(savedTitulo, true);</span>
+<span class="fc" id="L94">			ejemplarDAO.save(nuevoEjemplar);</span>
+<span class="fc" id="L95">			log.info(&quot;Ejemplar creado y asociado al título: &quot; + savedTitulo.getTitulo_obra());</span>
+
+<span class="fc" id="L97">			log.info(&quot;Saved titulo: &quot; + savedTitulo);</span>
+<span class="fc" id="L98">			redirectAttributes.addFlashAttribute(&quot;mensajeExito&quot;, &quot;Título agregado exitosamente.&quot;);</span>
+<span class="fc" id="L99">			redirectAttributes.addFlashAttribute(&quot;titulo&quot;, savedTitulo);</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">			redirectAttributes.addFlashAttribute(&quot;tipoTitulo&quot;, tipoTitulo.equalsIgnoreCase(&quot;libro&quot;) ? &quot;Libro&quot; : &quot;Revista&quot;);</span>
+<span class="fc" id="L101">			redirectAttributes.addFlashAttribute(&quot;autores&quot;,</span>
+<span class="fc" id="L102">					autores.stream().map(Autor::getNombre).collect(Collectors.toList()));</span>
+<span class="nc" id="L103">		} catch (Exception e) {</span>
+
+<span class="nc" id="L105">			redirectAttributes.addFlashAttribute(&quot;mensajeError&quot;, &quot;Hubo un error al añadir el título.&quot;);</span>
+<span class="fc" id="L106">		}</span>
+
+<span class="fc" id="L108">		return &quot;redirect:/resultAlta&quot;;</span>
+	}
+	
+	@GetMapping(&quot;/resultAlta&quot;)
+	public String showResult(Model model) {
+<span class="nc" id="L113">		return &quot;resultadoAltaTitulo&quot;;</span>
+	}
+
+	@GetMapping(&quot;/seleccionarIdTituloActualizar&quot;)
+	public String mostrarFormularioSeleccion1() {
+<span class="nc" id="L118">		return &quot;seleccionarIdTituloActualizar&quot;;</span>
+	}
+
+	@PostMapping(&quot;/seleccionarIdTituloActualizar&quot;)
+	public String seleccionarIdTituloParaActualizar(@RequestParam Long tituloId,
+			RedirectAttributes redirectAttributes) {
+<span class="nc" id="L124">		redirectAttributes.addAttribute(&quot;tituloId&quot;, tituloId);</span>
+<span class="nc" id="L125">		return &quot;redirect:/actualizarTitulo&quot;;</span>
+	}
+
+	@GetMapping(&quot;/actualizarTitulo&quot;)
+	public String actualizarTituloForm(@RequestParam Long tituloId, Model model) {
+<span class="nc" id="L130">		Titulo existingTitulo = tituloDAO.findById(tituloId).orElse(null);</span>
+
+<span class="nc bnc" id="L132" title="All 2 branches missed.">		if (existingTitulo == null) {</span>
+<span class="nc" id="L133">			return &quot;redirect:/seleccionarIdTituloActualizar&quot;;</span>
+		}
+
+<span class="nc" id="L136">		model.addAttribute(&quot;actualizarTitulo&quot;, existingTitulo);</span>
+
+<span class="nc" id="L138">		return &quot;actualizarTitulo&quot;;</span>
+	}
+
+	@PostMapping(&quot;/actualizarTitulo&quot;)
+	public String actualizarTituloSubmit(@ModelAttribute Titulo titulo, Model model, RedirectAttributes redirectAttributes) {
+<span class="fc" id="L143">		Titulo existingTitulo = tituloDAO.findById(titulo.getId()).orElse(null);</span>
+		String result2; 
+
+<span class="fc bfc" id="L146" title="All 2 branches covered.">		if (existingTitulo != null) {</span>
+<span class="fc" id="L147">			existingTitulo.setTitulo_obra(titulo.getTitulo_obra());</span>
+<span class="fc" id="L148">			existingTitulo.setIsbn(titulo.getIsbn());</span>
+
+<span class="fc" id="L150">			tituloDAO.save(existingTitulo);</span>
+
+<span class="fc" id="L152">			log.info(&quot;Updated titulo: &quot; + existingTitulo);</span>
+<span class="fc" id="L153">			result2 = &quot;Título actualizado exitosamente.&quot;;</span>
+<span class="fc" id="L154">			redirectAttributes.addFlashAttribute(&quot;result2&quot;, &quot;Título actualizado exitosamente.&quot;);</span>
+<span class="fc" id="L155">	        redirectAttributes.addFlashAttribute(&quot;titulo&quot;, existingTitulo);</span>
+
+		} else {
+<span class="fc" id="L158">			result2 = &quot;No se encontró el título para actualizar.&quot;;</span>
+<span class="fc" id="L159">			log.warn(result2);</span>
+<span class="fc" id="L160">	        redirectAttributes.addFlashAttribute(&quot;result2&quot;, &quot;No se encontró el título para actualizar.&quot;);</span>
+		}
+
+<span class="fc" id="L163">		model.addAttribute(&quot;titulo&quot;, existingTitulo);</span>
+<span class="fc" id="L164">		model.addAttribute(&quot;result2&quot;, result2);</span>
+
+<span class="fc" id="L166">		return &quot;redirect:/resultadoActualizacion&quot;;</span>
+	}
+
+	@GetMapping(&quot;/resultadoActualizacion&quot;)
+	public String mostrarResultadoActualizacion() {
+<span class="nc" id="L171">		return &quot;resultadoActualizacionTitulo&quot;;</span>
+	}
+
+	@GetMapping(&quot;/borrarTitulo&quot;)
+	public String mostrarFormularioBorrarTitulo(Model model) {
+<span class="nc" id="L176">		model.addAttribute(&quot;borrarTitulo&quot;, new Titulo());</span>
+<span class="nc" id="L177">		return &quot;borrarTitulo&quot;; </span>
+	}
+
+	@PostMapping(&quot;/borrarTitulo&quot;)
+	public String borrarTitulo(@RequestParam(&quot;isbn&quot;) String isbn, RedirectAttributes redirectAttributes) {
+<span class="fc" id="L182">	    List&lt;Titulo&gt; titulosABorrar = tituloDAO.findByIsbn(isbn);</span>
+
+<span class="fc bfc" id="L184" title="All 2 branches covered.">	    if (!titulosABorrar.isEmpty()) {</span>
+<span class="pc bpc" id="L185" title="1 of 2 branches missed.">	        for (Titulo titulo : titulosABorrar) {</span>
+	            // Utiliza el método modificado para verificar y eliminar el título
+<span class="fc" id="L187">	            boolean eliminado = tituloService.eliminarTituloConVerificaciones(titulo.getId());</span>
+<span class="fc bfc" id="L188" title="All 2 branches covered.">	            if (eliminado) {</span>
+<span class="fc" id="L189">	                redirectAttributes.addFlashAttribute(&quot;mensajeExito&quot;, &quot;Título con ISBN &quot; + isbn + &quot; borrado exitosamente&quot;);</span>
+	            } else {
+	                // Este mensaje se muestra si el título no pudo ser eliminado debido a ejemplares activos
+<span class="fc" id="L192">	                redirectAttributes.addFlashAttribute(&quot;mensajeError&quot;, &quot;El título con ISBN &quot; + isbn + &quot; no puede ser borrado debido a ejemplares activos o reservados&quot;);</span>
+<span class="fc" id="L193">	                break; </span>
+	            }
+<span class="fc" id="L195">	        }</span>
+	    } else {
+<span class="fc" id="L197">	        redirectAttributes.addFlashAttribute(&quot;mensajeError&quot;, &quot;No se encontró ningún título con ISBN &quot; + isbn);</span>
+	    }
+
+<span class="fc" id="L200">	    return &quot;redirect:/mostrarResultadoBorrado&quot;;</span>
+	}
+
+
+
+	@GetMapping(&quot;/mostrarResultadoBorrado&quot;)
+	public String mostrarResultadoBorrado(Model model) {
+<span class="nc" id="L207">		return &quot;resultadoBorrarTitulo&quot;; </span>
+	}
+
+	@GetMapping(&quot;/altaEjemplar&quot;)
+	public String mostrarAltaEjemplarForm(Model model) {
+<span class="nc" id="L212">		List&lt;Titulo&gt; todosTitulos = tituloDAO.findAll();</span>
+<span class="nc" id="L213">		model.addAttribute(&quot;todosTitulos&quot;, todosTitulos); </span>
+<span class="nc" id="L214">		model.addAttribute(&quot;altaEjemplar&quot;, new Ejemplar());</span>
+<span class="nc" id="L215">		return &quot;altaEjemplar&quot;; </span>
+	}
+
+	@PostMapping(&quot;/altaEjemplar&quot;)
+	public String altaEjemplar(@RequestParam(&quot;id&quot;) Long id, @ModelAttribute Ejemplar ejemplar,
+	        RedirectAttributes redirectAttributes) {
+	    try {
+<span class="fc" id="L222">	        Titulo titulo = tituloDAO.findById(id).orElseThrow(() -&gt; new RuntimeException(&quot;Titulo no encontrado&quot;));</span>
+<span class="fc" id="L223">	        Ejemplar nuevoEjemplar = new Ejemplar(titulo, true);</span>
+<span class="fc" id="L224">	        ejemplarDAO.save(nuevoEjemplar);</span>
+<span class="fc" id="L225">	        log.info(&quot;Nuevo ejemplar creado y asociado al título: &quot; + titulo.getTitulo_obra());</span>
+<span class="fc" id="L226">	        redirectAttributes.addFlashAttribute(&quot;ejemplarAgregado&quot;, true);</span>
+<span class="fc" id="L227">	        redirectAttributes.addFlashAttribute(&quot;mensaje&quot;, &quot;Nuevo ejemplar agregado exitosamente al título: &quot; + titulo.getTitulo_obra());</span>
+<span class="fc" id="L228">	        redirectAttributes.addFlashAttribute(&quot;titulo&quot;, titulo);</span>
+<span class="fc" id="L229">	    } catch (RuntimeException e) {</span>
+<span class="fc" id="L230">	        log.error(&quot;El título no existe.&quot;, e);</span>
+<span class="fc" id="L231">	        redirectAttributes.addFlashAttribute(&quot;ejemplarAgregado&quot;, false);</span>
+<span class="fc" id="L232">	        redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;El título con ID &quot; + id + &quot; no existe.&quot;);</span>
+<span class="fc" id="L233">	    }</span>
+<span class="fc" id="L234">	    return &quot;redirect:/mostrarResultadoAltaEjemplar&quot;;</span>
+	}
+
+	
+	@GetMapping(&quot;/mostrarResultadoAltaEjemplar&quot;)
+	public String mostrarAltaEjemplar(Model model) {
+<span class="nc" id="L240">		return &quot;resultadoAltaEjemplar&quot;; </span>
+	}
+
+	@GetMapping(&quot;/bajaEjemplar&quot;)
+	public String mostrarBajaEjemplarForm(Model model) {
+<span class="nc" id="L245">		List&lt;Ejemplar&gt; todosEjemplares = ejemplarDAO.findAll(); </span>
+<span class="nc" id="L246">		model.addAttribute(&quot;todosEjemplares&quot;, todosEjemplares); </span>
+<span class="nc" id="L247">		return &quot;bajaEjemplar&quot;; </span>
+	}
+
+
+	@PostMapping(&quot;/bajaEjemplar&quot;)
+	public String bajaEjemplar(@RequestParam(&quot;idsEjemplares&quot;) List&lt;Long&gt; idsEjemplares, RedirectAttributes redirectAttributes) {
+<span class="fc" id="L253">	    boolean exito = true;</span>
+<span class="fc bfc" id="L254" title="All 2 branches covered.">		if(idsEjemplares.isEmpty())</span>
+		{
+<span class="fc" id="L256">			redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;No se seleccionó ningún ejemplar.&quot;);</span>
+<span class="fc" id="L257">			return &quot;redirect:/resultadoBajaEjemplar&quot;;</span>
+		}	
+<span class="fc bfc" id="L259" title="All 2 branches covered.">	    for (Long id : idsEjemplares) {</span>
+<span class="fc" id="L260">	        boolean resultado = tituloService.eliminarEjemplarConVerificaciones(id);</span>
+<span class="fc bfc" id="L261" title="All 2 branches covered.">	        if (!resultado) {</span>
+<span class="fc" id="L262">	            String mensajeError = &quot;El ejemplar con id: &quot; + id + &quot; no puede ser eliminado.&quot;;</span>
+<span class="fc" id="L263">	            log.info(mensajeError);</span>
+<span class="fc" id="L264">	            redirectAttributes.addFlashAttribute(&quot;error&quot;, mensajeError);</span>
+<span class="fc" id="L265">	            exito = false;</span>
+	        }
+<span class="fc" id="L267">	    }</span>
+
+<span class="fc bfc" id="L269" title="All 2 branches covered.">	    if (exito) {</span>
+<span class="fc" id="L270">	        redirectAttributes.addFlashAttribute(&quot;mensaje&quot;, &quot;Ejemplares dados de baja exitosamente.&quot;);</span>
+	    }
+
+<span class="fc" id="L273">	    return &quot;redirect:/resultadoBajaEjemplar&quot;;</span>
+	}
+
+	@GetMapping(&quot;/resultadoBajaEjemplar&quot;)
+	public String mostrarResultadoBaja() {
+<span class="nc" id="L278">		return &quot;resultadoBajaEjemplar&quot;;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

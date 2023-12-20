@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestorPrestamos.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.business.controller</a> &gt; <span class="el_source">GestorPrestamos.java</span></div><h1>GestorPrestamos.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.business.controller;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import es.uclm.GestiBiblioteca.business.entities.Ejemplar;
+import es.uclm.GestiBiblioteca.business.entities.Prestamo;
+import es.uclm.GestiBiblioteca.business.entities.Reserva;
+import es.uclm.GestiBiblioteca.business.entities.Titulo;
+import es.uclm.GestiBiblioteca.business.entities.Usuario;
+import es.uclm.GestiBiblioteca.persistence.EjemplarDAO;
+import es.uclm.GestiBiblioteca.persistence.PrestamoDAO;
+import es.uclm.GestiBiblioteca.persistence.ReservaDAO;
+import es.uclm.GestiBiblioteca.persistence.TituloDAO;
+import es.uclm.GestiBiblioteca.persistence.UsuarioDAO;
+import es.uclm.GestiBiblioteca.services.PenalizacionService;
+import es.uclm.GestiBiblioteca.services.PrestamoService;
+
+@Controller
+<span class="fc" id="L32">public class GestorPrestamos {</span>
+
+	@Autowired
+	PrestamoDAO prestamoDAO;
+	@Autowired
+	ReservaDAO reservaDAO;
+	@Autowired
+	UsuarioDAO usuarioDAO;
+	@Autowired
+	TituloDAO tituloDAO;
+	@Autowired
+	EjemplarDAO ejemplarDAO;
+	@Autowired
+	private PenalizacionService penalizacionService;
+	@Autowired
+	private PrestamoService prestamoService;
+<span class="fc" id="L48">	private static final Logger log = (Logger) LoggerFactory.getLogger(GestorPrestamos.class);</span>
+
+	@GetMapping(&quot;/altaPrestamo&quot;)
+	public String mostrarFormularioPrestamo(Model model) {
+<span class="nc" id="L52">		List&lt;Usuario&gt; usuarios = usuarioDAO.findAll();</span>
+<span class="nc" id="L53">		List&lt;Ejemplar&gt; ejemplaresDisponibles = ejemplarDAO.findByDisponibleTrue();</span>
+
+<span class="nc" id="L55">		log.info(&quot;Usuarios: &quot; + usuarios);</span>
+
+<span class="nc" id="L57">		model.addAttribute(&quot;usuarios&quot;, usuarios);</span>
+<span class="nc" id="L58">		model.addAttribute(&quot;ejemplares&quot;, ejemplaresDisponibles);</span>
+
+<span class="nc" id="L60">		return &quot;altaPrestamo&quot;;</span>
+	}
+
+	@PostMapping(&quot;/realizarPrestamo&quot;)
+    public String realizarPrestamo(@ModelAttribute Prestamo prestamo, Model model, RedirectAttributes redirectAttributes) {
+        try {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">			if (prestamo.getFechaFin().before(prestamo.getFechaInicio())) {</span>
+<span class="fc" id="L67">				log.error(&quot;La fecha de fin no puede ser anterior a la fecha de inicio.&quot;);</span>
+<span class="fc" id="L68">				redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;La fecha de fin no puede ser anterior a la fecha de inicio.&quot;);</span>
+<span class="fc" id="L69">				return &quot;redirect:/rutaErrorPrestamo&quot;;</span>
+			}	
+<span class="fc" id="L71">            prestamoService.realizarPrestamo(prestamo);</span>
+<span class="fc" id="L72">            model.addAttribute(&quot;prestamoRealizado&quot;, true);</span>
+<span class="fc" id="L73">            model.addAttribute(&quot;mensaje&quot;, &quot;Préstamo realizado exitosamente.&quot;);</span>
+<span class="fc" id="L74">            log.info(&quot;Prestamo realizado exitosamente.&quot;);</span>
+<span class="fc" id="L75">            return &quot;/resultadoAltaPrestamo&quot;;</span>
+<span class="fc" id="L76">        } catch (Exception e) {</span>
+<span class="fc" id="L77">            log.error(&quot;Error al realizar el préstamo: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L78">            redirectAttributes.addFlashAttribute(&quot;error&quot;, e.getMessage());</span>
+<span class="fc" id="L79">            return &quot;redirect:/rutaErrorPrestamo&quot;;</span>
+        }
+    }
+
+	@GetMapping(&quot;/rutaErrorPrestamo&quot;)
+	public String mostrarErrorPrestamo(Model model) {
+<span class="nc" id="L85">	    return &quot;errorPrestamo&quot;;</span>
+	}
+
+	@GetMapping(&quot;/devolucionEjemplar&quot;)
+	public String mostrarFormularioDevolucion(Model model) {
+<span class="nc" id="L90">	    List&lt;Prestamo&gt; prestamosActivos = prestamoDAO.findByActivoTrue();</span>
+<span class="nc" id="L91">	    log.debug(&quot;Número de préstamos activos: {}&quot;, prestamosActivos.size());</span>
+<span class="nc" id="L92">	    model.addAttribute(&quot;prestamos&quot;, prestamosActivos);</span>
+<span class="nc" id="L93">	    return &quot;devolucionEjemplar&quot;;</span>
+	}
+
+
+
+
+	@PostMapping(&quot;/realizarDevolucion&quot;)
+	public String realizarDevolucion(@RequestParam Integer idPrestamo, RedirectAttributes redirectAttributes) {
+	    try {
+<span class="fc" id="L102">	        Optional&lt;Prestamo&gt; prestamoOpt = prestamoDAO.findById(idPrestamo);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">	        if (prestamoOpt.isPresent()) {</span>
+<span class="fc" id="L104">	            Prestamo prestamo = prestamoOpt.get();</span>
+<span class="fc" id="L105">	            prestamo.setActivo(false); // Marca el préstamo como inactivo</span>
+
+	            // Verifica si la devolución es tardía y aplica penalizaciones
+<span class="fc bfc" id="L108" title="All 2 branches covered.">	            if (new Date().after(prestamo.getFechaFin())) {</span>
+<span class="fc" id="L109">	                penalizacionService.aplicarPenalizacion(prestamo.getUsuario());</span>
+<span class="fc" id="L110">	                redirectAttributes.addFlashAttribute(&quot;mensajePenalizacion&quot;, &quot;Se ha aplicado una penalización por devolución tardía.&quot;);</span>
+	            }
+
+	            // Marcar el ejemplar como disponible nuevamente
+<span class="fc" id="L114">	            Ejemplar ejemplar = prestamo.getEjemplar(); // Asumiendo que puedes obtener el ejemplar desde el préstamo</span>
+<span class="fc" id="L115">	            ejemplar.setDisponible(true);</span>
+<span class="fc" id="L116">	            ejemplarDAO.save(ejemplar);</span>
+
+<span class="fc" id="L118">	            prestamoDAO.save(prestamo);</span>
+<span class="fc" id="L119">	            redirectAttributes.addFlashAttribute(&quot;ejemplarDevuelto&quot;, true);</span>
+<span class="fc" id="L120">	            redirectAttributes.addFlashAttribute(&quot;mensaje&quot;, &quot;Devolución realizada exitosamente.&quot;);</span>
+<span class="fc" id="L121">	        } else {</span>
+<span class="fc" id="L122">	            log.error(&quot;Préstamo no encontrado con ID: &quot; + idPrestamo);</span>
+<span class="fc" id="L123">	            redirectAttributes.addFlashAttribute(&quot;ejemplarDevuelto&quot;, false);</span>
+<span class="fc" id="L124">	            redirectAttributes.addFlashAttribute(&quot;mensaje&quot;, &quot;Préstamo no encontrado.&quot;);</span>
+	        }
+<span class="nc" id="L126">	    } catch (Exception e) {</span>
+<span class="nc" id="L127">	        log.error(&quot;Error al realizar la devolución: &quot;, e);</span>
+<span class="nc" id="L128">	        redirectAttributes.addFlashAttribute(&quot;ejemplarDevuelto&quot;, false);</span>
+<span class="nc" id="L129">	        redirectAttributes.addFlashAttribute(&quot;mensaje&quot;, &quot;Error al realizar la devolución.&quot;);</span>
+<span class="fc" id="L130">	    }</span>
+<span class="fc" id="L131">	    return &quot;redirect:/resultadoDevolucion&quot;;</span>
+	}
+
+
+
+	@GetMapping(&quot;/resultadoDevolucion&quot;)
+	public String mostrarResultadoDevolucion() {
+<span class="nc" id="L138">		return &quot;resultadoDevolucionEjemplar&quot;; </span>
+	}
+
+	
+	@GetMapping(&quot;/formularioReserva&quot;)
+	public String mostrarFormularioReserva(Model model) {
+<span class="nc" id="L144">	    List&lt;Ejemplar&gt; ejemplaresNoDisponibles = ejemplarDAO.findByDisponibleFalse();</span>
+<span class="nc" id="L145">	    List&lt;Usuario&gt; usuarios = usuarioDAO.findAll();</span>
+
+<span class="nc" id="L147">	    model.addAttribute(&quot;ejemplares&quot;, ejemplaresNoDisponibles);</span>
+<span class="nc" id="L148">	    model.addAttribute(&quot;usuarios&quot;, usuarios);</span>
+
+<span class="nc" id="L150">	    return &quot;formularioReservaEjemplar&quot;;</span>
+	}
+
+	@PostMapping(&quot;/reservarEjemplar&quot;)
+	public String reservarEjemplar(@RequestParam Long idEjemplar, @RequestParam Long idUsuario, RedirectAttributes redirectAttributes) {
+<span class="fc" id="L155">	    Optional&lt;Ejemplar&gt; ejemplarOpt = ejemplarDAO.findById(idEjemplar);</span>
+<span class="fc" id="L156">	    Optional&lt;Usuario&gt; usuarioOpt = usuarioDAO.findById(idUsuario);</span>
+
+	    // Comprueba si el ejemplar y el usuario existen y si el ejemplar no está disponible
+<span class="pc bpc" id="L159" title="1 of 6 branches missed.">	    if (ejemplarOpt.isPresent() &amp;&amp; usuarioOpt.isPresent() &amp;&amp; !ejemplarOpt.get().isDisponible()) {</span>
+<span class="fc" id="L160">	        Ejemplar ejemplar = ejemplarOpt.get();</span>
+<span class="fc" id="L161">	        Usuario usuario = usuarioOpt.get();</span>
+	        
+	        // Aquí ya no necesitas buscar el título, pues puedes obtenerlo directamente del ejemplar
+<span class="fc" id="L164">	        Titulo titulo = ejemplar.getTitulo();</span>
+
+	        // Solo procede si el título no es null
+<span class="fc bfc" id="L167" title="All 2 branches covered.">	        if (titulo != null) {</span>
+<span class="fc" id="L168">	            Reserva reserva = new Reserva(usuario, ejemplar, titulo, new Date());</span>
+<span class="fc" id="L169">	            reservaDAO.save(reserva);</span>
+<span class="fc" id="L170">	            redirectAttributes.addFlashAttribute(&quot;mensajeExito&quot;, &quot;Reserva realizada con éxito.&quot;);</span>
+<span class="fc" id="L171">	        } else {</span>
+<span class="fc" id="L172">	            redirectAttributes.addFlashAttribute(&quot;mensajeError&quot;, &quot;El ejemplar no tiene un título asociado.&quot;);</span>
+	        }
+<span class="fc" id="L174">	    } else {</span>
+<span class="fc" id="L175">	        String mensajeError = &quot;Ejemplar no disponible o usuario no encontrado.&quot;;</span>
+<span class="pc bpc" id="L176" title="1 of 4 branches missed.">	        if (ejemplarOpt.isPresent() &amp;&amp; ejemplarOpt.get().isDisponible()) {</span>
+<span class="fc" id="L177">	            mensajeError = &quot;El ejemplar está disponible y no se puede reservar.&quot;;</span>
+	        }
+<span class="fc" id="L179">	        redirectAttributes.addFlashAttribute(&quot;mensajeError&quot;, mensajeError);</span>
+	    }
+
+<span class="fc" id="L182">	    return &quot;redirect:/rutaResultadoReserva&quot;;</span>
+	}
+
+
+
+	@GetMapping(&quot;/rutaResultadoReserva&quot;)
+	public String mostrarResultadoReserva(Model model) {
+<span class="nc" id="L189">	    return &quot;resultadoReservaEjemplar&quot;; // Nombre del archivo HTML del resultado</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

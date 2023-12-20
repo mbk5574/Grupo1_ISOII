@@ -1,0 +1,7 @@
+organization=mbk5574
+projectKey=mbk5574_Grupo1_ISOII
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.51703
+dashboardUrl=https://sonarcloud.io/dashboard?id=mbk5574_Grupo1_ISOII
+ceTaskId=AYyE5pvBn0iUU_GqTqlA
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYyE5pvBn0iUU_GqTqlA

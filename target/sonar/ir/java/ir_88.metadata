@@ -1,0 +1,5 @@
+es.uclm.GestiBiblioteca.business.controller.GestorTitulos#mostrarFormularioBorrarTitulo(Lorg/springframework/ui/Model;)Ljava/lang/String;
+es.uclm.GestiBiblioteca.business.entities.Titulo#<init>()V
+es.uclm.GestiBiblioteca.business.entities.Titulo#instance-init#
+==
+addAttribute org.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;

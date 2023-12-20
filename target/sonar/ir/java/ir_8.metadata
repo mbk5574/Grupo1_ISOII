@@ -1,0 +1,13 @@
+es.uclm.GestiBiblioteca.services.TituloService#guardarTitulo(Ljava/util/Collection;Ljava/lang/String;Les/uclm/GestiBiblioteca/business/entities/Titulo;)Les/uclm/GestiBiblioteca/business/entities/Titulo;
+es.uclm.GestiBiblioteca.business.entities.Revista#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;)V
+es.uclm.GestiBiblioteca.business.entities.Libro#instance-init#
+es.uclm.GestiBiblioteca.business.entities.Revista#instance-init#
+es.uclm.GestiBiblioteca.business.entities.Libro#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;)V
+java.lang.String#equalsIgnoreCase(Ljava/lang/String;)Z
+==
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+getReservas es.uclm.GestiBiblioteca.business.entities.Titulo#getReservas()Ljava/util/Collection;
+getTitulo_obra es.uclm.GestiBiblioteca.business.entities.Titulo#getTitulo_obra()Ljava/lang/String;
+getPrestamos es.uclm.GestiBiblioteca.business.entities.Titulo#getPrestamos()Ljava/util/Collection;
+getEjemplares es.uclm.GestiBiblioteca.business.entities.Titulo#getEjemplares()Ljava/util/Collection;
+getIsbn es.uclm.GestiBiblioteca.business.entities.Titulo#getIsbn()Ljava/lang/String;

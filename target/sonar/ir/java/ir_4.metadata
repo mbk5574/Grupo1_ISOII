@@ -1,0 +1,17 @@
+es.uclm.GestiBiblioteca.services.TituloService#eliminarTituloConVerificaciones(Ljava/lang/Long;)Z
+java.util.Optional#isPresent()Z
+java.util.Optional#get()Ljava/lang/Object;
+==
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+getTitulos es.uclm.GestiBiblioteca.business.entities.Autor#getTitulos()Ljava/util/Collection;
+delete org.springframework.data.repository.CrudRepository#delete(Ljava/lang/Object;)V
+setAutores es.uclm.GestiBiblioteca.business.entities.Titulo#setAutores(Ljava/util/Collection;)V
+findById org.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;
+remove java.util.Collection#remove(Ljava/lang/Object;)Z
+getAutores es.uclm.GestiBiblioteca.business.entities.Titulo#getAutores()Ljava/util/Collection;
+deleteByEjemplar es.uclm.GestiBiblioteca.persistence.ReservaDAO#deleteByEjemplar(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;)V
+getEjemplares es.uclm.GestiBiblioteca.business.entities.Titulo#getEjemplares()Ljava/util/Collection;
+existsByEjemplarAndActivo es.uclm.GestiBiblioteca.persistence.PrestamoDAO#existsByEjemplarAndActivo(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;Z)Z
+deleteByEjemplarAndActivo es.uclm.GestiBiblioteca.persistence.PrestamoDAO#deleteByEjemplarAndActivo(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;Z)V
+existsByEjemplar es.uclm.GestiBiblioteca.persistence.ReservaDAO#existsByEjemplar(Les/uclm/GestiBiblioteca/business/entities/Ejemplar;)Z
+isEmpty java.util.Collection#isEmpty()Z

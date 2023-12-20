@@ -1,0 +1,15 @@
+
+Wes.uclm.GestiBiblioteca.business.entities.Ejemplar#getPrestamos()Ljava/util/Collection;…
+æ/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Ejemplar.javaM M()"1*Ã
+1N	 N(í
+è
+N	 N(
+%0java.util.Collection"__id*a
+
+__unknown_file (E*C4
+2es.uclm.GestiBiblioteca.business.entities.Ejemplar"
+	prestamos"(
+N N(
+
+%0java.util.CollectionB64
+2es.uclm.GestiBiblioteca.business.entities.EjemplarH

@@ -1,0 +1,263 @@
+
+¬es.uclm.GestiBiblioteca.business.controller.GestorTitulos#borrarTitulo(Ljava/lang/String;Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;)Ljava/lang/String;Ò
+Å/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.javaµ µ("startingBlock*Ô
+2
+Å	 Å(™
+–
+
+Å> Å(m
+%12java.lang.String"__concat*;
+
+Å> Å(f-+
+)No se encontrÃ³ ningÃºn tÃ­tulo con ISBN *(
+
+Åi Å(m
+
+isbnjava.lang.String¡ž
+
+Å	 Å(nE
+%13>org.springframework.web.servlet.mvc.support.RedirectAttributes"¶org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*,
+
+__unknown_file (
+mensajeError*5
+
+__unknown_file (
+
+%12java.lang.String27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+1*Ë
+3
+¹ ¹(t
+r
+
+¹ ¹(:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"__id*"
+
+__unknown_file (
+""»
+¸
+
+¹ ¹(:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo"
+__arrayGet*>
+
+__unknown_file ("
+ 
+titulosABorrarjava.util.List*"
+
+__unknown_file (
+""*
+6
+1*¹
+startingBlock
+µ µ(e°
+­
+
+µ µ(1
+%15"
+__annotate*T
+
+__unknown_file (86
+4org.springframework.web.bind.annotation.RequestParam*6
+
+__unknown_file (
+
+isbnjava.lang.String[
+Y
+
+µ9 µ(=
+isbnjava.lang.String"__annotation*#
+
+__unknown_file (
+
+%15ë
+è
+
+´ ´(
+%16"
+__annotate*S
+
+__unknown_file (75
+3org.springframework.web.bind.annotation.PostMapping*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes˜
+•
+
+µR µ(dT
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes"__annotation*#
+
+__unknown_file (
+
+%16*
+8*ð
+4
+À À(#ƒ
+€
+
+ÀF À(b
+%9java.lang.String"__concat*&
+
+ÀF À([
+El tÃ­tulo con ISBN *(
+
+À^ À(b
+
+isbnjava.lang.String®
+«
+ÀF À(¥
+%10java.lang.String"__concat*&
+
+ÀF À(b
+
+%9java.lang.String*Q
+Àe À(¥B@
+> no puede ser borrado debido a ejemplares activos o reservados¢Ÿ
+À À(¦E
+%11>org.springframework.web.servlet.mvc.support.RedirectAttributes"¶org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*,
+
+__unknown_file (
+mensajeError*5
+
+__unknown_file (
+
+%10java.lang.String27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+1*»
+5
+½ ½(#
+}
+
+½F ½(_
+%6java.lang.String"__concat*#
+
+½F ½(X
+TÃ­tulo con ISBN *(
+
+½[ ½(_
+
+isbnjava.lang.String
+
+
+½F ½(y
+%7java.lang.String"__concat*&
+
+½F ½(_
+
+%6java.lang.String*'
+
+½b ½(y
+ borrado exitosamenteŸœ
+
+½ ½(zD
+%8>org.springframework.web.servlet.mvc.support.RedirectAttributes"¶org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*,
+
+__unknown_file (
+mensajeExito*4
+
+__unknown_file (
+
+%7java.lang.String27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+3*ç
+6
+»! »(.¹
+¶
+
+»! »(.4
+%3.es.uclm.GestiBiblioteca.services.TituloService"__id*l
+
+__unknown_file (P*N;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+tituloServiceÒÏ
+
+»O »(]
+%4java.lang.Long"Hes.uclm.GestiBiblioteca.business.entities.Titulo#getId()Ljava/lang/Long;*X
+
+__unknown_file (<
+:
+titulo0es.uclm.GestiBiblioteca.business.entities.Titulo2getId()¼¹
+
+»! »(^
+%5boolean"aes.uclm.GestiBiblioteca.services.TituloService#eliminarTituloConVerificaciones(Ljava/lang/Long;)Z*R
+
+__unknown_file (6
+4
+%3.es.uclm.GestiBiblioteca.services.TituloService*2
+
+__unknown_file (
+
+%4java.lang.Long21eliminarTituloConVerificaciones(Ljava/lang/Long;)*
+4
+5*ò
+8
+¶# ¶(,´
+±
+
+¶# ¶(,3
+%0-es.uclm.GestiBiblioteca.persistence.TituloDAO"__id*h
+
+__unknown_file (L*J;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+	tituloDAO®«
+
+¶# ¶(=
+%1java.util.List"\es.uclm.GestiBiblioteca.persistence.TituloDAO#findByIsbn(Ljava/lang/String;)Ljava/util/List;*Q
+
+__unknown_file (5
+3
+%0-es.uclm.GestiBiblioteca.persistence.TituloDAO*6
+
+__unknown_file (
+
+isbnjava.lang.String2findByIsbn(Ljava/lang/String;)j
+h
+
+¶ ¶(> 
+titulosABorrarjava.util.List"__id*2
+
+__unknown_file (
+
+%1java.util.List„
+
+¸
+ ¸("
+%2boolean"java.util.List#isEmpty()Z*>
+
+__unknown_file ("
+ 
+titulosABorrarjava.util.List2	isEmpty()*
+2
+3*Ž
+1
+È È(/Ç
+Ä
+
+È È(/
+%14"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*A
+
+__unknown_file (%#
+!redirect:/mostrarResultadoBorrado"3
+
+È È(0%#
+!redirect:/mostrarResultadoBorrado:&
+
+µ µ(>
+isbnjava.lang.String:b
+
+µ? µ(dT
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributesB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

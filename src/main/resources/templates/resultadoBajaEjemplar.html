@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultado de la Baja de Ejemplares</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .mensaje {
+            padding: 10px;
+            color: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .exito {
+            background-color: #4CAF50;
+        }
+        .error {
+            background-color: #f44336;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #005f73;
+        }
+        
+        .acciones {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .acciones a {
+            margin: 0 10px;
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .acciones a:hover {
+            background-color: #005f73;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Resultado de la Baja de Ejemplares</h1>
+
+    <!-- Muestra el mensaje de éxito -->
+    <div th:if="${mensaje}" class="mensaje exito">
+        <p th:text="${mensaje}"></p>
+        <a href="/bajaEjemplar">Dar de baja otro ejemplar</a>
+    </div>
+
+    <!-- Muestra el mensaje de error -->
+    <div th:if="${error}" class="mensaje error">
+        <p th:text="${error}"></p>
+    </div>
+<div class="acciones">
+        <a href="/admin">Volver al inicio</a>
+        <a href="/borrarTitulo">Borrar 1 título</a>
+</div>
+
+</body>
+</html>

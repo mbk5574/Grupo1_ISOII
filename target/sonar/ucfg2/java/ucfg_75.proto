@@ -1,0 +1,46 @@
+
+¨es.uclm.GestiBiblioteca.ServletInitializer#configure(Lorg/springframework/boot/builder/SpringApplicationBuilder;)Lorg/springframework/boot/builder/SpringApplicationBuilder;¡
+∂/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/ServletInitializer.java	$ 	(-"startingBlock*Ë
+startingBlock	- 	(Sª
+∏
+ (
+
+%1"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*f
+
+__unknown_file (J
+H
+application9org.springframework.boot.builder.SpringApplicationBuilderâ
+Ü
+	G 	(RH
+application9org.springframework.boot.builder.SpringApplicationBuilder"__annotation*"
+
+__unknown_file (
+
+%1*
+1*È
+1
+	 
+(äá
+
+	 
+(>?
+%09org.springframework.boot.builder.SpringApplicationBuilder"êorg.springframework.boot.builder.SpringApplicationBuilder#sources([Ljava/lang/Class;)Lorg/springframework/boot/builder/SpringApplicationBuilder;*f
+
+__unknown_file (J
+H
+application9org.springframework.boot.builder.SpringApplicationBuilder*"
+
+__unknown_file (
+""2sources([Ljava/lang/Class;)"M
+
+ 
+(?A
+?
+%09org.springframework.boot.builder.SpringApplicationBuilder:T
+	. 	(RH
+application9org.springframework.boot.builder.SpringApplicationBuilderB.,
+*es.uclm.GestiBiblioteca.ServletInitializer

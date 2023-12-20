@@ -1,0 +1,3 @@
+es.uclm.GestiBiblioteca.business.entities.Ejemplar#toString()Ljava/lang/String;
+==
+getId es.uclm.GestiBiblioteca.business.entities.Titulo#getId()Ljava/lang/Long;

@@ -1,0 +1,221 @@
+
+™es.uclm.GestiBiblioteca.business.controller.GestorTitulos#bajaEjemplar(Ljava/util/List;Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;)Ljava/lang/String;“
+≈/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.java¸ ¸("startingBlock*ƒ
+2
+é	 é(≠™
+
+é	 é(bE
+%10>org.springframework.web.servlet.mvc.support.RedirectAttributes"∂org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*'
+
+__unknown_file (	
+mensaje*F
+
+__unknown_file (*(
+&Ejemplares dados de baja exitosamente.27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+1*©
+startingBlock
+¸ ¸({Î
+Ë
+
+˚ ˚(
+%12"
+__annotate*S
+
+__unknown_file (75
+3org.springframework.web.bind.annotation.PostMapping*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributesò
+ï
+
+¸h ¸(zT
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes"__annotation*#
+
+__unknown_file (
+
+%12*
+9*Å
+4
+É
+ É(N
+L
+
+É
+ É(
+idjava.lang.Long"__id*"
+
+__unknown_file (
+""î
+ë
+
+É
+ É(
+idjava.lang.Long"
+__arrayGet*=
+
+__unknown_file (!
+
+idsEjemplaresjava.util.List*"
+
+__unknown_file (
+""*	
+2
+6
+1*Ç
+
+5
+Ü# Ü(9~
+|
+
+Ü# Ü(>
+%5java.lang.String"__concat*&
+
+Ü# Ü(9
+El ejemplar con id: *$
+
+Ü< Ü(>
+
+idjava.lang.LongÖ
+Ç
+
+Ü# Ü([
+%6java.lang.String"__concat*&
+
+Ü# Ü(>
+
+%5java.lang.String**
+
+ÜA Ü([
+ no puede ser eliminado.l
+j
+
+Ü Ü(\ 
+mensajeErrorjava.lang.String"__id*4
+
+__unknown_file (
+
+%6java.lang.String]
+[
+
+á á(#
+%7ch.qos.logback.classic.Logger"__id*"
+
+__unknown_file (
+""ÒÓ
+
+á á(#
+
+%8void"7ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V*A
+
+__unknown_file (%
+#
+%7ch.qos.logback.classic.Logger*>
+
+__unknown_file ("
+ 
+mensajeErrorjava.lang.String2info(Ljava/lang/String;)¢ü
+
+à à(HD
+%9>org.springframework.web.servlet.mvc.support.RedirectAttributes"∂org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*%
+
+__unknown_file (	
+error*>
+
+__unknown_file ("
+ 
+mensajeErrorjava.lang.String27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)*
+4*ñ
+6
+Ñ Ñ(*π
+∂
+
+Ñ Ñ(*4
+%3.es.uclm.GestiBiblioteca.services.TituloService"__id*l
+
+__unknown_file (P*N;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+tituloService¿Ω
+
+Ñ Ñ(P
+%4boolean"ces.uclm.GestiBiblioteca.services.TituloService#eliminarEjemplarConVerificaciones(Ljava/lang/Long;)Z*R
+
+__unknown_file (6
+4
+%3.es.uclm.GestiBiblioteca.services.TituloService*2
+
+__unknown_file (
+
+idjava.lang.Long23eliminarEjemplarConVerificaciones(Ljava/lang/Long;)*
+4
+5*≥
+8
+Ä Ä(ß§
+
+Ä Ä(UD
+%1>org.springframework.web.servlet.mvc.support.RedirectAttributes"∂org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;*r
+
+__unknown_file (V
+T
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributes*%
+
+__unknown_file (	
+error*C
+
+__unknown_file ('%
+#No se seleccion√≥ ning√∫n ejemplar.27addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)ƒ
+¡
+
+Å
+ Å(+
+%2"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*?
+
+__unknown_file (#!
+redirect:/resultadoBajaEjemplar"1
+
+Å Å(,#!
+redirect:/resultadoBajaEjemplar*ù
+9
+˝ ˝(ÉÄ
+
+˛ ˛(
+%0boolean"java.util.List#isEmpty()Z*=
+
+__unknown_file (!
+
+idsEjemplaresjava.util.List2	isEmpty()*
+4
+8*ä
+1
+ë ë(-≈
+¬
+
+ë ë(-
+%11"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*?
+
+__unknown_file (#!
+redirect:/resultadoBajaEjemplar"1
+
+ë ë(.#!
+redirect:/resultadoBajaEjemplar:-
+
+¸ ¸(T
+idsEjemplaresjava.util.List:b
+
+¸U ¸(zT
+redirectAttributes>org.springframework.web.servlet.mvc.support.RedirectAttributesB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

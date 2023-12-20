@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Alta de Ejemplar</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+    }
+
+    form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+    }
+
+    select, input[type=submit] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<!-- Formulario para dar de alta 1 ejemplar -->
+<form action="#" th:action="@{/altaEjemplar}" th:object="${altaEjemplar}" method="post">
+    <p>Seleccione el id del Título para el ejemplar a dar de alta:
+        <select name="id">
+            <option value="" disabled selected>Seleccione un título</option>
+            <option th:each="titulo : ${todosTitulos}" 
+                    th:value="${titulo.id}" 
+                    th:text="${titulo.id + ' - ' + titulo.titulo_obra}"  >Título
+            </option>
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="Alta Ejemplar"  />
+    </p>
+</form>
+
+</body>
+</html>

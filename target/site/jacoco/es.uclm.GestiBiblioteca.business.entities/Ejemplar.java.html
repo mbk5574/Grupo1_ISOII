@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ejemplar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.business.entities</a> &gt; <span class="el_source">Ejemplar.java</span></div><h1>Ejemplar.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.business.entities;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class Ejemplar {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column
+	private boolean disponible; // Campo agregado para disponibilidad
+
+	@ManyToOne()
+	@JoinColumn(name = &quot;titulo_id&quot;, referencedColumnName = &quot;id&quot;)
+	private Titulo titulo;
+	
+<span class="fc" id="L31">	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)</span>
+	private Collection&lt;Prestamo&gt; prestamos = new ArrayList&lt;&gt;();
+	
+
+	
+
+<span class="fc" id="L37">	public Ejemplar() {</span>
+<span class="fc" id="L38">	}</span>
+
+	public Ejemplar(Titulo titulo, boolean disponible) {
+<span class="fc" id="L41">		super();</span>
+<span class="fc" id="L42">		this.titulo = titulo;</span>
+<span class="fc" id="L43">		this.disponible = disponible; // Inicializar el estado de disponibilidad</span>
+<span class="fc" id="L44">	}</span>
+	
+	
+
+	@Override
+	public String toString() {
+<span class="nc" id="L50">		return &quot;Ejemplar{&quot; + &quot;id=&quot; + id + &quot;, tituloId=&quot; + titulo.getId() + &quot;, disponible=&quot; + disponible + &quot;, prestamos =&quot; + prestamos +'}';</span>
+	}
+
+	public Titulo getTitulo() {
+<span class="fc" id="L54">		return titulo;</span>
+	}
+
+	public void setTitulo(Titulo titulo) {
+<span class="fc" id="L58">		this.titulo = titulo;</span>
+<span class="fc" id="L59">	}</span>
+
+	public Long getId() {
+<span class="nc" id="L62">		return id;</span>
+	}
+
+	public void setId(Long id) {
+<span class="fc" id="L66">		this.id = id;</span>
+<span class="fc" id="L67">	}</span>
+
+	public boolean isDisponible() {
+<span class="fc" id="L70">		return disponible;</span>
+	}
+
+	public void setDisponible(boolean disponible) {
+<span class="fc" id="L74">		this.disponible = disponible;</span>
+<span class="fc" id="L75">	}</span>
+
+	public Collection&lt;Prestamo&gt; getPrestamos() {
+<span class="nc" id="L78">		return prestamos;</span>
+	}
+
+	public void setPrestamos(Collection&lt;Prestamo&gt; prestamos) {
+<span class="nc" id="L82">		this.prestamos = prestamos;</span>
+<span class="nc" id="L83">	}</span>
+
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

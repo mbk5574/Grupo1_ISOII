@@ -1,0 +1,11 @@
+es.uclm.GestiBiblioteca.services.TituloService#eliminarTituloYAutores(Les/uclm/GestiBiblioteca/business/entities/Titulo;)Z
+java.util.HashSet#<init>(Ljava/util/Collection;)V
+java.util.HashSet#instance-init#
+==
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+getTitulos es.uclm.GestiBiblioteca.business.entities.Autor#getTitulos()Ljava/util/Collection;
+remove java.util.Collection#remove(Ljava/lang/Object;)Z
+getAutores es.uclm.GestiBiblioteca.business.entities.Titulo#getAutores()Ljava/util/Collection;
+delete org.springframework.data.repository.CrudRepository#delete(Ljava/lang/Object;)V
+setAutores es.uclm.GestiBiblioteca.business.entities.Titulo#setAutores(Ljava/util/Collection;)V
+isEmpty java.util.Collection#isEmpty()Z

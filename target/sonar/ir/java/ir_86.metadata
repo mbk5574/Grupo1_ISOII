@@ -1,0 +1,14 @@
+es.uclm.GestiBiblioteca.business.controller.GestorTitulos#actualizarTituloSubmit(Les/uclm/GestiBiblioteca/business/entities/Titulo;Lorg/springframework/ui/Model;Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;)Ljava/lang/String;
+ch.qos.logback.classic.Logger#info(Ljava/lang/String;)V
+java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;
+ch.qos.logback.classic.Logger#warn(Ljava/lang/String;)V
+==
+save org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;
+findById org.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;
+setTitulo_obra es.uclm.GestiBiblioteca.business.entities.Titulo#setTitulo_obra(Ljava/lang/String;)V
+getId es.uclm.GestiBiblioteca.business.entities.Titulo#getId()Ljava/lang/Long;
+addAttribute org.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;
+getTitulo_obra es.uclm.GestiBiblioteca.business.entities.Titulo#getTitulo_obra()Ljava/lang/String;
+addFlashAttribute org.springframework.web.servlet.mvc.support.RedirectAttributes#addFlashAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/web/servlet/mvc/support/RedirectAttributes;
+setIsbn es.uclm.GestiBiblioteca.business.entities.Titulo#setIsbn(Ljava/lang/String;)V
+getIsbn es.uclm.GestiBiblioteca.business.entities.Titulo#getIsbn()Ljava/lang/String;

@@ -1,0 +1,65 @@
+
+‰es.uclm.GestiBiblioteca.business.controller.GestorTitulos#mostrarFormularioBorrarTitulo(Lorg/springframework/ui/Model;)Ljava/lang/String;Ò
+Å/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.java¯ ¯(,"startingBlock*j
+startingBlock
+¯, ¯(9HF
+
+¯- ¯(8%
+modelorg.springframework.ui.Model"java.util.HashMap*
+1*ß
+1
+° °(xv
+
+°) °(/6
+%00es.uclm.GestiBiblioteca.business.entities.Titulo"0es.uclm.GestiBiblioteca.business.entities.Titulo§
+¤
+
+°% °(1
+%1":es.uclm.GestiBiblioteca.business.entities.Titulo#<init>()V*T
+
+__unknown_file (8
+6
+%00es.uclm.GestiBiblioteca.business.entities.Titulo†
+ƒ
+
+° °(2"
+%2org.springframework.ui.Model"__mapSet*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model*,
+
+__unknown_file (
+borrarTitulo*T
+
+__unknown_file (8
+6
+%00es.uclm.GestiBiblioteca.business.entities.Titulo±
+®
+
+±	 ±(
+%3"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*,
+
+__unknown_file (
+borrarTituloÌ
+É
+
+±	 ±(
+%4"template!borrarTitulo*Y
+
+__unknown_file (=";
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model"
+
+± ±(
+borrarTitulo:3
+
+¯- ¯(8%
+modelorg.springframework.ui.ModelB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

@@ -1,0 +1,160 @@
+
+Nes.uclm.GestiBiblioteca.business.entities.Usuario#toString()Ljava/lang/String;»
+Ω/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Usuario.javah h("1*µ
+1i	 i(Ñ
+Å
+i i(
+%0java.lang.Long"__id*Y
+
+__unknown_file (=*;3
+1es.uclm.GestiBiblioteca.business.entities.Usuario"
+idp
+n
+i	 i(
+%1java.lang.String"__concat*
+i	 i(
+Usuario [id=*"
+i i(
+
+%0java.lang.Longr
+p
+i	 i(-
+%2java.lang.String"__concat*$
+i	 i(
+
+%1java.lang.String*
+i i(-
+, prestamos=ë
+é
+i0 i(9
+%3java.util.Collection"__id*`
+
+__unknown_file (D*B3
+1es.uclm.GestiBiblioteca.business.entities.Usuario"
+	prestamos~
+|
+i	 i(9
+%4java.lang.String"__concat*$
+i	 i(-
+
+%2java.lang.String*(
+i0 i(9
+
+%3java.util.Collectionq
+o
+i	 i(I
+%5java.lang.String"__concat*$
+i	 i(9
+
+%4java.lang.String*
+i< i(I
+, reservas=ê
+ç
+iL i(T
+%6java.util.Collection"__id*_
+
+__unknown_file (C*A3
+1es.uclm.GestiBiblioteca.business.entities.Usuario"
+
+reservas~
+|
+i	 i(T
+%7java.lang.String"__concat*$
+i	 i(I
+
+%5java.lang.String*(
+iL i(T
+
+%6java.util.Collectiono
+m
+i	 i(b
+%8java.lang.String"__concat*$
+i	 i(T
+
+%7java.lang.String*
+iW i(b
+	, nombre=ä
+á
+ie i(k
+%9java.lang.String"__id*]
+
+__unknown_file (A*?3
+1es.uclm.GestiBiblioteca.business.entities.Usuario"
+nombre{
+y
+i	 i(k
+%10java.lang.String"__concat*$
+i	 i(b
+
+%8java.lang.String*$
+ie i(k
+
+%9java.lang.Stringt
+r
+i	 j(
+%11java.lang.String"__concat*%
+i	 i(k
+
+%10java.lang.String*
+j j(
+, apellidos=é
+ã
+j j( 
+%12java.lang.String"__id*`
+
+__unknown_file (D*B3
+1es.uclm.GestiBiblioteca.business.entities.Usuario"
+	apellidos}
+{
+i	 j( 
+%13java.lang.String"__concat*%
+i	 j(
+
+%11java.lang.String*%
+j j( 
+
+%12java.lang.String
+}
+i	 j(<
+%14java.lang.String"__concat*%
+i	 j( 
+
+%13java.lang.String*'
+j# j(<
+, fechaFinPenalizacion=ó
+î
+j? j(S
+%15java.util.Date"__id*k
+
+__unknown_file (O*M3
+1es.uclm.GestiBiblioteca.business.entities.Usuario"
+fechaFinPenalizacion{
+y
+i	 j(S
+%16java.lang.String"__concat*%
+i	 j(<
+
+%14java.lang.String*#
+j? j(S
+
+%15java.util.Datet
+r
+i	 j(d
+%17java.lang.String"__concat*%
+i	 j(S
+
+%16java.lang.String*
+jV j(d
+, attribute=i
+g
+i	 j(j
+%18java.lang.String"__concat*%
+i	 j(d
+
+%17java.lang.String*
+jg j(j
+]"%
+i j(k
+
+%18java.lang.StringB53
+1es.uclm.GestiBiblioteca.business.entities.UsuarioH

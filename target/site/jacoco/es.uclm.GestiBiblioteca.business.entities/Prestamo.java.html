@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Prestamo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestiBiblioteca</a> &gt; <a href="index.source.html" class="el_package">es.uclm.GestiBiblioteca.business.entities</a> &gt; <span class="el_source">Prestamo.java</span></div><h1>Prestamo.java</h1><pre class="source lang-java linenums">package es.uclm.GestiBiblioteca.business.entities;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Prestamo {
+
+	@ManyToOne
+	@JoinColumn(name = &quot;usuario_id&quot;, referencedColumnName = &quot;id&quot;)
+	Usuario usuario;
+
+	@ManyToOne
+	@JoinColumn(name = &quot;ejemplar_id&quot;, referencedColumnName = &quot;id&quot;)
+	private Ejemplar ejemplar;
+
+	@ManyToOne()
+	@JoinColumn(name = &quot;titulo_id&quot;, referencedColumnName = &quot;id&quot;)
+	private Titulo titulo;
+
+	@Column
+	@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)
+	private Date fechaInicio;
+
+	@Column
+	@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)
+	private Date fechaFin;
+
+	@Column
+	private Boolean activo;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id_prestamo;
+
+<span class="fc" id="L44">	public Prestamo() {</span>
+
+<span class="fc" id="L46">	}</span>
+
+<span class="nc" id="L48">	public Prestamo(Usuario usuario, Titulo titulo, Date fechaInicio, Date fechaFin, Boolean activo, Ejemplar ejemplar) {</span>
+<span class="nc" id="L49">		this.usuario = usuario;</span>
+<span class="nc" id="L50">		this.titulo = titulo;</span>
+<span class="nc" id="L51">		this.fechaInicio = fechaInicio;</span>
+<span class="nc" id="L52">		this.fechaFin = fechaFin;</span>
+<span class="nc" id="L53">		this.activo = activo;</span>
+<span class="nc" id="L54">		this.ejemplar = ejemplar;</span>
+<span class="nc" id="L55">	}</span>
+
+	public Usuario getUsuario() {
+<span class="fc" id="L58">		return usuario;</span>
+	}
+
+	public void setUsuario(Usuario usuario) {
+<span class="fc" id="L62">		this.usuario = usuario;</span>
+<span class="fc" id="L63">	}</span>
+	
+	public Ejemplar getEjemplar() {
+<span class="fc" id="L66">        return ejemplar;</span>
+    }
+
+    public void setEjemplar(Ejemplar ejemplar) {
+<span class="fc" id="L70">        this.ejemplar = ejemplar;</span>
+<span class="fc" id="L71">    }</span>
+
+	public Titulo getTitulo() {
+<span class="nc" id="L74">		return titulo;</span>
+	}
+
+	public void setTitulo(Titulo titulo) {
+<span class="nc" id="L78">		this.titulo = titulo;</span>
+<span class="nc" id="L79">	}</span>
+
+	public Date getFechaInicio() {
+<span class="fc" id="L82">		return fechaInicio;</span>
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+<span class="fc" id="L86">		this.fechaInicio = fechaInicio;</span>
+<span class="fc" id="L87">	}</span>
+
+	public Date getFechaFin() {
+<span class="fc" id="L90">		return fechaFin;</span>
+	}
+
+	public void setFechaFin(Date fechaFin) {
+<span class="fc" id="L94">		this.fechaFin = fechaFin;</span>
+<span class="fc" id="L95">	}</span>
+
+	public Boolean getActivo() {
+<span class="nc" id="L98">		return activo;</span>
+	}
+
+	public void setActivo(Boolean activo) {
+<span class="fc" id="L102">		this.activo = activo;</span>
+<span class="fc" id="L103">	}</span>
+
+	public int getId_prestamo() {
+<span class="nc" id="L106">		return id_prestamo;</span>
+	}
+
+	public void setId_prestamo(int id_prestamo) {
+<span class="nc" id="L110">		this.id_prestamo = id_prestamo;</span>
+<span class="nc" id="L111">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L115">		return &quot;Prestamo [usuario=&quot; + usuario + &quot;, titulo=&quot; + titulo + &quot;, fechaInicio=&quot; + fechaInicio + &quot;, fechaFin=&quot;</span>
+				+ fechaFin + &quot;, activo=&quot; + activo + &quot;, id_prestamo=&quot; + id_prestamo + &quot;, ejemplar=&quot; + ejemplar + &quot;]&quot;;
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

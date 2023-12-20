@@ -1,0 +1,5 @@
+es.uclm.GestiBiblioteca.business.controller.GestorTitulos#actualizarTituloForm(Ljava/lang/Long;Lorg/springframework/ui/Model;)Ljava/lang/String;
+java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;
+==
+findById org.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;
+addAttribute org.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;

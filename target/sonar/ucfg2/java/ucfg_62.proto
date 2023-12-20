@@ -1,0 +1,141 @@
+
+êes.uclm.GestiBiblioteca.business.controller.GestorTitulos#actualizarTituloForm(Ljava/lang/Long;Lorg/springframework/ui/Model;)Ljava/lang/String;“
+≈/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorTitulos.javaÅ Å(#"startingBlock*É
+2
+Ö
+ Ö(3Ã
+…
+
+Ö
+ Ö(3
+%4"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*G
+
+__unknown_file (+)
+'redirect:/seleccionarIdTituloActualizarÁ
+‰
+
+Ö
+ Ö(3
+%5"0template!redirect:/seleccionarIdTituloActualizar*Y
+
+__unknown_file (=";
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model"9
+
+Ö Ö(4+)
+'redirect:/seleccionarIdTituloActualizar*ï	
+3
+Ç Ç(#¥
+±
+
+Ç Ç(#3
+%0-es.uclm.GestiBiblioteca.persistence.TituloDAO"__id*h
+
+__unknown_file (L*J;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos"
+	tituloDAOπ∂
+
+Ç Ç(6
+%1java.util.Optional"corg.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;*Q
+
+__unknown_file (5
+3
+%0-es.uclm.GestiBiblioteca.persistence.TituloDAO*8
+
+__unknown_file (
+
+tituloIdjava.lang.Long2findById(Ljava/lang/Object;)Ä˝
+
+Ç Ç(C6
+%20es.uclm.GestiBiblioteca.business.entities.Titulo"?java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;*6
+
+__unknown_file (
+
+%1java.util.Optional*"
+
+__unknown_file (
+""2orElse(Ljava/lang/Object;)Ø
+¨
+
+Ç Ç(DB
+existingTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo"__id*T
+
+__unknown_file (8
+6
+%20es.uclm.GestiBiblioteca.business.entities.Titulo”
+–
+
+Ñ Ñ(
+%3boolean"	__compare*"
+
+__unknown_file (
+==*`
+
+__unknown_file (D
+B
+existingTitulo0es.uclm.GestiBiblioteca.business.entities.Titulo*"
+
+__unknown_file (
+""*
+2
+1*j
+startingBlock
+Å# Å(MHF
+
+ÅA Å(L%
+modelorg.springframework.ui.Model"java.util.HashMap*
+3*◊
+1
+à à(ñ
+ì
+
+à à(8"
+%6org.springframework.ui.Model"__mapSet*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model*0
+
+__unknown_file (
+actualizarTitulo*`
+
+__unknown_file (D
+B
+existingTitulo0es.uclm.GestiBiblioteca.business.entities.Tituloµ
+≤
+
+ä	 ä(
+%7"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*0
+
+__unknown_file (
+actualizarTitulo–
+Õ
+
+ä	 ä(
+%8"template!actualizarTitulo*Y
+
+__unknown_file (=";
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulos*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model""
+
+ä ä(
+actualizarTitulo:(
+
+Å$ Å(@
+tituloIdjava.lang.Long:3
+
+ÅA Å(L%
+modelorg.springframework.ui.ModelB=;
+9es.uclm.GestiBiblioteca.business.controller.GestorTitulosH

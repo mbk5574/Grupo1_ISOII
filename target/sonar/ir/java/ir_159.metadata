@@ -1,0 +1,6 @@
+es.uclm.GestiBiblioteca.business.controller.GestorPrestamos#mostrarFormularioPrestamo(Lorg/springframework/ui/Model;)Ljava/lang/String;
+==
+info org.slf4j.Logger#info(Ljava/lang/String;)V
+addAttribute org.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;
+findAll org.springframework.data.repository.ListCrudRepository#findAll()Ljava/util/List;
+findByDisponibleTrue es.uclm.GestiBiblioteca.persistence.EjemplarDAO#findByDisponibleTrue()Ljava/util/List;

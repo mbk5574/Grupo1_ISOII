@@ -1,0 +1,15 @@
+
+Les.uclm.GestiBiblioteca.business.entities.Reserva#getFecha()Ljava/util/Date;È
+½/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/entities/Reserva.java@ @("1*»
+1A	 A(‡
+„
+A	 A(
+%0java.util.Date"__id*\
+
+__unknown_file (@*>3
+1es.uclm.GestiBiblioteca.business.entities.Reserva"
+fecha""
+A A(
+
+%0java.util.DateB53
+1es.uclm.GestiBiblioteca.business.entities.ReservaH

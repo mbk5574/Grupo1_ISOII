@@ -1,0 +1,92 @@
+
+âes.uclm.GestiBiblioteca.business.controller.GestorPrestamos#mostrarFormularioDevolucion(Lorg/springframework/ui/Model;)Ljava/lang/String;“
+«/C:/Users/mbk5574/OneDrive - Universidad de Castilla-La Mancha/Documentos/INGENIERIASOFTWAREII/Grupo1_ISOII-dev-antiguo8/src/main/java/es/uclm/GestiBiblioteca/business/controller/GestorPrestamos.javaY Y(*"startingBlock*f
+startingBlockY* Y(7FD
+Y+ Y(6%
+modelorg.springframework.ui.Model"java.util.HashMap*
+1*≠
+1Z' Z(2∏
+µ
+Z' Z(25
+%0/es.uclm.GestiBiblioteca.persistence.PrestamoDAO"__id*l
+
+__unknown_file (P*N=
+;es.uclm.GestiBiblioteca.business.controller.GestorPrestamos"
+prestamoDAO‡›
+Z' Z(E
+%1java.util.List"Res.uclm.GestiBiblioteca.persistence.PrestamoDAO#findByActivoTrue()Ljava/util/List;*S
+
+__unknown_file (7
+5
+%0/es.uclm.GestiBiblioteca.persistence.PrestamoDAO2findByActivoTrue()j
+h
+Z Z(F"
+prestamosActivosjava.util.List"__id*2
+
+__unknown_file (
+
+%1java.util.ListN
+L
+[ [(
+%2org.slf4j.Logger"__id*"
+
+__unknown_file (
+""yw
+[2 [(I	
+%3int"java.util.List#size()I*@
+
+__unknown_file ($
+"
+prestamosActivosjava.util.List2size()ß§
+[ [(J
+
+%4void"=org.slf4j.Logger#debug(Ljava/lang/String;Ljava/lang/Object;)V*4
+
+__unknown_file (
+
+%2org.slf4j.Logger*A
+
+__unknown_file (%#
+!N√∫mero de pr√©stamos activos: {}*'
+
+__unknown_file (
+	
+%3int2+debug(Ljava/lang/String;Ljava/lang/Object;)Ì
+Í
+\ \(6"
+%5org.springframework.ui.Model"__mapSet*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model*)
+
+__unknown_file (
+	prestamos*@
+
+__unknown_file ($
+"
+prestamosActivosjava.util.Listµ
+≤
+] ]( 
+%6"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
+
+__unknown_file (
+""*2
+
+__unknown_file (
+devolucionEjemplar“
+œ
+] ]( 
+%7"template!devolucionEjemplar*[
+
+__unknown_file (?"=
+;es.uclm.GestiBiblioteca.business.controller.GestorPrestamos*C
+
+__unknown_file ('
+%
+modelorg.springframework.ui.Model""
+] ](!
+devolucionEjemplar:1
+Y+ Y(6%
+modelorg.springframework.ui.ModelB?=
+;es.uclm.GestiBiblioteca.business.controller.GestorPrestamosH
